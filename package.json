@@ -21,10 +21,17 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.0.0",
     "@nestjs/microservices": "^9.4.2",
+    "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.3.0",
+    "amqp-connection-manager": "^4.1.13",
+    "amqplib": "^0.10.3",
     "class-validator": "^0.14.0",
+    "dotenv": "^16.1.1",
+    "mongoose": "^7.2.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
@@ -66,6 +73,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
+    }
   }
 }

@@ -1,0 +1,1 @@
+export const GUIDANCE_SERVICE = 'GUIDANCE';
