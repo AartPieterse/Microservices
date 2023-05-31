@@ -6,7 +6,7 @@ import { FilterQuery, Model, Types } from 'mongoose';
 export class AbstractRepository<TDocument extends AbstractDocument> {
     constructor(protected readonly model: Model<TDocument>) {}
 
-    async create (document: Omit<TDocument, '_id'>) : Promise<TDocument> {
+    async create(document: Omit<TDocument, '_id'>) : Promise<TDocument> {
         const createdDocument = new this.model({...document, _id: new Types.ObjectId});
 
         return createdDocument.save();
@@ -22,7 +22,7 @@ export class AbstractRepository<TDocument extends AbstractDocument> {
         return document;
     }
 
-    async findAll(filterQuery: FilterQuery<TDocument>) {
+    async find(filterQuery: FilterQuery<TDocument>) {
         return this.model.find(filterQuery);
     }
 
