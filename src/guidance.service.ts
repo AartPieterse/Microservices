@@ -27,6 +27,12 @@ export class GuidanceService {
     return newMeeting;
   }
 
+  async addMeeting2() {
+    this.rabbitmqService.sendMessage('student_notifications', 'message');
+
+    return 'newMeeting';
+  }
+
   async getMeetings() {
     return this.guidanceRepo.find({});
   }

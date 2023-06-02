@@ -7,8 +7,8 @@ export class GuidanceController {
   constructor(private readonly guidanceService: GuidanceService) {}
 
   @Post()
-  async addMeeting(@Body() data: MeetingDto) {
-    const application = await this.guidanceService.addMeeting(data);
+  async addMeeting() {
+    const application = await this.guidanceService.addMeeting2();
 
     return {
       status: 200,
@@ -19,6 +19,7 @@ export class GuidanceController {
 
   @Get()
   async getMeetings() {
-    return this.guidanceService.getMeetings();
+    //return this.guidanceService.getMeetings();
+    return 1112;
   }
 }
