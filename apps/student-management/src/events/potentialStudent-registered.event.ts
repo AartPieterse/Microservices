@@ -1,13 +1,7 @@
-import { AggregateRoot } from "@nestjs/cqrs";
+import { AggregateRoot, IEvent } from '@nestjs/cqrs';
 
-export class PotentialStudentRegisteredEvent extends AggregateRoot {
-  constructor(
-    public readonly studentId: string,
-    public readonly name: string,
-    public readonly study: string,
-    public readonly phoneNumber: string,
-    public readonly email: string,
-  ) {
+export class PotentialStudentRegisteredEvent  extends AggregateRoot implements IEvent {
+  constructor(public readonly createPotentialStudentDto: any) {
     super();
   }
 }
