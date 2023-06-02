@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AbstractDocument } from './abstract.schema';
-import { FilterQuery, Model, Types } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 
 @Injectable()
 export class AbstractRepository<TDocument extends AbstractDocument> {
     constructor(protected readonly model: Model<TDocument>) {}
 
-    async create(document: Omit<TDocument, '_id'>) : Promise<TDocument> {
-        const createdDocument = new this.model({...document, _id: new Types.ObjectId});
+    async create(document: TDocument) : Promise<TDocument> {
+        const createdDocument = new this.model(document);
 
         return createdDocument.save();
     }

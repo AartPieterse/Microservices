@@ -1,9 +1,8 @@
+import { ICommand } from '@nestjs/cqrs';
+import { createPotentialStudentDto } from '../../dto/create-potentialStudent.dto';
 
-export class CreatePotentialStudentCommand {
+export class CreatePotentialStudentCommand implements ICommand {
   constructor(
-    public readonly name: string,
-    public readonly study: string,
-    public readonly phoneNumber: string,
-    public readonly email: string,
+    public readonly createPotentialStudentDto: createPotentialStudentDto,
   ) {}
 }

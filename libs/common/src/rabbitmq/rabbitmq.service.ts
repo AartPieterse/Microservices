@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export class RabbitmqService {
+
   constructor(
     @Inject('RABBITMQ_CLIENT') private readonly clientProxy: ClientProxy,
   ) {}
