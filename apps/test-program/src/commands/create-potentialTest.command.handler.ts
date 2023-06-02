@@ -3,8 +3,8 @@ import { CreatePotentialTestCommand } from "./create-potentialTest.command";
 import { PotentialTest } from "../schemas/potentialTest.schema";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
-import { PotentialTestRegisteredEvent } from "../../events/potentialTest-registered.event";
-import { TestProgramRepository } from "../../test-program.repository";
+import { PotentialTestRegisteredEvent } from "../events/potentialTest-registered.event";
+import { TestProgramRepository } from "../test-program.repository";
 
 @CommandHandler(CreatePotentialTestCommand)
 export class CreatePotentialTestCommandHandler implements ICommandHandler<CreatePotentialTestCommand> {
@@ -17,7 +17,7 @@ export class CreatePotentialTestCommandHandler implements ICommandHandler<Create
         const { name, study, phoneNumber, email } = command;
 
         // Saving test into database
-        const potentialTest = await this.testProgramRepository.create(new this.potentialStudentModel({ name, study, phoneNumber, email }));
+        const potentialTest = await this.testProgramRepository.create(new this.potentialTestModel({ name, study, phoneNumber, email }));
         const test = new PotentialTestRegisteredEvent(potentialTest._id.toString(), potentialTest.name, potentialTest.study, potentialTest.phoneNumber, potentialTest.email);
 
         const event = this.publisher.mergeObjectContext(test);

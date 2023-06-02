@@ -1,5 +1,5 @@
 
-export class CreatePotentialStudentCommand {
+export class CreatePotentialTestCommand {
     constructor(
       public readonly name: string,
       public readonly study: string,

@@ -1,6 +1,6 @@
 import { AbstractRepository } from "@app/common";
 import { Injectable } from "@nestjs/common";
-import { PotentialTest } from "./schemas/potentialTest.schema";
+import { PotentialTest } from "./schemas/potentialClass.schema";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 
