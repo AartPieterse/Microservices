@@ -1,18 +1,26 @@
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
+import { IsArray, IsNotEmpty, IsString, IsNumber } from "class-validator";
 
 export class applyTestDto {
     @IsString()
     @IsNotEmpty()
     name: string;
-
-    @IsEmail()
-    email: string;
-
-    @IsString()
-    @IsNotEmpty()
-    study: string;
   
-    @IsPhoneNumber()
-    phoneNumber: string;
+    @IsNumber()
+    @IsNotEmpty()
+    duration: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    ec: number;
+  
+    @IsArray()
+    @IsString({ each: true })
+    @IsNotEmpty({ each: true })
+    questions: string[];
+  
+    @IsArray()
+    @IsString({ each: true })
+    @IsNotEmpty({ each: true })
+    answers: string[];
 
 }

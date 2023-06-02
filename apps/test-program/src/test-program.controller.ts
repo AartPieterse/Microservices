@@ -9,8 +9,8 @@ export class TestProgramController {
   constructor(private readonly testProgramService: TestProgramService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 
   @Post()
-  async applyForStudy(@Body() data: applyTestDto) {
-    const command = new CreatePotentialTestCommand(data.name, data.study, data.phoneNumber, data.email);
+  async applyForTest(@Body() data: applyTestDto) {
+    const command = new CreatePotentialTestCommand(data.name, data.duration, data.ec, data.questions, data.answers);
     this.commandBus.execute(command);
   }
 

@@ -7,13 +7,16 @@ export class PotentialTest extends AbstractDocument {
   name: string;
 
   @Prop({ required: true })
-  study: string;
+  duration: number;
 
   @Prop({ required: true })
-  phoneNumber: string;
+  ec: number;
 
-  @Prop({ required: true })
-  email: string;
+  @Prop({ required: true, type: [String] })
+  questions: string[];
+
+  @Prop({ required: true, type: [String] })
+  answers: string[];
 }
 
 export const PotentialTestSchema = SchemaFactory.createForClass(PotentialTest);

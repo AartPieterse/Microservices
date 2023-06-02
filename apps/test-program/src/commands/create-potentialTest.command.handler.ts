@@ -14,11 +14,11 @@ export class CreatePotentialTestCommandHandler implements ICommandHandler<Create
         private readonly publisher: EventPublisher, private testProgramRepository: TestProgramRepository) {}
 
     async execute(command: CreatePotentialTestCommand): Promise<any> {
-        const { name, study, phoneNumber, email } = command;
+        const { name, duration, ec, questions, answers } = command;
 
         // Saving test into database
-        const potentialTest = await this.testProgramRepository.create(new this.potentialTestModel({ name, study, phoneNumber, email }));
-        const test = new PotentialTestRegisteredEvent(potentialTest._id.toString(), potentialTest.name, potentialTest.study, potentialTest.phoneNumber, potentialTest.email);
+        const potentialTest = await this.testProgramRepository.create(new this.potentialTestModel({ name, duration, ec, questions, answers }));
+        const test = new PotentialTestRegisteredEvent(potentialTest._id.toString(), potentialTest.name, potentialTest.duration, potentialTest.ec, potentialTest.questions, potentialTest.answers);
 
         const event = this.publisher.mergeObjectContext(test);
         event.commit();

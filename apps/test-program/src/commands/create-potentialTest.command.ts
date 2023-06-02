@@ -2,9 +2,11 @@
 export class CreatePotentialTestCommand {
     constructor(
       public readonly name: string,
-      public readonly study: string,
-      public readonly phoneNumber: string,
-      public readonly email: string,
+      public readonly duration: number,
+      public readonly ec: number,
+      public readonly questions: string[],
+      public readonly answers: string[],
+
     ) {}
   }
   

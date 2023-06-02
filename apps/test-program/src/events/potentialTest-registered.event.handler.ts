@@ -14,8 +14,7 @@ export class PotentialTestRegisteredEventHandler implements IEventHandler<Potent
     const teacher =  (await this.potentialTest.findOne({}).exec()).toObject();
 
     // Send a notification to the teacher using RabbitMQ
-    const message = `Hello ${teacher.name}, ${event.name} has applied for the study ${event.study}. Contact: ${event.email}, ${event.phoneNumber}`
-
+    const message = `Hello everyone, ${teacher.name} has added a new test for ${event.name}, it will have a duration of ${event.duration} minutes, passing this test will give ${event.ec} ECs`
     await this.rabbitmqService.sendMessage('teacher_notifications', message);
   }
 }
