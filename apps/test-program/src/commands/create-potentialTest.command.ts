@@ -1,11 +1,9 @@
+import { ICommand } from "@nestjs/cqrs";
+import { createPotentialTestDto } from "../dto/create-potentialTest.dto";
 
-export class CreatePotentialTestCommand {
-    constructor(
-      public readonly name: string,
-      public readonly duration: number,
-      public readonly ec: number,
-      public readonly questions: string[],
-      public readonly answers: string[],
+export class CreatePotentialTestCommand implements ICommand{
+    constructor( public readonly createPotentialTestDto: createPotentialTestDto,
+
 
     ) {}
   }

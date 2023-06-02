@@ -3,6 +3,10 @@ import { IsArray, IsNotEmpty, IsString, IsNumber } from "class-validator";
 export class applyTestDto {
     @IsString()
     @IsNotEmpty()
+    module: string;
+
+    @IsString()
+    @IsNotEmpty()
     name: string;
   
     @IsNumber()

@@ -4,6 +4,9 @@ import { AbstractDocument } from '@app/common';
 @Schema()
 export class PotentialTest extends AbstractDocument {
   @Prop({ required: true })
+  module: string;
+
+  @Prop({ required: true })
   name: string;
 
   @Prop({ required: true })

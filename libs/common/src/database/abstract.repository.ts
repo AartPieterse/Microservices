@@ -6,8 +6,8 @@ import { FilterQuery, Model, Types } from 'mongoose';
 export class AbstractRepository<TDocument extends AbstractDocument> {
     constructor(protected readonly model: Model<TDocument>) {}
 
-    async create(document: Omit<TDocument, '_id'>) : Promise<TDocument> {
-        const createdDocument = new this.model({...document, _id: new Types.ObjectId});
+    async create(document: TDocument) : Promise<TDocument> {
+        const createdDocument = new this.model(document);
 
         return createdDocument.save();
     }
