@@ -13,4 +13,8 @@ export class TestProgramService {
   async getApplications(){
     return this.testProgramRepository.find({});
   }
+
+  async deleteApplicationById(id: string) {
+    return this.testProgramRepository.delete(id);
+  }
 }

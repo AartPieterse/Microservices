@@ -1,8 +1,5 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialTestCommand } from "./create-potentialTest.command";
-import { PotentialTest } from "../schemas/potentialTest.schema";
-import { Model } from "mongoose";
-import { InjectModel } from "@nestjs/mongoose";
 import { PotentialTestRegisteredEvent } from "../events/potentialTest-registered.event";
 import { TestProgramRepository } from "../test-program.repository";
 @CommandHandler(CreatePotentialTestCommand)

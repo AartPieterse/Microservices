@@ -11,6 +11,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { PotentialTestRegisteredEventHandler } from './events/potentialTest-registered.event.handler';
 import { CreatePotentialTestCommandHandler } from './commands/create-potentialTest.command.handler';
 import { Teacher, TeacherSchema } from './schemas/teacher.schema';
+import { TeacherModule } from 'apps/student-management/src/teacher/teacher.module';
 
 
 @Module({

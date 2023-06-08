@@ -1,6 +1,7 @@
+import { AbstractDocument } from "@app/common";
 import { IsArray, IsNotEmpty, IsString, IsNumber } from "class-validator";
 
-export class createPotentialTestDto {
+export class createPotentialTestDto extends AbstractDocument{
   @IsString()
   @IsNotEmpty()
   module: string;

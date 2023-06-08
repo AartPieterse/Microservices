@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
 import { TestProgramService } from './test-program.service';
 import { createPotentialTestDto } from './dto/create-potentialTest.dto';
 import { CommandBus, EventBus } from '@nestjs/cqrs';
@@ -10,12 +10,17 @@ export class TestProgramController {
 
   @Post()
   async createPotentialTestDto(@Body() data: createPotentialTestDto) {
-    const command = new CreatePotentialTestCommand(data.module, data.name);
+    const command = new CreatePotentialTestCommand(data);
     this.commandBus.execute(command);
   }
 
   @Get()
   async getApplications(){
     return this.testProgramService.getApplications();
+  }
+
+  @Delete(':id')
+  async deleteApplicationById(@Param('id') id: string) {
+    return this.testProgramService.deleteApplicationById(id);
   }
 }
