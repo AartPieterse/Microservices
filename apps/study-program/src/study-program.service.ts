@@ -5,4 +5,8 @@ export class StudyProgramService {
   getHello(): string {
     return 'Hello World!';
   }
+
+  getGoodbye(): string {
+    return 'Goodbye!';
+  }
 }
