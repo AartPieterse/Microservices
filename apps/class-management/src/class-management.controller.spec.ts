@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TestProgramController } from './test-program.controller';
-import { TestProgramService } from './test-program.service';
+import { TestProgramController } from './class-management.controller';
+import { TestProgramService } from './class-management.service';
 
 describe('TestProgramController', () => {
   let testProgramController: TestProgramController;
@@ -16,7 +16,7 @@ describe('TestProgramController', () => {
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      // expect(testProgramController.getHello()).toBe('Hello World!');
+      expect(testProgramController.getHello()).toBe('Hello World!');
     });
   });
 });
