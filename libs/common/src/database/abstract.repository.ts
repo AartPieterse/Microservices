@@ -1,36 +1,81 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Logger, NotFoundException } from '@nestjs/common';
+import {
+  FilterQuery,
+  Model,
+  Types,
+  UpdateQuery,
+  SaveOptions,
+  Connection,
+} from 'mongoose';
 import { AbstractDocument } from './abstract.schema';
-import { FilterQuery, Model } from 'mongoose';
 
-@Injectable()
-export class AbstractRepository<TDocument extends AbstractDocument> {
-    constructor(protected readonly model: Model<TDocument>) {}
+export abstract class AbstractRepository<TDocument extends AbstractDocument> {
+  protected abstract readonly logger: Logger;
 
-    async create(document: TDocument) : Promise<TDocument> {
-        const createdDocument = new this.model(document);
+  constructor(
+    protected readonly model: Model<TDocument>,
+    private readonly connection: Connection,
+  ) {}
 
-        return createdDocument.save();
+  async create(
+    document: Omit<TDocument, '_id'>,
+    options?: SaveOptions,
+  ): Promise<TDocument> {
+    const createdDocument = new this.model({
+      ...document,
+      _id: new Types.ObjectId(),
+    });
+    return (
+      await createdDocument.save(options)
+    ).toJSON() as unknown as TDocument;
+  }
+
+  async findOne(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
+    const document = await this.model.findOne(filterQuery, {}, { lean: true });
+
+    if (!document) {
+      this.logger.warn('Document not found with filterQuery', filterQuery);
+      throw new NotFoundException('Document not found.');
     }
 
-    async findOne(filterQuery: FilterQuery<TDocument>) : Promise<TDocument> {
-        const document = await this.model.findOne(filterQuery).exec();
+    return document;
+  }
 
-        if(!document){
-            throw new NotFoundException('Document not found')
-        }
+  async findOneAndUpdate(
+    filterQuery: FilterQuery<TDocument>,
+    update: UpdateQuery<TDocument>,
+  ) {
+    const document = await this.model.findOneAndUpdate(filterQuery, update, {
+      lean: true,
+      new: true,
+    });
 
-        return document;
+    if (!document) {
+      this.logger.warn(`Document not found with filterQuery:`, filterQuery);
+      throw new NotFoundException('Document not found.');
     }
 
-    async find(filterQuery: FilterQuery<TDocument>) {
-        return this.model.find(filterQuery);
-    }
+    return document;
+  }
 
-    async update(id: string, document: Partial<TDocument>) : Promise<TDocument> {
-        return this.model.findByIdAndUpdate(id, document).exec();
-    }
+  async upsert(
+    filterQuery: FilterQuery<TDocument>,
+    document: Partial<TDocument>,
+  ) {
+    return this.model.findOneAndUpdate(filterQuery, document, {
+      lean: true,
+      upsert: true,
+      new: true,
+    });
+  }
 
-    async delete(id: string) : Promise<TDocument> {
-        return this.model.findByIdAndDelete(id).exec();
-    }
+  async find(filterQuery: FilterQuery<TDocument>) {
+    return this.model.find(filterQuery, {}, { lean: true });
+  }
+
+  async startTransaction() {
+    const session = await this.connection.startSession();
+    session.startTransaction();
+    return session;
+  }
 }

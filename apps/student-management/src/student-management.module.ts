@@ -1,25 +1,21 @@
-import { Module} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { StudentManagementController } from './student-management.controller';
 import { StudentManagementService } from './student-management.service';
-import { DatabaseModule, RmqModule } from '@app/common';
-import { APPLICATION_SERVICE } from './constants/services';
-import { MongooseModule } from '@nestjs/mongoose';
-import { PotentialStudent, PotentialStudentSchema} from './schemas/potentialStudent.schema';
-import { StudentManagementRepository } from './student-management.repository';
+import { RmqModule } from '@app/common';
 import { ConfigModule } from '@nestjs/config';
-import { CqrsModule } from '@nestjs/cqrs';
-import { PotentialStudentRegisteredEventHandler } from './events/potentialStudent-registered.event.handler';
-import { CreatePotentialStudentCommandHandler } from './commands/create-potentialStudent/create-potentialStudent.command.handler';
-import { Teacher, TeacherSchema } from './schemas/teacher.schema';
-import { TeacherModule } from './teacher/teacher.module';
+import * as Joi from 'joi'
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-    envFilePath: '.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule],
+    validationSchema: Joi.object({
+      RABBIT_MQ_URI: Joi.string().required(),
+      RABBIT_MQ_STUDENT_MANAGEMENT_QUEUE: Joi.string().required() 
+    })
+  }),
+  RmqModule
+ ],
   controllers: [StudentManagementController],
-  providers: [StudentManagementService, StudentManagementRepository, PotentialStudentRegisteredEventHandler, CreatePotentialStudentCommandHandler],
+  providers: [StudentManagementService],
 })
-export class StudentManagementModule {
-}
+export class StudentManagementModule {}

@@ -1,6 +1,6 @@
 FROM node:alpine As development
 
-WORKDIR /usr/src/app    
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build class-management
+RUN npm run build
 
 FROM node:alpine as production
 
@@ -25,4 +25,4 @@ COPY . .
 
 COPY --from=development /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/class-management/main"]
+CMD ["node", "dist/apps/study/main"]

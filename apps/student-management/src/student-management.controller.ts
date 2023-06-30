@@ -1,18 +1,17 @@
-import { Body, Controller, Post} from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { StudentManagementService } from './student-management.service';
-import { CreatePotentialStudentCommand } from './commands/create-potentialStudent/create-potentialStudent.command';
-import { CommandBus, EventBus } from '@nestjs/cqrs';
-import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
-
-@Controller('applications')
+import { EventPattern, Payload, Ctx, RmqContext} from '@nestjs/microservices'
+@Controller()
 export class StudentManagementController {
-  constructor(private readonly studentManagementService: StudentManagementService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
+  constructor(private readonly studentManagementService: StudentManagementService) {}
 
-  @Post()
-  async applyForStudy(@Body() data: createPotentialStudentDto) {
-    const command = new CreatePotentialStudentCommand(data);
-    const student = this.commandBus.execute(command);
+  @Get()
+  getHello(): string {
+    return this.studentManagementService.getHello();
+  }
 
-    return student;
+  @EventPattern('study_created')
+  async handlerStudyCreated(@Payload() data: any, @Ctx() context: RmqContext ) {
+    this.studentManagementService.student(data)
   }
 }

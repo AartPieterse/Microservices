@@ -1,16 +1,15 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { PotentialStudent } from './schemas/potentialStudent.schema';
-import { StudentManagementRepository } from './student-management.repository';
+import { Injectable, Logger } from '@nestjs/common';
 
 @Injectable()
 export class StudentManagementService {
-  constructor(
-    @InjectModel(PotentialStudent.name)
-    private readonly studentManagementRepository: StudentManagementRepository,
-  ) {}
+  private readonly logger = new Logger(StudentManagementService.name)
+  
+  
+  getHello(): string {
+    return 'Hello World!';
+  }
 
-  async getApplications(){
-    return this.studentManagementRepository.find({});
+  student(data: any){
+    this.logger.log('Student...', data)
   }
 }

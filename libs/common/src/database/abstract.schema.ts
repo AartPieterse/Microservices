@@ -1,9 +1,8 @@
-import { AggregateRoot } from "@nestjs/cqrs";
-import { Prop, Schema } from "@nestjs/mongoose";
-import mongoose, { SchemaTypes, Types } from "mongoose";
+import { Prop, Schema } from '@nestjs/mongoose';
+import { SchemaTypes, Types } from 'mongoose';
 
 @Schema()
-export class AbstractDocument extends AggregateRoot {
-    @Prop({ type: SchemaTypes.ObjectId, default: () => new mongoose.Types.ObjectId()})
-    _id: Types.ObjectId
+export class AbstractDocument {
+  @Prop({ type: SchemaTypes.ObjectId })
+  _id: Types.ObjectId;
 }
