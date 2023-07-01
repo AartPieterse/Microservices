@@ -8,6 +8,11 @@ import { CreatePotentialTestCommand } from './commands/create-potentialTest.comm
 export class TestProgramController {
   constructor(private readonly testProgramService: TestProgramService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 
+  @Delete(':id')
+  async deleteApplicationById(@Param('id') id: string) {
+    return this.testProgramService.deleteApplicationById(id);
+  }
+
   @Post()
   async createPotentialTestDto(@Body() data: createPotentialTestDto) {
     const command = new CreatePotentialTestCommand(data);
@@ -19,8 +24,4 @@ export class TestProgramController {
     return this.testProgramService.getApplications();
   }
 
-  @Delete(':id')
-  async deleteApplicationById(@Param('id') id: string) {
-    return this.testProgramService.deleteApplicationById(id);
-  }
 }
