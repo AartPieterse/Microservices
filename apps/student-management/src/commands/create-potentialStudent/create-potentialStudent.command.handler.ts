@@ -21,5 +21,4 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
         const event = this.publisher.mergeObjectContext(student);
         event.publish(event);
     }
-    
 }

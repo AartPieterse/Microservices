@@ -1,8 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
-import { RmqContext } from '@nestjs/microservices/ctx-host/rmq.context';
-import { Ctx, MessagePattern, Payload } from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller('teachers')
 export class TeacherController {
@@ -21,7 +20,12 @@ export class TeacherController {
   }
 
   @MessagePattern('teacher_notifications')
-  public async execute(@Payload() data: any) {
+  public async GetNotifications(@Payload() data: any) {
+    console.log('Message: ', data);
+  }
+
+  @MessagePattern('meeting_notifications')
+  public async getMeetings(@Payload() data: any) {
     console.log('Message: ', data);
   }
 }

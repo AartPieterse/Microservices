@@ -27,10 +27,10 @@ export class AbstractRepository<TDocument extends AbstractDocument> {
     }
 
     async update(id: string, document: Partial<TDocument>) : Promise<TDocument> {
-        return this.model.findByIdAndUpdate(id, document).exec();
+        return this.model.findByIdAndUpdate(id, document);
     }
 
     async delete(id: string) : Promise<TDocument> {
-        return this.model.findByIdAndDelete(id).exec();
+        return this.model.findByIdAndDelete(id);
     }
 }

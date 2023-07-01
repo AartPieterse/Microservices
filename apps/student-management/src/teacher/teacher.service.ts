@@ -19,4 +19,12 @@ export class TeacherService {
   async findAll(){
     this.teacherRepository.find({});
   }
+
+  async findById(id: string){
+    this.teacherRepository.findOne({id});
+  }
+
+  async delete(id: string){
+    this.teacherRepository.delete(id);
+  }
 }

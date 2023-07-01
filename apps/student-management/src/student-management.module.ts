@@ -12,12 +12,13 @@ import { PotentialStudentRegisteredEventHandler } from './events/potentialStuden
 import { CreatePotentialStudentCommandHandler } from './commands/create-potentialStudent/create-potentialStudent.command.handler';
 import { Teacher, TeacherSchema } from './schemas/teacher.schema';
 import { TeacherModule } from './teacher/teacher.module';
+import { MeetingModule } from './meeting/meeting.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
     envFilePath: '.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule],
+  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule, MeetingModule],
   controllers: [StudentManagementController],
   providers: [StudentManagementService, StudentManagementRepository, PotentialStudentRegisteredEventHandler, CreatePotentialStudentCommandHandler],
 })
