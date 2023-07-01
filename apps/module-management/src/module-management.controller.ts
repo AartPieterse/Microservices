@@ -1,20 +1,27 @@
-import { Body, Controller, Get, Post} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
+import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { ModuleManagementService } from './module-management.service';
-import { applyTestDto } from './dto/applyTest.dto';
+import { applyModuleDto } from './dto/applyModule.dto';
+import { CreatePotentialModuleCommand } from './commands/create-potentialModule.command';
+
 
 @Controller('module-management')
 export class ModuleManagementController {
-  constructor(private readonly moduleManagementService: ModuleManagementService) {}
+  constructor(private readonly moduleManagementService: ModuleManagementService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 
   @Post()
-  async applyForTest(@Body() data: applyTestDto) {
-    const application = await this.moduleManagementService.applyForTest(data);
-
-    return { status: 200, message: 'Confirmation message sent', data: application};
+  async createPotentialModuleDto(@Body() data: applyModuleDto) {
+    const command = new CreatePotentialModuleCommand(data);
+    this.commandBus.execute(command);
   }
 
   @Get()
   async getApplications(){
     return this.moduleManagementService.getApplications();
+  }
+
+  @Delete(':id')
+  async deleteApplicationById(@Param('id') id: string) {
+    return this.moduleManagementService.deleteApplicationById(id);
   }
 }
