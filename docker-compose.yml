@@ -50,30 +50,14 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-  # class-management:
-  #   build:
-  #     context: .
-  #     dockerfile: ./apps/class-management/Dockerfile
-  #     target: development
-  #   command: npm run start:dev class-management
-  #   env_file:
-  #     - ./apps/class-management/.env
-  #   depends_on:
-  #     - mongodb-primary
-  #     - mongodb-secondary
-  #     - mongodb-arbiter
-  #     - rabbitmq
-  #   volumes:
-  #     - .:/usr/src/app
-  #     - /usr/src/app/node_modules
-  module-management:
+  class-management:
     build:
       context: .
-      dockerfile: ./apps/module-management/Dockerfile
+      dockerfile: ./apps/class-management/Dockerfile
       target: development
-    command: npm run start:dev module-management
+    command: npm run start:dev class-management
     env_file:
-      - ./apps/module-management/.env
+      - ./apps/class-management/.env
     depends_on:
       - mongodb-primary
       - mongodb-secondary
@@ -82,6 +66,22 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+  # module-management:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/module-management/Dockerfile
+  #     target: development
+  #   command: npm run start:dev module-management
+  #   env_file:
+  #     - ./apps/module-management/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
   rabbitmq:
     image: rabbitmq
     ports: 
