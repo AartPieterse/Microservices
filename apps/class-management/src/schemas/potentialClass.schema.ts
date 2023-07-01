@@ -1,19 +1,15 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { AbstractDocument } from '@app/common';
+import { PotentialStudent } from 'apps/student-management/src/schemas/potentialStudent.schema';
 
 @Schema()
-export class PotentialTest extends AbstractDocument {
+export class PotentialClass extends AbstractDocument {
   @Prop({ required: true })
   name: string;
 
   @Prop({ required: true })
-  study: string;
+  student: PotentialStudent;
 
-  @Prop({ required: true })
-  phoneNumber: string;
-
-  @Prop({ required: true })
-  email: string;
 }
 
-export const PotentialTestSchema = SchemaFactory.createForClass(PotentialTest);
+export const PotentialClassSchema = SchemaFactory.createForClass(PotentialClass);

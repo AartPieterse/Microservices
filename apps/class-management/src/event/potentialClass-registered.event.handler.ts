@@ -1,21 +1,18 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
-import { PotentialStudentRegisteredEvent } from './potentialStudent-registered.event';
-import { Teacher } from '../schemas/teacher.schema';
+import { PotentialClassRegisteredEvent } from './potentialClass-registered.event';
 import { AbstractRepository, RabbitmqService } from '@app/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { PotentialStudent } from '../schemas/potentialStudent.schema';
+import { PotentialClass } from '../schemas/potentialClass.schema';
 import { Model } from 'mongoose';
 
-@EventsHandler(PotentialStudentRegisteredEvent)
-export class PotentialStudentRegisteredEventHandler implements IEventHandler<PotentialStudentRegisteredEvent> {
-  constructor(@InjectModel(PotentialStudent.name) private readonly potentialStudent : Model<PotentialStudent>,  private readonly rabbitmqService: RabbitmqService) {}
+@EventsHandler(PotentialClassRegisteredEvent)
+export class PotentialClassRegisteredEventHandler implements IEventHandler<PotentialClassRegisteredEvent> {
+  constructor(@InjectModel(PotentialClass.name) private readonly potentialClass : Model<PotentialClass>,  private readonly rabbitmqService: RabbitmqService) {}
 
-  async handle(event: PotentialStudentRegisteredEvent): Promise<void> {
-    const teacher =  (await this.potentialStudent.findOne({}).exec()).toObject();
-
+  async handle(event: PotentialClassRegisteredEvent): Promise<void> {
     // Send a notification to the teacher using RabbitMQ
-    const message = `Hello ${teacher.name}, ${event.name} has applied for the study ${event.study}. Contact: ${event.email}, ${event.phoneNumber}`
+    const message = `A new class named: ${PotentialClass.name} has been made`
 
-    await this.rabbitmqService.sendMessage('teacher_notifications', message);
+    await this.rabbitmqService.sendMessage('study-notification', message);
   }
 }

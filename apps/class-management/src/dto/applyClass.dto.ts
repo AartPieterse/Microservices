@@ -1,18 +1,14 @@
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
+import { AbstractDocument } from "@app/common";
+import { PotentialStudent } from "apps/student-management/src/schemas/potentialStudent.schema";
 
-export class applyStudyDto {
+export class applyClassDto extends AbstractDocument {
     @IsString()
     @IsNotEmpty()
     name: string;
 
-    @IsEmail()
-    email: string;
-
     @IsString()
-    @IsNotEmpty()
-    study: string;
-  
-    @IsPhoneNumber()
-    phoneNumber: string;
+    student: PotentialStudent;
+
 
 }
