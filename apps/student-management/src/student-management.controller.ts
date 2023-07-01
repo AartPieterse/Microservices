@@ -4,7 +4,7 @@ import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 
-@Controller('applications')
+@Controller('student-management')
 export class StudentManagementController {
   constructor(private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 

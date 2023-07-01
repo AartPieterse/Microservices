@@ -1,33 +1,13 @@
 {
-  "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/nest-jsapi/src",
-  "compilerOptions": {
-    "deleteOutDir": true,
-    "webpack": true,
-    "tsConfigPath": "apps/nest-jsapi/tsconfig.app.json"
-  },
+  "sourceRoot": "apps/study-program/src",
   "monorepo": true,
-  "root": "apps/nest-jsapi",
+  "root": "apps/study-program",
+  "compilerOptions": {
+    "webpack": false,
+    "tsConfigPath": "apps/study-program/tsconfig.app.json"
+  },
   "projects": {
-    "nest-jsapi": {
-      "type": "application",
-      "root": "apps/nest-jsapi",
-      "entryFile": "main",
-      "sourceRoot": "apps/nest-jsapi/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/nest-jsapi/tsconfig.app.json"
-      }
-    },
-    "student-management": {
-      "type": "application",
-      "root": "apps/student-management",
-      "entryFile": "main",
-      "sourceRoot": "apps/student-management/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/student-management/tsconfig.app.json"
-      }
-    },
     "study-program": {
       "type": "application",
       "root": "apps/study-program",
@@ -46,13 +26,31 @@
         "tsConfigPath": "apps/test-program/tsconfig.app.json"
       }
     },
-    "guidance-program": {
+    "student-management": {
       "type": "application",
-      "root": "apps/guidance-program",
+      "root": "apps/student-management",
       "entryFile": "main",
-      "sourceRoot": "apps/guidance-program/src",
+      "sourceRoot": "apps/student-management/src",
       "compilerOptions": {
-        "tsConfigPath": "apps/guidance-program/tsconfig.app.json"
+        "tsConfigPath": "apps/student-management/tsconfig.app.json"
+      }
+    },
+    "module-management": {
+      "type": "application",
+      "root": "apps/module-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/module-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/module-management/tsconfig.app.json"
+      }
+    },
+    "class-management": {
+      "type": "application",
+      "root": "apps/class-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/class-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/class-management/tsconfig.app.json"
       }
     },
     "common": {
