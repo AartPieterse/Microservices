@@ -66,22 +66,22 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-  # module-management:
-  #   build:
-  #     context: .
-  #     dockerfile: ./apps/module-management/Dockerfile
-  #     target: development
-  #   command: npm run start:dev module-management
-  #   env_file:
-  #     - ./apps/module-management/.env
-  #   depends_on:
-  #     - mongodb-primary
-  #     - mongodb-secondary
-  #     - mongodb-arbiter
-  #     - rabbitmq
-  #   volumes:
-  #     - .:/usr/src/app
-  #     - /usr/src/app/node_modules
+  module-management:
+    build:
+      context: .
+      dockerfile: ./apps/module-management/Dockerfile
+      target: development
+    command: npm run start:dev module-management
+    env_file:
+      - ./apps/module-management/.env
+    depends_on:
+      - mongodb-primary
+      - mongodb-secondary
+      - mongodb-arbiter
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
   rabbitmq:
     image: rabbitmq
     ports: 
