@@ -4,7 +4,7 @@
   "monorepo": true,
   "root": "apps/study-program",
   "compilerOptions": {
-    "webpack": true,
+    "webpack": false,
     "tsConfigPath": "apps/study-program/tsconfig.app.json"
   },
   "projects": {

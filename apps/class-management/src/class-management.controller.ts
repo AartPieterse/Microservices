@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { TestProgramService } from './class-management.service';
 
-@Controller()
+@Controller('class-management')
 export class TestProgramController {
   constructor(private readonly testProgramService: TestProgramService) {}
 

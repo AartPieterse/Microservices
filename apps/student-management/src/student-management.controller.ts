@@ -4,7 +4,7 @@ import { CreatePotentialStudentCommand } from './commands/create-potentialStuden
 import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
 
-@Controller('applications')
+@Controller('student-management')
 export class StudentManagementController {
   constructor(private readonly studentManagementService: StudentManagementService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 

@@ -4,7 +4,7 @@ import { createPotentialTestDto } from './dto/create-potentialTest.dto';
 import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { CreatePotentialTestCommand } from './commands/create-potentialTest.command';
 
-@Controller('applications')
+@Controller('test-program')
 export class TestProgramController {
   constructor(private readonly testProgramService: TestProgramService, private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 

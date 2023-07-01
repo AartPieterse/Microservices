@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post} from '@nestjs/common';
 import { ModuleManagementService } from './module-management.service';
 import { applyTestDto } from './dto/applyTest.dto';
 
-@Controller('applications')
+@Controller('module-management')
 export class ModuleManagementController {
   constructor(private readonly moduleManagementService: ModuleManagementService) {}
 
