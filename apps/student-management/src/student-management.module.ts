@@ -1,10 +1,11 @@
-import { Module} from '@nestjs/common';
+// Import necessary modules and classes
+import { Module } from '@nestjs/common';
 import { StudentManagementController } from './student-management.controller';
 import { StudentManagementService } from './student-management.service';
 import { DatabaseModule, RmqModule } from '@app/common';
 import { APPLICATION_SERVICE } from './constants/services';
 import { MongooseModule } from '@nestjs/mongoose';
-import { PotentialStudent, PotentialStudentSchema} from './schemas/potentialStudent.schema';
+import { PotentialStudent, PotentialStudentSchema } from './schemas/potentialStudent.schema';
 import { StudentManagementRepository } from './student-management.repository';
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
@@ -13,13 +14,31 @@ import { CreatePotentialStudentCommandHandler } from './commands/create-potentia
 import { Teacher, TeacherSchema } from './schemas/teacher.schema';
 import { TeacherModule } from './teacher/teacher.module';
 
+// Define the StudentManagementModule class
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: '.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule],
+  // Configure the module imports
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    RmqModule.register({ name: APPLICATION_SERVICE }),
+    DatabaseModule,
+    CqrsModule,
+    MongooseModule.forFeature([
+      { name: PotentialStudent.name, schema: PotentialStudentSchema },
+      { name: Teacher.name, schema: TeacherSchema },
+    ]),
+    TeacherModule,
+  ],
+  // Configure the module controllers
   controllers: [StudentManagementController],
-  providers: [StudentManagementService, StudentManagementRepository, PotentialStudentRegisteredEventHandler, CreatePotentialStudentCommandHandler],
+  // Configure the module providers
+  providers: [
+    StudentManagementService,
+    StudentManagementRepository,
+    PotentialStudentRegisteredEventHandler,
+    CreatePotentialStudentCommandHandler,
+  ],
 })
-export class StudentManagementModule {
-}
+export class StudentManagementModule {}

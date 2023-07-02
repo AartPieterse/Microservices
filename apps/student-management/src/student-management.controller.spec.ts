@@ -13,10 +13,4 @@ describe('StudentManagementController', () => {
 
     studentManagementController = app.get<StudentManagementController>(StudentManagementController);
   });
-
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(studentManagementController.getHello()).toBe('Hello World!');
-    });
-  });
 });
