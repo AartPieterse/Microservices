@@ -5,12 +5,7 @@ import { StudentManagementService } from './student-management.service';
 import { DatabaseModule, RmqModule } from '@app/common';
 import { APPLICATION_SERVICE } from './constants/services';
 import { MongooseModule } from '@nestjs/mongoose';
-<<<<<<< HEAD
-import { PotentialStudent, PotentialStudentSchema } from './schemas/potentialStudent.schema';
-import { StudentManagementRepository } from './student-management.repository';
-=======
 import { PotentialStudent, PotentialStudentSchema} from './schemas/potentialStudent.schema';
->>>>>>> 0b198514b91adeb28a63726cc2834dceeda7dcf0
 import { ConfigModule } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
 import { Teacher, TeacherSchema } from './schemas/teacher.schema';

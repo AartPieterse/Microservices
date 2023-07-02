@@ -28,11 +28,7 @@ export class CreatePotentialStudentDto extends AbstractDocument {
      */
     @IsPhoneNumber()
     phoneNumber: string;
-<<<<<<< HEAD:apps/student-management/src/dto/create-potentialStudent.dto.ts
-}
-=======
 
     @IsDate()
     birthday: Date
 }
->>>>>>> 0b198514b91adeb28a63726cc2834dceeda7dcf0:apps/student-management/src/potentialStudent/dto/create-potentialStudent.dto.ts
