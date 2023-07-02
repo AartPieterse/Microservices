@@ -2,8 +2,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
-import { RmqContext } from '@nestjs/microservices/ctx-host/rmq.context';
-import { Ctx, MessagePattern, Payload } from '@nestjs/microservices';
+import { MessagePattern, Payload } from '@nestjs/microservices';
 
 /**
  * @description Controller class for handling teacher-related HTTP requests and message patterns.
@@ -45,8 +44,12 @@ export class TeacherController {
    * @param data The payload data of the received message.
    */
   @MessagePattern('teacher_notifications')
-  public async execute(@Payload() data: any) {
-    // Log the received message
+  public async GetNotifications(@Payload() data: any) {
+    console.log('Message: ', data);
+  }
+
+  @MessagePattern('meeting_notifications')
+  public async getMeetings(@Payload() data: any) {
     console.log('Message: ', data);
   }
 }

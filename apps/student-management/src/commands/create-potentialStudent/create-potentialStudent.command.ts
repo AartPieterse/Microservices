@@ -1,6 +1,6 @@
 // Import necessary modules and classes
 import { ICommand } from '@nestjs/cqrs';
-import { createPotentialStudentDto } from '../../dto/create-potentialStudent.dto';
+import { CreatePotentialStudentDto } from '../../potentialStudent/dto/create-potentialStudent.dto';
 
 /**
  * Command class for creating a potential student.
@@ -12,6 +12,6 @@ export class CreatePotentialStudentCommand implements ICommand {
    * @param createPotentialStudentDto - The data required to create a potential student.
    */
   constructor(
-    public readonly createPotentialStudentDto: createPotentialStudentDto,
+    public readonly createPotentialStudentDto: CreatePotentialStudentDto,
   ) {}
 }

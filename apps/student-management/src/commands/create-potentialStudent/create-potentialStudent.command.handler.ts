@@ -2,7 +2,7 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialStudentCommand } from "./create-potentialStudent.command";
 import { PotentialStudentRegisteredEvent } from "../../events/potentialStudent-registered.event";
-import { StudentManagementRepository } from "../../student-management.repository";
+import { PotentialStudentService } from "../../potentialStudent/potentialStudent.service";
 
 /**
  * Command handler for CreatePotentialStudentCommand.
@@ -17,9 +17,7 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
      * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
      */
     constructor(
-        private readonly publisher: EventPublisher,
-        private studentManagementRepository: StudentManagementRepository
-    ) {}
+        private readonly publisher: EventPublisher, private studentManagementService: PotentialStudentService) {}
 
     /**
      * Execute method that handles the CreatePotentialStudentCommand.
@@ -34,10 +32,8 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
         // Extract the createPotentialStudentDto from the command
         const { createPotentialStudentDto } = command;
 
-        // Saving the potential student data into the database
+        // Saving student into database
         const potentialStudent = await this.studentManagementRepository.create(createPotentialStudentDto);
-
-        // Creating a new PotentialStudentRegisteredEvent with the potentialStudent data
         const student = new PotentialStudentRegisteredEvent(potentialStudent);
 
         // Merge the event with the EventPublisher context to track its operations
