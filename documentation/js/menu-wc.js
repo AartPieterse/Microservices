@@ -93,6 +93,37 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/DatabaseModule.html" data-type="entity-link" >DatabaseModule</a>
                             </li>
                             <li class="link">
+                                <a href="modules/MeetingManagementModule.html" data-type="entity-link" >MeetingManagementModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#controllers-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' : 'data-bs-target="#xs-controllers-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' :
+                                            'id="xs-controllers-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' }>
+                                            <li class="link">
+                                                <a href="controllers/MeetingManagementController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MeetingManagementController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                        'data-bs-target="#injectables-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' : 'data-bs-target="#xs-injectables-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' :
+                                        'id="xs-injectables-links-module-MeetingManagementModule-7ed313773bef49a1ba81cae69dbb1c793218a074cf64294db50de09710f3b26f0faadc1b88a32b08b27e7ec485c97e114c93598d155474b9375216cded0bd196"' }>
+                                        <li class="link">
+                                            <a href="injectables/MeetingManagementService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MeetingManagementService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/MeetingModule.html" data-type="entity-link" >MeetingModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -349,6 +380,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="controllers/MeetingController.html" data-type="entity-link" >MeetingController</a>
                                 </li>
                                 <li class="link">
+                                    <a href="controllers/MeetingManagementController.html" data-type="entity-link" >MeetingManagementController</a>
+                                </li>
+                                <li class="link">
                                     <a href="controllers/ModuleManagementController.html" data-type="entity-link" >ModuleManagementController</a>
                                 </li>
                                 <li class="link">
@@ -499,6 +533,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/ClassManagementService.html" data-type="entity-link" >ClassManagementService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/MeetingManagementService.html" data-type="entity-link" >MeetingManagementService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/MeetingService.html" data-type="entity-link" >MeetingService</a>

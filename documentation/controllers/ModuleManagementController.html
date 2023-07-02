@@ -161,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:28</a></div>
                 </td>
             </tr>
 
@@ -250,8 +250,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="111"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:111</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:113</a></div>
                 </td>
             </tr>
 
@@ -339,8 +339,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:50</a></div>
                 </td>
             </tr>
 
@@ -394,8 +394,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:67</a></div>
                 </td>
             </tr>
 
@@ -477,14 +477,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Put(&#x27;:id&#x27;)<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:85</a></div>
                 </td>
             </tr>
 
@@ -572,6 +572,7 @@
   Param,
   Post,
   Put,
+  Patch
 } from &#x27;@nestjs/common&#x27;;
 import { ModuleManagementService } from &#x27;./module-management.service&#x27;;
 import { CreatePotentialModuleDto } from &#x27;./dto/CreatePotentialModuleDto&#x27;;
@@ -646,7 +647,7 @@ export class ModuleManagementController {
    * @param updatePotentialModuleDto - The updated data for the potential module.
    * @returns The updated potential module.
    */
-  @Put(&#x27;:id&#x27;)
+  @Patch(&#x27;:id&#x27;)
   async update(
     @Param(&#x27;id&#x27;) id: string,
     @Body() updatePotentialModuleDto: UpdatePotentialModuleDto,
@@ -656,7 +657,7 @@ export class ModuleManagementController {
         id,
         updatePotentialModuleDto,
       );
-
+  
       return {
         status: 200,
         message: &#x27;Updated Potential Module&#x27;,
@@ -666,6 +667,7 @@ export class ModuleManagementController {
       return { status: 400, message: err.message };
     }
   }
+  
 
   /**
    * Delete a potential module.

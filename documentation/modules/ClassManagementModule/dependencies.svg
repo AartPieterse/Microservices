@@ -24,67 +24,67 @@
 <title>cluster_ClassManagementModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-195 769,-195 769,-70 8,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_ClassManagementModule_providers</title>
-<polygon fill="none" stroke="black" points="255,-78 255,-130 761,-130 761,-78 255,-78"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_ClassManagementModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 247,-130 247,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="530,-78 530,-130 761,-130 761,-78 530,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_ClassManagementModule_providers</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 522,-130 522,-78 16,-78"/>
 </g>
 <!-- DatabaseModule -->
 <g id="node1" class="node">
 <title>DatabaseModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="239.35,-122 236.35,-126 215.35,-126 212.35,-122 128.65,-122 128.65,-86 239.35,-86 239.35,-122"/>
-<text text-anchor="middle" x="184" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="753.35,-122 750.35,-126 729.35,-126 726.35,-122 642.65,-122 642.65,-86 753.35,-86 753.35,-122"/>
+<text text-anchor="middle" x="698" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
 </g>
 <!-- ClassManagementModule -->
 <g id="node3" class="node">
 <title>ClassManagementModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="360.47,-187 357.47,-191 336.47,-191 333.47,-187 197.53,-187 197.53,-151 360.47,-151 360.47,-187"/>
-<text text-anchor="middle" x="279" y="-164.8" font-family="Times,serif" font-size="14.00">ClassManagementModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="566.47,-187 563.47,-191 542.47,-191 539.47,-187 403.53,-187 403.53,-151 566.47,-151 566.47,-187"/>
+<text text-anchor="middle" x="485" y="-164.8" font-family="Times,serif" font-size="14.00">ClassManagementModule</text>
 </g>
 <!-- DatabaseModule&#45;&gt;ClassManagementModule -->
 <g id="edge1" class="edge">
 <title>DatabaseModule&#45;&gt;ClassManagementModule</title>
-<path fill="none" stroke="black" d="M218.47,-122.11C218.47,-122.11 218.47,-140.99 218.47,-140.99"/>
-<polygon fill="black" stroke="black" points="214.97,-140.99 218.47,-150.99 221.97,-140.99 214.97,-140.99"/>
+<path fill="none" stroke="black" d="M698,-122.11C698,-141.34 698,-169 698,-169 698,-169 576.74,-169 576.74,-169"/>
+<polygon fill="black" stroke="black" points="576.74,-165.5 566.74,-169 576.74,-172.5 576.74,-165.5"/>
 </g>
 <!-- RmqModule -->
 <g id="node2" class="node">
 <title>RmqModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="110.28,-122 107.28,-126 86.28,-126 83.28,-122 23.72,-122 23.72,-86 110.28,-86 110.28,-122"/>
-<text text-anchor="middle" x="67" y="-99.8" font-family="Times,serif" font-size="14.00">RmqModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="624.28,-122 621.28,-126 600.28,-126 597.28,-122 537.72,-122 537.72,-86 624.28,-86 624.28,-122"/>
+<text text-anchor="middle" x="581" y="-99.8" font-family="Times,serif" font-size="14.00">RmqModule</text>
 </g>
 <!-- RmqModule&#45;&gt;ClassManagementModule -->
 <g id="edge2" class="edge">
 <title>RmqModule&#45;&gt;ClassManagementModule</title>
-<path fill="none" stroke="black" d="M67,-122.11C67,-141.34 67,-169 67,-169 67,-169 187.34,-169 187.34,-169"/>
-<polygon fill="black" stroke="black" points="187.34,-172.5 197.34,-169 187.34,-165.5 187.34,-172.5"/>
+<path fill="none" stroke="black" d="M552.05,-122.11C552.05,-122.11 552.05,-140.99 552.05,-140.99"/>
+<polygon fill="black" stroke="black" points="548.55,-140.99 552.05,-150.99 555.55,-140.99 548.55,-140.99"/>
 </g>
 <!-- ClassManagementRepository -->
 <g id="node4" class="node">
 <title>ClassManagementRepository</title>
-<ellipse fill="#fdb462" stroke="black" cx="628" cy="-104" rx="125" ry="18"/>
-<text text-anchor="middle" x="628" y="-99.8" font-family="Times,serif" font-size="14.00">ClassManagementRepository</text>
+<ellipse fill="#fdb462" stroke="black" cx="389" cy="-104" rx="125" ry="18"/>
+<text text-anchor="middle" x="389" y="-99.8" font-family="Times,serif" font-size="14.00">ClassManagementRepository</text>
 </g>
 <!-- ClassManagementRepository&#45;&gt;ClassManagementModule -->
 <g id="edge3" class="edge">
 <title>ClassManagementRepository&#45;&gt;ClassManagementModule</title>
-<path fill="none" stroke="black" d="M628,-122.11C628,-141.34 628,-169 628,-169 628,-169 370.82,-169 370.82,-169"/>
-<polygon fill="black" stroke="black" points="370.83,-165.5 360.82,-169 370.82,-172.5 370.83,-165.5"/>
+<path fill="none" stroke="black" d="M458.63,-119.08C458.63,-119.08 458.63,-140.76 458.63,-140.76"/>
+<polygon fill="black" stroke="black" points="455.13,-140.76 458.63,-150.76 462.13,-140.76 455.13,-140.76"/>
 </g>
 <!-- ClassManagementService -->
 <g id="node5" class="node">
 <title>ClassManagementService</title>
-<ellipse fill="#fdb462" stroke="black" cx="374" cy="-104" rx="111.15" ry="18"/>
-<text text-anchor="middle" x="374" y="-99.8" font-family="Times,serif" font-size="14.00">ClassManagementService</text>
+<ellipse fill="#fdb462" stroke="black" cx="135" cy="-104" rx="111.15" ry="18"/>
+<text text-anchor="middle" x="135" y="-99.8" font-family="Times,serif" font-size="14.00">ClassManagementService</text>
 </g>
 <!-- ClassManagementService&#45;&gt;ClassManagementModule -->
 <g id="edge4" class="edge">
 <title>ClassManagementService&#45;&gt;ClassManagementModule</title>
-<path fill="none" stroke="black" d="M311.58,-119.08C311.58,-119.08 311.58,-140.76 311.58,-140.76"/>
-<polygon fill="black" stroke="black" points="308.08,-140.76 311.58,-150.76 315.08,-140.76 308.08,-140.76"/>
+<path fill="none" stroke="black" d="M135,-122.11C135,-141.34 135,-169 135,-169 135,-169 393.38,-169 393.38,-169"/>
+<polygon fill="black" stroke="black" points="393.38,-172.5 403.38,-169 393.38,-165.5 393.38,-172.5"/>
 </g>
 </g>
 </svg>

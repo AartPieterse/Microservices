@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { TestProgramModule } from './test-program.module';
+import { TestModule } from './test.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -23,7 +23,7 @@ function configureSwagger(app) {
  * Bootstrap function to start the Nest.js application.
  */
 async function bootstrap() {
-  const app = await NestFactory.create(TestProgramModule);
+  const app = await NestFactory.create(TestModule);
 
   configureSwagger(app);
 
