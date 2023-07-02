@@ -72,6 +72,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>It handles HTTP requests related to student management.</p>
+
+            </p>
 
 
 
@@ -141,14 +148,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">apps/student-management/src/student-management.controller.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">apps/student-management/src/student-management.controller.ts:29</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It receives a POST request and creates a potential student using the provided data.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -159,6 +168,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,6 +183,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>Data for creating a potential student.</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -180,11 +196,14 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <ul>
+<li>A promise that resolves to the created student.</li>
+</ul>
+
                     </div>
                 </td>
             </tr>
@@ -201,7 +220,11 @@ import { CreatePotentialStudentCommand } from &#x27;./commands/create-potentialS
 import { CommandBus, EventBus } from &#x27;@nestjs/cqrs&#x27;;
 import { createPotentialStudentDto } from &#x27;./dto/create-potentialStudent.dto&#x27;;
 
-// Define the StudentManagementController class
+/**
+ * @class StudentManagementController
+ * @description Controller for managing student-related operations.
+ * It handles HTTP requests related to student management.
+ */
 @Controller(&#x27;student-management&#x27;)
 export class StudentManagementController {
   constructor(
@@ -210,9 +233,15 @@ export class StudentManagementController {
     private readonly eventBus: EventBus,
   ) {}
 
-  // Endpoint to apply for study
+  /**
+   * @method applyForStudy
+   * @param {createPotentialStudentDto} data - Data for creating a potential student.
+   * @returns {Promise&lt;any&gt;} - A promise that resolves to the created student.
+   * @description Endpoint for applying for study.
+   * It receives a POST request and creates a potential student using the provided data.
+   */
   @Post()
-  async applyForStudy(@Body() data: createPotentialStudentDto) {
+  async applyForStudy(@Body() data: createPotentialStudentDto): Promise&lt;any&gt; {
     // Create a new CreatePotentialStudentCommand with the provided data
     const command &#x3D; new CreatePotentialStudentCommand(data);
 

@@ -72,6 +72,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Inherits from the AbstractDocument class.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -150,10 +157,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/schemas/teacher.schema.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">apps/student-management/src/schemas/teacher.schema.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Required validation is applied.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -215,15 +228,23 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AbstractDocument } from &quot;@app/common&quot;;
 import { Prop, Schema, SchemaFactory } from &quot;@nestjs/mongoose&quot;;
 
-// Define the Teacher schema using @Schema decorator
+/**
+ * @description Mongoose schema for the Teacher class.
+ * Inherits from the AbstractDocument class.
+ */
 @Schema()
 export class Teacher extends AbstractDocument {
-  // Define the name property with the required validation
+  /**
+   * @description Property representing the name of the teacher.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   name: string;
 }
 
-// Create the Mongoose schema for the Teacher class using SchemaFactory
+/**
+ * @description Mongoose schema for the Teacher class created using SchemaFactory.
+ */
 export const TeacherSchema &#x3D; SchemaFactory.createForClass(Teacher);
 </code></pre>
     </div>

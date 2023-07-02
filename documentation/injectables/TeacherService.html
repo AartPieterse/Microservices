@@ -68,6 +68,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>It interacts with the TeacherRepository to perform teacher-related operations.</p>
+
+            </p>
 
 
 
@@ -115,12 +122,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>It injects the TeacherRepository using the @InjectModel decorator.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -129,6 +138,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -143,6 +153,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The repository for teacher management.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -180,14 +196,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:33</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It calls the create method of the TeacherRepository and passes the createTeacherDto.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -198,6 +216,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -212,6 +231,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>The DTO object containing teacher data.</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -219,11 +244,14 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <ul>
+<li>A promise that resolves when the teacher is created.</li>
+</ul>
+
                     </div>
                 </td>
             </tr>
@@ -251,17 +279,27 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It calls the find method of the TeacherRepository to get all teacher documents.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <ul>
+<li>A promise that resolves to an array of teacher documents.</li>
+</ul>
 
                     </div>
                 </td>
@@ -280,23 +318,42 @@ import { Teacher } from &#x27;../schemas/teacher.schema&#x27;;
 import { TeacherRepository } from &#x27;./teacher.repository&#x27;;
 import { CreateTeacherDto } from &#x27;./dto/create-teacher.dto&#x27;;
 
-// Define the TeacherService class
+/**
+ * @class TeacherService
+ * @description Service class for managing teachers.
+ * It interacts with the TeacherRepository to perform teacher-related operations.
+ */
 @Injectable()
 export class TeacherService {
+  /**
+   * @constructor
+   * @param {TeacherRepository} teacherRepository - The repository for teacher management.
+   * @description Constructs an instance of the TeacherService.
+   * It injects the TeacherRepository using the @InjectModel decorator.
+   */
   constructor(
     @InjectModel(Teacher.name)
     private readonly teacherRepository: TeacherRepository,
   ) {}
 
-  // Method to create a teacher
-  async create(createTeacherDto: CreateTeacherDto) {
-    // Call the create method of teacherRepository
+  /**
+   * @method create
+   * @param {CreateTeacherDto} createTeacherDto - The DTO object containing teacher data.
+   * @returns {Promise&lt;void&gt;} - A promise that resolves when the teacher is created.
+   * @description Creates a new teacher.
+   * It calls the create method of the TeacherRepository and passes the createTeacherDto.
+   */
+  async create(createTeacherDto: CreateTeacherDto): Promise&lt;void&gt; {
     await this.teacherRepository.create(createTeacherDto);
   }
 
-  // Method to find all teachers
-  async findAll() {
-    // Call the find method of teacherRepository
+  /**
+   * @method findAll
+   * @returns {Promise&lt;any[]&gt;} - A promise that resolves to an array of teacher documents.
+   * @description Retrieves all teachers.
+   * It calls the find method of the TeacherRepository to get all teacher documents.
+   */
+  async findAll(): Promise&lt;any[]&gt; {
     return this.teacherRepository.find({});
   }
 }

@@ -72,6 +72,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Implements the IEventHandler interface for the event.</p>
+
+            </p>
 
 
             <p class="comment">
@@ -122,7 +129,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">apps/student-management/src/events/potentialStudent-registered.event.handler.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/student-management/src/events/potentialStudent-registered.event.handler.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -200,8 +207,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">apps/student-management/src/events/potentialStudent-registered.event.handler.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">apps/student-management/src/events/potentialStudent-registered.event.handler.ts:24</a></div>
                 </td>
             </tr>
 
@@ -218,6 +225,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,6 +240,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The PotentialStudentRegisteredEvent object.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -266,7 +278,10 @@ import { Model } from &#x27;mongoose&#x27;;
 import { RabbitmqService } from &#x27;@app/common&#x27;;
 import { Teacher } from &#x27;../schemas/teacher.schema&#x27;;
 
-// Define the PotentialStudentRegisteredEventHandler class implementing IEventHandler&lt;PotentialStudentRegisteredEvent&gt;
+/**
+ * @description Event handler for the PotentialStudentRegisteredEvent.
+ * Implements the IEventHandler interface for the event.
+ */
 @EventsHandler(PotentialStudentRegisteredEvent)
 export class PotentialStudentRegisteredEventHandler implements IEventHandler&lt;PotentialStudentRegisteredEvent&gt; {
   constructor(
@@ -274,10 +289,13 @@ export class PotentialStudentRegisteredEventHandler implements IEventHandler&lt;
     private readonly rabbitmqService: RabbitmqService
   ) {}
 
-  // Handle method that processes the event
+  /**
+   * @description Handle method that processes the PotentialStudentRegisteredEvent.
+   * @param event The PotentialStudentRegisteredEvent object.
+   */
   async handle(event: PotentialStudentRegisteredEvent): Promise&lt;void&gt; {
     // Log a message to indicate that the event handler has been triggered
-    console.log(&quot;Triggered eventhandler&quot;)
+    console.log(&quot;Triggered event handler&quot;)
 
     // Find a teacher and convert it to an object
     const teacher &#x3D; (await this.teacher.findOne({}).exec()).toObject();

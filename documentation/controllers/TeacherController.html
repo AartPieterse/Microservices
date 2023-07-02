@@ -72,6 +72,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>It defines endpoints for creating teachers, finding all teachers, and handling teacher notifications.</p>
+
+            </p>
 
 
 
@@ -151,14 +158,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:23</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It creates a new teacher using the provided data.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -169,6 +178,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -183,6 +193,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The DTO object containing teacher data.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -194,7 +208,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>A response object with status and message.</p>
+
                     </div>
                 </td>
             </tr>
@@ -231,14 +246,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It logs the received message.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -249,6 +266,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -263,6 +281,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>The payload data of the received message.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -309,17 +331,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.controller.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It retrieves all teachers from the teacherService.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An array of teacher objects.</p>
 
                     </div>
                 </td>
@@ -337,29 +367,45 @@ import { CreateTeacherDto } from &#x27;./dto/create-teacher.dto&#x27;;
 import { RmqContext } from &#x27;@nestjs/microservices/ctx-host/rmq.context&#x27;;
 import { Ctx, MessagePattern, Payload } from &#x27;@nestjs/microservices&#x27;;
 
-// Define the TeacherController class
+/**
+ * @description Controller class for handling teacher-related HTTP requests and message patterns.
+ * It defines endpoints for creating teachers, finding all teachers, and handling teacher notifications.
+ */
 @Controller(&#x27;teachers&#x27;)
 export class TeacherController {
   constructor(private readonly teacherService: TeacherService) {}
 
-  // Handler for the POST /teachers endpoint
+  /**
+   * @description Handler for the POST /teachers endpoint.
+   * It creates a new teacher using the provided data.
+   * @param createTeacherDto The DTO object containing teacher data.
+   * @returns A response object with status and message.
+   */
   @Post()
   async create(@Body() createTeacherDto: CreateTeacherDto) {
     // Call the teacherService to create a teacher
     await this.teacherService.create(createTeacherDto);
 
     // Return a response object with status and message
-    return { status: 201, message: &quot;Created Teacher&quot; };
+    return { status: 201, message: &#x27;Created Teacher&#x27; };
   }
 
-  // Handler for the GET /teachers endpoint
+  /**
+   * @description Handler for the GET /teachers endpoint.
+   * It retrieves all teachers from the teacherService.
+   * @returns An array of teacher objects.
+   */
   @Get()
   findAll() {
     // Call the teacherService to find all teachers
     return this.teacherService.findAll();
   }
 
-  // Message handler for &#x27;teacher_notifications&#x27; pattern
+  /**
+   * @description Message handler for &#x27;teacher_notifications&#x27; pattern.
+   * It logs the received message.
+   * @param data The payload data of the received message.
+   */
   @MessagePattern(&#x27;teacher_notifications&#x27;)
   public async execute(@Payload() data: any) {
     // Log the received message

@@ -157,6 +157,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>It imports the required modules and specifies the controllers and providers for the teacher feature.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -211,13 +218,24 @@ import { Teacher, TeacherSchema } from &#x27;../schemas/teacher.schema&#x27;;
 import { RmqModule } from &#x27;@app/common&#x27;;
 import { APPLICATION_SERVICE } from &#x27;../constants/services&#x27;;
 
-// Define the TeacherModule class
+/**
+ * @module TeacherModule
+ * @description Module for managing teachers.
+ * It imports the required modules and specifies the controllers and providers for the teacher feature.
+ */
 @Module({
   // Import required modules
   imports: [
-    // Register RmqModule with the given name
+    /**
+     * @description Register the RmqModule with the given name.
+     * It allows communication with RabbitMQ microservice.
+     */
     RmqModule.register({ name: APPLICATION_SERVICE }),
-    // Register MongooseModule with the Teacher schema
+
+    /**
+     * @description Register the MongooseModule with the Teacher schema.
+     * It provides the Mongoose connection and access to the Teacher collection.
+     */
     MongooseModule.forFeature([{ name: Teacher.name, schema: TeacherSchema }])
   ],
   // Specify the controllers

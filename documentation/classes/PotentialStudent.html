@@ -72,6 +72,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Inherits from the AbstractDocument class.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -162,10 +169,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Required validation is applied.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -198,10 +211,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Required validation is applied.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -234,10 +253,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Required validation is applied.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -270,10 +295,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">apps/student-management/src/schemas/potentialStudent.schema.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Required validation is applied.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -335,27 +366,44 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Schema, Prop, SchemaFactory } from &#x27;@nestjs/mongoose&#x27;;
 import { AbstractDocument } from &#x27;@app/common&#x27;;
 
-// Define the PotentialStudent schema using @Schema decorator
+/**
+ * @description Mongoose schema for the PotentialStudent class.
+ * Inherits from the AbstractDocument class.
+ */
 @Schema()
 export class PotentialStudent extends AbstractDocument {
-  // Define the name property with the required validation
+  /**
+   * @description Property representing the name of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   name: string;
 
-  // Define the study property with the required validation
+  /**
+   * @description Property representing the study of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   study: string;
 
-  // Define the phoneNumber property with the required validation
+  /**
+   * @description Property representing the phone number of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   phoneNumber: string;
 
-  // Define the email property with the required validation
+  /**
+   * @description Property representing the email of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   email: string;
 }
 
-// Create the Mongoose schema for the PotentialStudent class using SchemaFactory
+/**
+ * @description Mongoose schema for the PotentialStudent class created using SchemaFactory.
+ */
 export const PotentialStudentSchema &#x3D; SchemaFactory.createForClass(PotentialStudent);
 </code></pre>
     </div>

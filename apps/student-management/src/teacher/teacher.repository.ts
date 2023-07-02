@@ -5,12 +5,21 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Teacher } from "../schemas/teacher.schema";
 
-// Define the TeacherRepository class
+/**
+ * @class TeacherRepository
+ * @description Repository class for managing teacher data.
+ * It extends the AbstractRepository class and provides CRUD operations for teachers.
+ */
 @Injectable()
 export class TeacherRepository extends AbstractRepository<Teacher> {
-    // Constructor for the TeacherRepository class
+    /**
+     * @constructor
+     * @param {Model<Teacher>} applicationModel - The Mongoose model for the Teacher schema.
+     * @description Constructs an instance of the TeacherRepository.
+     * It injects the Mongoose model for the Teacher schema using the @InjectModel decorator.
+     * The injected model is then passed to the constructor of the AbstractRepository class.
+     */
     constructor(@InjectModel(Teacher.name) applicationModel: Model<Teacher>) {
-        // Call the constructor of the AbstractRepository class with the applicationModel
         super(applicationModel);
     }
 }

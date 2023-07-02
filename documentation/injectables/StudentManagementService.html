@@ -68,6 +68,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>It interacts with the StudentManagementRepository to perform application-related operations.</p>
+
+            </p>
 
 
 
@@ -111,12 +118,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/student-management/src/student-management.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">apps/student-management/src/student-management.service.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>It injects the StudentManagementRepository using the @InjectModel decorator.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -125,6 +134,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -139,6 +149,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The repository for student management.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -176,17 +192,27 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">apps/student-management/src/student-management.service.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">apps/student-management/src/student-management.service.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>It calls the find method of the StudentManagementRepository to get all application documents.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <ul>
+<li>A promise that resolves to an array of application documents.</li>
+</ul>
 
                     </div>
                 </td>
@@ -204,16 +230,31 @@ import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { PotentialStudent } from &#x27;./schemas/potentialStudent.schema&#x27;;
 import { StudentManagementRepository } from &#x27;./student-management.repository&#x27;;
 
-// Define the StudentManagementService class
+/**
+ * @class StudentManagementService
+ * @description Service class for managing student applications.
+ * It interacts with the StudentManagementRepository to perform application-related operations.
+ */
 @Injectable()
 export class StudentManagementService {
+  /**
+   * @constructor
+   * @param {StudentManagementRepository} studentManagementRepository - The repository for student management.
+   * @description Constructs an instance of the StudentManagementService.
+   * It injects the StudentManagementRepository using the @InjectModel decorator.
+   */
   constructor(
     @InjectModel(PotentialStudent.name)
     private readonly studentManagementRepository: StudentManagementRepository,
   ) {}
 
-  // Method to get all applications
-  async getApplications() {
+  /**
+   * @method getApplications
+   * @returns {Promise&lt;any[]&gt;} - A promise that resolves to an array of application documents.
+   * @description Retrieves all applications.
+   * It calls the find method of the StudentManagementRepository to get all application documents.
+   */
+  async getApplications(): Promise&lt;any[]&gt; {
     return this.studentManagementRepository.find({});
   }
 }

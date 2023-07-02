@@ -68,6 +68,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>It extends the AbstractRepository class and provides CRUD operations for teachers.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -133,12 +140,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/teacher/teacher.repository.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/student-management/src/teacher/teacher.repository.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>It injects the Mongoose model for the Teacher schema using the @InjectModel decorator.
+The injected model is then passed to the constructor of the AbstractRepository class.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -147,6 +157,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -161,6 +172,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The Mongoose model for the Teacher schema.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -629,12 +646,21 @@ import { InjectModel } from &quot;@nestjs/mongoose&quot;;
 import { Model } from &quot;mongoose&quot;;
 import { Teacher } from &quot;../schemas/teacher.schema&quot;;
 
-// Define the TeacherRepository class
+/**
+ * @class TeacherRepository
+ * @description Repository class for managing teacher data.
+ * It extends the AbstractRepository class and provides CRUD operations for teachers.
+ */
 @Injectable()
 export class TeacherRepository extends AbstractRepository&lt;Teacher&gt; {
-    // Constructor for the TeacherRepository class
+    /**
+     * @constructor
+     * @param {Model&lt;Teacher&gt;} applicationModel - The Mongoose model for the Teacher schema.
+     * @description Constructs an instance of the TeacherRepository.
+     * It injects the Mongoose model for the Teacher schema using the @InjectModel decorator.
+     * The injected model is then passed to the constructor of the AbstractRepository class.
+     */
     constructor(@InjectModel(Teacher.name) applicationModel: Model&lt;Teacher&gt;) {
-        // Call the constructor of the AbstractRepository class with the applicationModel
         super(applicationModel);
     }
 }

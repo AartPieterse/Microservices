@@ -5,7 +5,11 @@ import { CreatePotentialStudentCommand } from './commands/create-potentialStuden
 import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
 
-// Define the StudentManagementController class
+/**
+ * @class StudentManagementController
+ * @description Controller for managing student-related operations.
+ * It handles HTTP requests related to student management.
+ */
 @Controller('student-management')
 export class StudentManagementController {
   constructor(
@@ -14,9 +18,15 @@ export class StudentManagementController {
     private readonly eventBus: EventBus,
   ) {}
 
-  // Endpoint to apply for study
+  /**
+   * @method applyForStudy
+   * @param {createPotentialStudentDto} data - Data for creating a potential student.
+   * @returns {Promise<any>} - A promise that resolves to the created student.
+   * @description Endpoint for applying for study.
+   * It receives a POST request and creates a potential student using the provided data.
+   */
   @Post()
-  async applyForStudy(@Body() data: createPotentialStudentDto) {
+  async applyForStudy(@Body() data: createPotentialStudentDto): Promise<any> {
     // Create a new CreatePotentialStudentCommand with the provided data
     const command = new CreatePotentialStudentCommand(data);
 

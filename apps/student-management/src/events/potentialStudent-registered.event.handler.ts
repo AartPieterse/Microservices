@@ -6,7 +6,10 @@ import { Model } from 'mongoose';
 import { RabbitmqService } from '@app/common';
 import { Teacher } from '../schemas/teacher.schema';
 
-// Define the PotentialStudentRegisteredEventHandler class implementing IEventHandler<PotentialStudentRegisteredEvent>
+/**
+ * @description Event handler for the PotentialStudentRegisteredEvent.
+ * Implements the IEventHandler interface for the event.
+ */
 @EventsHandler(PotentialStudentRegisteredEvent)
 export class PotentialStudentRegisteredEventHandler implements IEventHandler<PotentialStudentRegisteredEvent> {
   constructor(
@@ -14,10 +17,13 @@ export class PotentialStudentRegisteredEventHandler implements IEventHandler<Pot
     private readonly rabbitmqService: RabbitmqService
   ) {}
 
-  // Handle method that processes the event
+  /**
+   * @description Handle method that processes the PotentialStudentRegisteredEvent.
+   * @param event The PotentialStudentRegisteredEvent object.
+   */
   async handle(event: PotentialStudentRegisteredEvent): Promise<void> {
     // Log a message to indicate that the event handler has been triggered
-    console.log("Triggered eventhandler")
+    console.log("Triggered event handler")
 
     // Find a teacher and convert it to an object
     const teacher = (await this.teacher.findOne({}).exec()).toObject();

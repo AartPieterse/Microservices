@@ -181,6 +181,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>It imports necessary dependencies, configures the module, and provides controllers and services.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -247,21 +254,55 @@ import { CreatePotentialStudentCommandHandler } from &#x27;./commands/create-pot
 import { Teacher, TeacherSchema } from &#x27;./schemas/teacher.schema&#x27;;
 import { TeacherModule } from &#x27;./teacher/teacher.module&#x27;;
 
-// Define the StudentManagementModule class
+/**
+ * @module StudentManagementModule
+ * @description Module for managing student-related functionality.
+ * It imports necessary dependencies, configures the module, and provides controllers and services.
+ */
 @Module({
   // Configure the module imports
   imports: [
+    /**
+     * @module ConfigModule
+     * @description Module for handling configuration files.
+     * It is imported with global scope and loads the environment variables from &#x27;.env&#x27; file.
+     */
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: &#x27;.env&#x27;,
     }),
+    /**
+     * @module RmqModule
+     * @description Module for configuring RabbitMQ microservice client.
+     * It is imported with the provided &#x27;APPLICATION_SERVICE&#x27; name as an option.
+     */
     RmqModule.register({ name: APPLICATION_SERVICE }),
+    /**
+     * @module DatabaseModule
+     * @description Module for configuring the database connection.
+     * It is responsible for setting up the database connection using Mongoose.
+     */
     DatabaseModule,
+    /**
+     * @module CqrsModule
+     * @description Module for implementing the CQRS pattern.
+     * It enables the Command Query Responsibility Segregation (CQRS) pattern in the application.
+     */
     CqrsModule,
+    /**
+     * @module MongooseModule
+     * @description Module for integrating Mongoose into the Nest application.
+     * It registers Mongoose models and schemas as features for the module.
+     */
     MongooseModule.forFeature([
       { name: PotentialStudent.name, schema: PotentialStudentSchema },
       { name: Teacher.name, schema: TeacherSchema },
     ]),
+    /**
+     * @module TeacherModule
+     * @description Module for managing teacher-related functionality.
+     * It encapsulates teacher-related controllers, services, and providers.
+     */
     TeacherModule,
   ],
   // Configure the module controllers

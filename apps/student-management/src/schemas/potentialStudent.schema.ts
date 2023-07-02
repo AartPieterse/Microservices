@@ -2,25 +2,42 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { AbstractDocument } from '@app/common';
 
-// Define the PotentialStudent schema using @Schema decorator
+/**
+ * @description Mongoose schema for the PotentialStudent class.
+ * Inherits from the AbstractDocument class.
+ */
 @Schema()
 export class PotentialStudent extends AbstractDocument {
-  // Define the name property with the required validation
+  /**
+   * @description Property representing the name of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   name: string;
 
-  // Define the study property with the required validation
+  /**
+   * @description Property representing the study of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   study: string;
 
-  // Define the phoneNumber property with the required validation
+  /**
+   * @description Property representing the phone number of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   phoneNumber: string;
 
-  // Define the email property with the required validation
+  /**
+   * @description Property representing the email of the potential student.
+   * Required validation is applied.
+   */
   @Prop({ required: true })
   email: string;
 }
 
-// Create the Mongoose schema for the PotentialStudent class using SchemaFactory
+/**
+ * @description Mongoose schema for the PotentialStudent class created using SchemaFactory.
+ */
 export const PotentialStudentSchema = SchemaFactory.createForClass(PotentialStudent);

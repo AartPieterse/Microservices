@@ -5,29 +5,45 @@ import { CreateTeacherDto } from './dto/create-teacher.dto';
 import { RmqContext } from '@nestjs/microservices/ctx-host/rmq.context';
 import { Ctx, MessagePattern, Payload } from '@nestjs/microservices';
 
-// Define the TeacherController class
+/**
+ * @description Controller class for handling teacher-related HTTP requests and message patterns.
+ * It defines endpoints for creating teachers, finding all teachers, and handling teacher notifications.
+ */
 @Controller('teachers')
 export class TeacherController {
   constructor(private readonly teacherService: TeacherService) {}
 
-  // Handler for the POST /teachers endpoint
+  /**
+   * @description Handler for the POST /teachers endpoint.
+   * It creates a new teacher using the provided data.
+   * @param createTeacherDto The DTO object containing teacher data.
+   * @returns A response object with status and message.
+   */
   @Post()
   async create(@Body() createTeacherDto: CreateTeacherDto) {
     // Call the teacherService to create a teacher
     await this.teacherService.create(createTeacherDto);
 
     // Return a response object with status and message
-    return { status: 201, message: "Created Teacher" };
+    return { status: 201, message: 'Created Teacher' };
   }
 
-  // Handler for the GET /teachers endpoint
+  /**
+   * @description Handler for the GET /teachers endpoint.
+   * It retrieves all teachers from the teacherService.
+   * @returns An array of teacher objects.
+   */
   @Get()
   findAll() {
     // Call the teacherService to find all teachers
     return this.teacherService.findAll();
   }
 
-  // Message handler for 'teacher_notifications' pattern
+  /**
+   * @description Message handler for 'teacher_notifications' pattern.
+   * It logs the received message.
+   * @param data The payload data of the received message.
+   */
   @MessagePattern('teacher_notifications')
   public async execute(@Payload() data: any) {
     // Log the received message
