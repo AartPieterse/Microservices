@@ -2,7 +2,6 @@
 import { Module } from '@nestjs/common';
 import { TeacherService } from './teacher.service';
 import { TeacherController } from './teacher.controller';
-import { TeacherRepository } from './teacher.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Teacher, TeacherSchema } from '../schemas/teacher.schema';
 import { RmqModule } from '@app/common';
@@ -30,7 +29,6 @@ import { APPLICATION_SERVICE } from '../constants/services';
   ],
   // Specify the controllers
   controllers: [TeacherController],
-  // Specify the providers
-  providers: [TeacherService, TeacherRepository]
+  providers: [TeacherService]
 })
 export class TeacherModule {}

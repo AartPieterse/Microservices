@@ -1,17 +1,8 @@
 // Import necessary modules and classes
 import { AbstractDocument } from "@app/common";
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
+import { IsDate, IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
 
-/**
- * Data Transfer Object (DTO) class for creating a potential student.
- * Extends the AbstractDocument class from the "@app/common" module.
- * This class represents the data required to create a potential student.
- */
-export class createPotentialStudentDto extends AbstractDocument {
-    /**
-     * The name property represents the name of the potential student.
-     * It must be a non-empty string.
-     */
+export class CreatePotentialStudentDto extends AbstractDocument {
     @IsString()
     @IsNotEmpty()
     name: string;
@@ -37,4 +28,11 @@ export class createPotentialStudentDto extends AbstractDocument {
      */
     @IsPhoneNumber()
     phoneNumber: string;
+<<<<<<< HEAD:apps/student-management/src/dto/create-potentialStudent.dto.ts
 }
+=======
+
+    @IsDate()
+    birthday: Date
+}
+>>>>>>> 0b198514b91adeb28a63726cc2834dceeda7dcf0:apps/student-management/src/potentialStudent/dto/create-potentialStudent.dto.ts

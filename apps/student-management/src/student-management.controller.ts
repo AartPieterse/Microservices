@@ -1,9 +1,7 @@
-// Import necessary modules and classes
-import { Body, Controller, Post } from '@nestjs/common';
-import { StudentManagementService } from './student-management.service';
+import { Body, Controller, Post} from '@nestjs/common';
 import { CreatePotentialStudentCommand } from './commands/create-potentialStudent/create-potentialStudent.command';
 import { CommandBus, EventBus } from '@nestjs/cqrs';
-import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
+import { CreatePotentialStudentDto } from './potentialStudent/dto/create-potentialStudent.dto';
 
 /**
  * @class StudentManagementController
@@ -12,11 +10,7 @@ import { createPotentialStudentDto } from './dto/create-potentialStudent.dto';
  */
 @Controller('student-management')
 export class StudentManagementController {
-  constructor(
-    private readonly studentManagementService: StudentManagementService,
-    private readonly commandBus: CommandBus,
-    private readonly eventBus: EventBus,
-  ) {}
+  constructor(private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 
   /**
    * @method applyForStudy
@@ -26,8 +20,7 @@ export class StudentManagementController {
    * It receives a POST request and creates a potential student using the provided data.
    */
   @Post()
-  async applyForStudy(@Body() data: createPotentialStudentDto): Promise<any> {
-    // Create a new CreatePotentialStudentCommand with the provided data
+  async applyForStudy(@Body() data: CreatePotentialStudentDto) {
     const command = new CreatePotentialStudentCommand(data);
 
     // Execute the command using the command bus
@@ -36,4 +29,9 @@ export class StudentManagementController {
     // Return the student
     return student;
   }
+
+  // @MessagePattern('meeting_notifications')
+  // public async getMeetingResults(@Payload() data: any) {
+  //   console.log('Message: ', data);
+  // }
 }

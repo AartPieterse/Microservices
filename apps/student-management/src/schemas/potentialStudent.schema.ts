@@ -35,6 +35,9 @@ export class PotentialStudent extends AbstractDocument {
    */
   @Prop({ required: true })
   email: string;
+
+  @Prop({ required: true})
+  birthday: Date;
 }
 
 /**
