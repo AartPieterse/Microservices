@@ -125,7 +125,7 @@ This class handles the command to create a potential student and publishes the c
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(publisher: EventPublisher, studentManagementRepository: <a href="../injectables/StudentManagementRepository.html" target="_self">StudentManagementRepository</a>)</code>
+<code>constructor(publisher: EventPublisher, studentManagementService: <a href="../injectables/PotentialStudentService.html" target="_self">PotentialStudentService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -169,10 +169,10 @@ This class handles the command to create a potential student and publishes the c
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>studentManagementRepository</td>
+                                                        <td>studentManagementService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/StudentManagementRepository.html" target="_self" >StudentManagementRepository</a></code>
+                                                                        <code><a href="../injectables/PotentialStudentService.html" target="_self" >PotentialStudentService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -180,10 +180,6 @@ This class handles the command to create a potential student and publishes the c
                                                     </td>
                                                     
                                                         <td>
-                                                                <ul>
-<li>The StudentManagementRepository instance used to access the database.</li>
-</ul>
-
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -223,8 +219,8 @@ This class handles the command to create a potential student and publishes the c
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:28</a></div>
                 </td>
             </tr>
 
@@ -296,7 +292,7 @@ It saves the potential student data into the database and publishes the Potentia
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommandHandler, EventPublisher, ICommandHandler } from &quot;@nestjs/cqrs&quot;;
 import { CreatePotentialStudentCommand } from &quot;./create-potentialStudent.command&quot;;
 import { PotentialStudentRegisteredEvent } from &quot;../../events/potentialStudent-registered.event&quot;;
-import { StudentManagementRepository } from &quot;../../student-management.repository&quot;;
+import { PotentialStudentService } from &quot;../../potentialStudent/potentialStudent.service&quot;;
 
 /**
  * Command handler for CreatePotentialStudentCommand.
@@ -311,9 +307,7 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler&lt;
      * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
      */
     constructor(
-        private readonly publisher: EventPublisher,
-        private studentManagementRepository: StudentManagementRepository
-    ) {}
+        private readonly publisher: EventPublisher, private studentManagementService: PotentialStudentService) {}
 
     /**
      * Execute method that handles the CreatePotentialStudentCommand.
@@ -328,10 +322,8 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler&lt;
         // Extract the createPotentialStudentDto from the command
         const { createPotentialStudentDto } &#x3D; command;
 
-        // Saving the potential student data into the database
-        const potentialStudent &#x3D; await this.studentManagementRepository.create(createPotentialStudentDto);
-
-        // Creating a new PotentialStudentRegisteredEvent with the potentialStudent data
+        // Saving student into database
+        const potentialStudent &#x3D; await this.studentManagementService.create(createPotentialStudentDto);
         const student &#x3D; new PotentialStudentRegisteredEvent(potentialStudent);
 
         // Merge the event with the EventPublisher context to track its operations

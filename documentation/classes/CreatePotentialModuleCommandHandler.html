@@ -124,7 +124,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(publisher: EventPublisher, moduleManagementRepository: <a href="../injectables/ModuleManagementRepository.html" target="_self">ModuleManagementRepository</a>)</code>
+<code>constructor(publisher: EventPublisher, moduleManagementService: <a href="../injectables/ModuleManagementService.html" target="_self">ModuleManagementService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -159,10 +159,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>moduleManagementRepository</td>
+                                                        <td>moduleManagementService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/ModuleManagementRepository.html" target="_self" >ModuleManagementRepository</a></code>
+                                                                        <code><a href="../injectables/ModuleManagementService.html" target="_self" >ModuleManagementService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -276,8 +276,8 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommandHandler, EventPublisher, ICommandHandler } from &quot;@nestjs/cqrs&quot;;
 import { CreatePotentialModuleCommand } from &quot;./create-potentialModule.command&quot;;
-import { ModuleManagementRepository } from &quot;../module-management.repository&quot;;
 import { PotentialModuleRegisteredEvent } from &quot;../events/potentialModule-registered.event&quot;
+import { ModuleManagementService } from &quot;../module-management.service&quot;;
 
 /**
  * Command handler for creating potential modules.
@@ -287,7 +287,7 @@ export class CreatePotentialModuleCommandHandler implements ICommandHandler&lt;C
 
     constructor(
         private readonly publisher: EventPublisher,
-        private moduleManagementRepository: ModuleManagementRepository
+        private moduleManagementService: ModuleManagementService
     ) {}
 
     /**
@@ -301,7 +301,7 @@ export class CreatePotentialModuleCommandHandler implements ICommandHandler&lt;C
         const { createPotentialModuleDto } &#x3D; command;
 
         // Saving potential module into the database
-        const potentialModule &#x3D; await this.moduleManagementRepository.create(createPotentialModuleDto);
+        const potentialModule &#x3D; await this.moduleManagementService.create(createPotentialModuleDto);
         
         // Create a PotentialModuleRegisteredEvent with the saved potential module
         const moduleManagement &#x3D; new PotentialModuleRegisteredEvent(potentialModule);

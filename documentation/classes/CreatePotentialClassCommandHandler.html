@@ -117,12 +117,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(publisher: EventPublisher, classManagementRepository: <a href="../injectables/ClassManagementRepository.html" target="_self">ClassManagementRepository</a>)</code>
+<code>constructor(publisher: EventPublisher, classManagementService: <a href="../injectables/ClassManagementService.html" target="_self">ClassManagementService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/class-management/src/commands/create-potentialClass.command.handler.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">apps/class-management/src/commands/create-potentialClass.command.handler.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -159,10 +159,10 @@
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>classManagementRepository</td>
+                                                        <td>classManagementService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/ClassManagementRepository.html" target="_self" >ClassManagementRepository</a></code>
+                                                                        <code><a href="../injectables/ClassManagementService.html" target="_self" >ClassManagementService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -170,8 +170,6 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>The repository for managing classes.</p>
-
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -211,8 +209,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">apps/class-management/src/commands/create-potentialClass.command.handler.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">apps/class-management/src/commands/create-potentialClass.command.handler.ts:27</a></div>
                 </td>
             </tr>
 
@@ -282,6 +280,7 @@
 import { CreatePotentialClassCommand } from &quot;./create-potentialClass.command&quot;;
 import { ClassManagementRepository } from &quot;../class-management.repository&quot;;
 import { PotentialClassRegisteredEvent } from &quot;../event/potentialClass-registered.event&quot;;
+import { ClassManagementService } from &quot;../class-management.service&quot;;
 
 @CommandHandler(CreatePotentialClassCommand)
 export class CreatePotentialClassCommandHandler implements ICommandHandler&lt;CreatePotentialClassCommand&gt; {
@@ -292,7 +291,7 @@ export class CreatePotentialClassCommandHandler implements ICommandHandler&lt;Cr
      */
     constructor(
         private readonly publisher: EventPublisher,
-        private classManagementRepository: ClassManagementRepository
+        private classManagementService: ClassManagementService
     ) {}
 
     /**
@@ -306,7 +305,7 @@ export class CreatePotentialClassCommandHandler implements ICommandHandler&lt;Cr
         const { createPotentialClassDto } &#x3D; command;
 
         // Saving potential class into the database
-        const potentialClass &#x3D; await this.classManagementRepository.create(createPotentialClassDto);
+        const potentialClass &#x3D; await this.classManagementService.create(createPotentialClassDto);
 
         // Creating a PotentialClassRegisteredEvent
         const classManagement &#x3D; new PotentialClassRegisteredEvent(potentialClass);

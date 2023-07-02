@@ -11,12 +11,21 @@ import { ClassManagementService } from './class-management.service'
 import { CreatePotentialClassDto } from './dto/CreatePotentialClassDto';
 import { UpdatePotentialClassDto } from './dto/UpdatePotentialClassDto';
 
+/**
+ * Controller for managing potential classes.
+ */
 @Controller('class-management')
 export class ClassManagementController {
   constructor(
     private readonly potentialClassService: ClassManagementService,
   ) {}
 
+  /**
+   * Create a new potential class.
+   *
+   * @param createPotentialClassDto - The data for creating a potential class.
+   * @returns The created potential class.
+   */
   @Post()
   async create(@Body() createPotentialClassDto: CreatePotentialClassDto) {
     try {
@@ -34,6 +43,11 @@ export class ClassManagementController {
     }
   }
 
+  /**
+   * Get all potential classes.
+   *
+   * @returns All potential classes.
+   */
   @Get()
   async findAll() {
     try {
@@ -45,6 +59,12 @@ export class ClassManagementController {
     }
   }
 
+  /**
+   * Get a potential class by its ID.
+   *
+   * @param id - The ID of the potential class.
+   * @returns The potential class with the specified ID.
+   */
   @Get(":id")
   async findById(@Param("id") id: string) {
     try {
@@ -56,6 +76,13 @@ export class ClassManagementController {
     }
   }
 
+  /**
+   * Update a potential class.
+   *
+   * @param id - The ID of the potential class.
+   * @param updatePotentialClassDto - The updated data for the potential class.
+   * @returns The updated potential class.
+   */
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -77,6 +104,12 @@ export class ClassManagementController {
     }
   }
 
+  /**
+   * Delete a potential class.
+   *
+   * @param id - The ID of the potential class to delete.
+   * @returns The deleted potential class.
+   */
   @Delete(':id')
   async delete(@Param('id') id: string) {
     try {

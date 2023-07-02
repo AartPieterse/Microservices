@@ -72,14 +72,6 @@
             </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Controller for module management related HTTP endpoints.
-Responsible for handling module creation, retrieval, and deletion.</p>
-
-            </p>
 
 
 
@@ -100,17 +92,27 @@ Responsible for handling module creation, retrieval, and deletion.</p>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#createPotentialModuleDto" >createPotentialModuleDto</a>
+                                <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#deleteApplicationById" >deleteApplicationById</a>
+                                <a href="#delete" >delete</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#getApplications" >getApplications</a>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#findById" >findById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -133,19 +135,19 @@ Responsible for handling module creation, retrieval, and deletion.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createPotentialModuleDto"></a>
+                    <a name="create"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>createPotentialModuleDto</b></span>
-                        <a href="#createPotentialModuleDto"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createPotentialModuleDto(data: <a href="../classes/applyModuleDto.html" target="_self">applyModuleDto</a>)</code>
+                    <code>create(createPotentialModuleDto: <a href="../classes/CreatePotentialModuleDto.html" target="_self">CreatePotentialModuleDto</a>)</code>
                 </td>
             </tr>
 
@@ -159,15 +161,15 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:27</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Handles HTTP POST requests to create a potential module.</p>
+                    <div class="io-description"><p>Create a new potential module.</p>
 </div>
 
                     <div class="io-description">
@@ -184,9 +186,9 @@ Responsible for handling module creation, retrieval, and deletion.</p>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>data</td>
+                                    <td>createPotentialModuleDto</td>
                                     <td>
-                                                <code><a href="../classes/applyModuleDto.html" target="_self" >applyModuleDto</a></code>
+                                                <code><a href="../classes/CreatePotentialModuleDto.html" target="_self" >CreatePotentialModuleDto</a></code>
                                     </td>
 
                                     <td>
@@ -195,7 +197,9 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
 
                                     <td>
-                                        <p>The data for creating a potential module.</p>
+                                        <ul>
+<li>The data for creating a potential module.</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -205,11 +209,12 @@ Responsible for handling module creation, retrieval, and deletion.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>The created potential module.</p>
+
                     </div>
                 </td>
             </tr>
@@ -219,19 +224,19 @@ Responsible for handling module creation, retrieval, and deletion.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="deleteApplicationById"></a>
+                    <a name="delete"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>deleteApplicationById</b></span>
-                        <a href="#deleteApplicationById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteApplicationById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -245,15 +250,15 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:111</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Handles HTTP DELETE requests to delete an application by ID.</p>
+                    <div class="io-description"><p>Delete a potential module.</p>
 </div>
 
                     <div class="io-description">
@@ -281,7 +286,9 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
 
                                     <td>
-                                        <p>The ID of the application to delete.</p>
+                                        <ul>
+<li>The ID of the potential module to delete.</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -295,7 +302,7 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves when the application is deleted.</p>
+                        <p>The deleted potential module.</p>
 
                     </div>
                 </td>
@@ -306,19 +313,19 @@ Responsible for handling module creation, retrieval, and deletion.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getApplications"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>getApplications</b></span>
-                        <a href="#getApplications"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getApplications()</code>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
@@ -332,15 +339,15 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:49</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Handles HTTP GET requests to retrieve all applications.</p>
+                    <div class="io-description"><p>Get all potential modules.</p>
 </div>
 
                     <div>
@@ -350,7 +357,203 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves to the applications.</p>
+                        <p>All potential modules.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findById"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>findById</b></span>
+                        <a href="#findById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a potential module by its ID.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The potential module with the specified ID.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatePotentialModuleDto: <a href="../classes/UpdatePotentialModuleDto.html" target="_self">UpdatePotentialModuleDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Put(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">apps/module-management/src/module-management.controller.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update a potential module.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>updatePotentialModuleDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdatePotentialModuleDto.html" target="_self" >UpdatePotentialModuleDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The updated data for the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The updated potential module.</p>
 
                     </div>
                 </td>
@@ -361,51 +564,128 @@ Responsible for handling module creation, retrieval, and deletion.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Delete, Get, Param, Post } from &#x27;@nestjs/common&#x27;;
-import { CommandBus, EventBus } from &#x27;@nestjs/cqrs&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from &#x27;@nestjs/common&#x27;;
 import { ModuleManagementService } from &#x27;./module-management.service&#x27;;
-import { applyModuleDto } from &#x27;./dto/applyModule.dto&#x27;;
-import { CreatePotentialModuleCommand } from &#x27;./commands/create-potentialModule.command&#x27;;
+import { CreatePotentialModuleDto } from &#x27;./dto/CreatePotentialModuleDto&#x27;;
+import { UpdatePotentialModuleDto } from &#x27;./dto/UpdatePotentialModuleDto&#x27;;
 
-/**
- * Controller for module management related HTTP endpoints.
- * Responsible for handling module creation, retrieval, and deletion.
- */
 @Controller(&#x27;module-management&#x27;)
 export class ModuleManagementController {
   constructor(
-    private readonly moduleManagementService: ModuleManagementService,
-    private readonly commandBus: CommandBus,
-    private readonly eventBus: EventBus
+    private readonly potentialModuleService: ModuleManagementService,
   ) {}
 
   /**
-   * Handles HTTP POST requests to create a potential module.
-   * @param data The data for creating a potential module.
+   * Create a new potential module.
+   *
+   * @param createPotentialModuleDto - The data for creating a potential module.
+   * @returns The created potential module.
    */
   @Post()
-  async createPotentialModuleDto(@Body() data: applyModuleDto) {
-    const command &#x3D; new CreatePotentialModuleCommand(data);
-    this.commandBus.execute(command);
+  async create(@Body() createPotentialModuleDto: CreatePotentialModuleDto) {
+    try {
+      const potentialModule &#x3D; await this.potentialModuleService.create(
+        createPotentialModuleDto,
+      );
+
+      return {
+        status: 201,
+        message: &#x27;Created Potential Module&#x27;,
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
   /**
-   * Handles HTTP GET requests to retrieve all applications.
-   * @returns A promise that resolves to the applications.
+   * Get all potential modules.
+   *
+   * @returns All potential modules.
    */
   @Get()
-  async getApplications() {
-    return this.moduleManagementService.getApplications();
+  async findAll() {
+    try {
+      const modules &#x3D; await this.potentialModuleService.findAll();
+
+      return { status: 200, data: { modules } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
   /**
-   * Handles HTTP DELETE requests to delete an application by ID.
-   * @param id The ID of the application to delete.
-   * @returns A promise that resolves when the application is deleted.
+   * Get a potential module by its ID.
+   *
+   * @param id - The ID of the potential module.
+   * @returns The potential module with the specified ID.
+   */
+  @Get(&#x27;:id&#x27;)
+  async findById(@Param(&#x27;id&#x27;) id: string) {
+    try {
+      const module &#x3D; await this.potentialModuleService.findById(id);
+
+      return { status: 200, data: { module } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
+  /**
+   * Update a potential module.
+   *
+   * @param id - The ID of the potential module.
+   * @param updatePotentialModuleDto - The updated data for the potential module.
+   * @returns The updated potential module.
+   */
+  @Put(&#x27;:id&#x27;)
+  async update(
+    @Param(&#x27;id&#x27;) id: string,
+    @Body() updatePotentialModuleDto: UpdatePotentialModuleDto,
+  ) {
+    try {
+      const potentialModule &#x3D; await this.potentialModuleService.update(
+        id,
+        updatePotentialModuleDto,
+      );
+
+      return {
+        status: 200,
+        message: &#x27;Updated Potential Module&#x27;,
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
+  /**
+   * Delete a potential module.
+   *
+   * @param id - The ID of the potential module to delete.
+   * @returns The deleted potential module.
    */
   @Delete(&#x27;:id&#x27;)
-  async deleteApplicationById(@Param(&#x27;id&#x27;) id: string) {
-    return this.moduleManagementService.deleteApplicationById(id);
+  async delete(@Param(&#x27;id&#x27;) id: string) {
+    try {
+      const potentialModule &#x3D; await this.potentialModuleService.delete(id);
+
+      return {
+        status: 200,
+        message: &#x27;Deleted Potential module&#x27;,
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 }
 </code></pre>

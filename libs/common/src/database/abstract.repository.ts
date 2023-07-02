@@ -48,9 +48,9 @@ export class AbstractRepository<TDocument extends AbstractDocument> {
    * @returns The updated document.
    */
   async update(id: string, document: Partial<TDocument>): Promise<TDocument> {
-    return this.model.findByIdAndUpdate(id, document).exec();
+    return this.model.findByIdAndUpdate(id, document, { new: true }).exec();
   }
-
+  
   /**
    * Delete a document by its ID.
    * @param id The ID of the document to delete.

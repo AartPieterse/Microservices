@@ -3,12 +3,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { PotentialStudent } from './potentialStudent.schema';
 import { Teacher } from './teacher.schema';
 
+/**
+ * Schema for the Meeting collection.
+ */
 @Schema()
 export class Meeting extends AbstractDocument {
-  @Prop({ required: true })
+  @Prop({ required: true, type: PotentialStudent })
   student: PotentialStudent;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: Teacher })
   teacher: Teacher;
 
   @Prop({ required: true })

@@ -11,13 +11,42 @@ import { ClassManagementRepository } from './class-management.repository';
 import { CreatePotentialClassCommand } from './commands/create-potentialClass.command';
 import { PotentialClassRegisteredEvent } from './event/potentialClass-registered.event';
 
-
+/**
+ * Module for managing potential classes.
+ */
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: './apps/class-management/.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialClass.name, schema: PotentialClassSchema}])],
+  imports: [
+    // Load configuration from .env file
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: './apps/class-management/.env'
+    }),
+
+    // Register RabbitMQ module with the given service name
+    RmqModule.register({ name: APPLICATION_SERVICE }),
+
+    // Import the DatabaseModule for database connection
+    DatabaseModule,
+
+    // Import the CqrsModule for Command/Event handling
+    CqrsModule,
+
+    // Register the PotentialClass model as a Mongoose feature
+    MongooseModule.forFeature([{ name: PotentialClass.name, schema: PotentialClassSchema }])
+  ],
   controllers: [ClassManagementController],
-  providers: [ClassManagementService, ClassManagementRepository, PotentialClassRegisteredEvent, CreatePotentialClassCommand],
+  providers: [
+    // Provide the ClassManagementService to handle business logic
+    ClassManagementService,
+
+    // Provide the ClassManagementRepository to interact with the database
+    ClassManagementRepository,
+
+    // Provide the PotentialClassRegisteredEvent for event handling
+    PotentialClassRegisteredEvent,
+
+    // Provide the CreatePotentialClassCommand for command handling
+    CreatePotentialClassCommand,
+  ],
 })
 export class ClassManagementModule {}

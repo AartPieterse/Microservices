@@ -72,6 +72,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for managing potential classes.</p>
+
+            </p>
 
 
 
@@ -92,17 +99,27 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#createPotentialClassDto" >createPotentialClassDto</a>
+                                <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#deleteApplicationById" >deleteApplicationById</a>
+                                <a href="#delete" >delete</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Async</span>
-                                <a href="#getApplications" >getApplications</a>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#findById" >findById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -125,19 +142,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createPotentialClassDto"></a>
+                    <a name="create"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>createPotentialClassDto</b></span>
-                        <a href="#createPotentialClassDto"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createPotentialClassDto(data: <a href="../classes/applyClassDto.html" target="_self">applyClassDto</a>)</code>
+                    <code>create(createPotentialClassDto: <a href="../classes/CreatePotentialClassDto.html" target="_self">CreatePotentialClassDto</a>)</code>
                 </td>
             </tr>
 
@@ -151,15 +168,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Creates a potential class.</p>
+                    <div class="io-description"><p>Create a new potential class.</p>
 </div>
 
                     <div class="io-description">
@@ -176,9 +193,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>data</td>
+                                    <td>createPotentialClassDto</td>
                                     <td>
-                                                <code><a href="../classes/applyClassDto.html" target="_self" >applyClassDto</a></code>
+                                                <code><a href="../classes/CreatePotentialClassDto.html" target="_self" >CreatePotentialClassDto</a></code>
                                     </td>
 
                                     <td>
@@ -187,7 +204,9 @@
 
 
                                     <td>
-                                        <p>The data for creating the potential class.</p>
+                                        <ul>
+<li>The data for creating a potential class.</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -197,11 +216,12 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>The created potential class.</p>
+
                     </div>
                 </td>
             </tr>
@@ -211,19 +231,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="deleteApplicationById"></a>
+                    <a name="delete"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>deleteApplicationById</b></span>
-                        <a href="#deleteApplicationById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteApplicationById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -237,15 +257,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:114</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Deletes an application by ID.</p>
+                    <div class="io-description"><p>Delete a potential class.</p>
 </div>
 
                     <div class="io-description">
@@ -273,7 +293,9 @@
 
 
                                     <td>
-                                        <p>The ID of the application to delete.</p>
+                                        <ul>
+<li>The ID of the potential class to delete.</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -287,7 +309,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves to the deleted application.</p>
+                        <p>The deleted potential class.</p>
 
                     </div>
                 </td>
@@ -298,19 +320,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getApplications"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                         <span class="modifier"></span>
                         <span class="modifier">Async</span>
-                        <span ><b>getApplications</b></span>
-                        <a href="#getApplications"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getApplications()</code>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
@@ -324,15 +346,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:52</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Retrieves all applications.</p>
+                    <div class="io-description"><p>Get all potential classes.</p>
 </div>
 
                     <div>
@@ -342,7 +364,203 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves to the list of applications.</p>
+                        <p>All potential classes.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findById"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>findById</b></span>
+                        <a href="#findById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a potential class by its ID.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential class.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The potential class with the specified ID.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatePotentialClassDto: <a href="../classes/UpdatePotentialClassDto.html" target="_self">UpdatePotentialClassDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Put(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">apps/class-management/src/class-management.controller.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update a potential class.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential class.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>updatePotentialClassDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdatePotentialClassDto.html" target="_self" >UpdatePotentialClassDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The updated data for the potential class.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The updated potential class.</p>
 
                     </div>
                 </td>
@@ -353,57 +571,132 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">/**
- * Controller for handling class management related endpoints.
- */
-import { Body, Controller, Delete, Get, Param, Post } from &#x27;@nestjs/common&#x27;;
-import { CommandBus, EventBus } from &#x27;@nestjs/cqrs&#x27;;
-import { ClassManagementService } from &#x27;./class-management.service&#x27;;
-import { applyClassDto } from &#x27;./dto/applyClass.dto&#x27;;
-import { CreatePotentialClassCommand } from &#x27;./commands/create-potentialClass.command&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from &#x27;@nestjs/common&#x27;;
+import { ClassManagementService } from &#x27;./class-management.service&#x27;
+import { CreatePotentialClassDto } from &#x27;./dto/CreatePotentialClassDto&#x27;;
+import { UpdatePotentialClassDto } from &#x27;./dto/UpdatePotentialClassDto&#x27;;
 
+/**
+ * Controller for managing potential classes.
+ */
 @Controller(&#x27;class-management&#x27;)
 export class ClassManagementController {
-    /**
-     * Constructs an instance of ClassManagementController.
-     * @param classManagementService The service for managing class operations.
-     * @param commandBus The command bus for executing commands.
-     * @param eventBus The event bus for publishing events.
-     */
-    constructor(
-        private readonly classManagementService: ClassManagementService,
-        private readonly commandBus: CommandBus,
-        private readonly eventBus: EventBus
-    ) {}
+  constructor(
+    private readonly potentialClassService: ClassManagementService,
+  ) {}
 
-    /**
-     * Creates a potential class.
-     * @param data The data for creating the potential class.
-     */
-    @Post()
-    async createPotentialClassDto(@Body() data: applyClassDto) {
-        const command &#x3D; new CreatePotentialClassCommand(data);
-        this.commandBus.execute(command);
-    }
+  /**
+   * Create a new potential class.
+   *
+   * @param createPotentialClassDto - The data for creating a potential class.
+   * @returns The created potential class.
+   */
+  @Post()
+  async create(@Body() createPotentialClassDto: CreatePotentialClassDto) {
+    try {
+      const potentialClass &#x3D; await this.potentialClassService.create(
+        createPotentialClassDto,
+      );
 
-    /**
-     * Retrieves all applications.
-     * @returns A promise that resolves to the list of applications.
-     */
-    @Get()
-    async getApplications() {
-        return this.classManagementService.getApplications();
+      return {
+        status: 201,
+        message: &#x27;Created Potential Class&#x27;,
+        data: { potentialClass },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
     }
+  }
 
-    /**
-     * Deletes an application by ID.
-     * @param id The ID of the application to delete.
-     * @returns A promise that resolves to the deleted application.
-     */
-    @Delete(&#x27;:id&#x27;)
-    async deleteApplicationById(@Param(&#x27;id&#x27;) id: string) {
-        return this.classManagementService.deleteApplicationById(id);
+  /**
+   * Get all potential classes.
+   *
+   * @returns All potential classes.
+   */
+  @Get()
+  async findAll() {
+    try {
+      const classes &#x3D; await this.potentialClassService.findAll();
+
+      return { status: 200, data: { classes } };
+    } catch (err) {
+      return { status: 400, message: err.message };
     }
+  }
+
+  /**
+   * Get a potential class by its ID.
+   *
+   * @param id - The ID of the potential class.
+   * @returns The potential class with the specified ID.
+   */
+  @Get(&quot;:id&quot;)
+  async findById(@Param(&quot;id&quot;) id: string) {
+    try {
+      const classes &#x3D; await this.potentialClassService.findById(id);
+
+      return { status: 200, data: { classes } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
+  /**
+   * Update a potential class.
+   *
+   * @param id - The ID of the potential class.
+   * @param updatePotentialClassDto - The updated data for the potential class.
+   * @returns The updated potential class.
+   */
+  @Put(&#x27;:id&#x27;)
+  async update(
+    @Param(&#x27;id&#x27;) id: string,
+    @Body() updatePotentialClassDto: UpdatePotentialClassDto,
+  ) {
+    try {
+      const potentialClass &#x3D; await this.potentialClassService.update(
+        id,
+        updatePotentialClassDto,
+      );
+
+      return {
+        status: 200,
+        message: &#x27;Updated Potential class&#x27;,
+        data: { potentialClass },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
+  /**
+   * Delete a potential class.
+   *
+   * @param id - The ID of the potential class to delete.
+   * @returns The deleted potential class.
+   */
+  @Delete(&#x27;:id&#x27;)
+  async delete(@Param(&#x27;id&#x27;) id: string) {
+    try {
+      const potentialClass &#x3D; await this.potentialClassService.delete(id);
+
+      return {
+        status: 200,
+        message: &#x27;Deleted Potential class&#x27;,
+        data: { potentialClass },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
 }
 </code></pre>
     </div>

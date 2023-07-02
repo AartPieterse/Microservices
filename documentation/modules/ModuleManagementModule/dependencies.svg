@@ -24,67 +24,67 @@
 <title>cluster_ModuleManagementModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-195 805,-195 805,-70 8,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_ModuleManagementModule_providers</title>
-<polygon fill="none" stroke="black" points="255,-78 255,-130 797,-130 797,-78 255,-78"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_ModuleManagementModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 247,-130 247,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="566,-78 566,-130 797,-130 797,-78 566,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_ModuleManagementModule_providers</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 558,-130 558,-78 16,-78"/>
 </g>
 <!-- DatabaseModule -->
 <g id="node1" class="node">
 <title>DatabaseModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="239.35,-122 236.35,-126 215.35,-126 212.35,-122 128.65,-122 128.65,-86 239.35,-86 239.35,-122"/>
-<text text-anchor="middle" x="184" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="789.35,-122 786.35,-126 765.35,-126 762.35,-122 678.65,-122 678.65,-86 789.35,-86 789.35,-122"/>
+<text text-anchor="middle" x="734" y="-99.8" font-family="Times,serif" font-size="14.00">DatabaseModule</text>
 </g>
 <!-- ModuleManagementModule -->
 <g id="node3" class="node">
 <title>ModuleManagementModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="371.18,-187 368.18,-191 347.18,-191 344.18,-187 194.82,-187 194.82,-151 371.18,-151 371.18,-187"/>
-<text text-anchor="middle" x="283" y="-164.8" font-family="Times,serif" font-size="14.00">ModuleManagementModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="604.18,-187 601.18,-191 580.18,-191 577.18,-187 427.82,-187 427.82,-151 604.18,-151 604.18,-187"/>
+<text text-anchor="middle" x="516" y="-164.8" font-family="Times,serif" font-size="14.00">ModuleManagementModule</text>
 </g>
 <!-- DatabaseModule&#45;&gt;ModuleManagementModule -->
 <g id="edge1" class="edge">
 <title>DatabaseModule&#45;&gt;ModuleManagementModule</title>
-<path fill="none" stroke="black" d="M217.17,-122.11C217.17,-122.11 217.17,-140.99 217.17,-140.99"/>
-<polygon fill="black" stroke="black" points="213.67,-140.99 217.17,-150.99 220.67,-140.99 213.67,-140.99"/>
+<path fill="none" stroke="black" d="M734,-122.11C734,-141.34 734,-169 734,-169 734,-169 614.35,-169 614.35,-169"/>
+<polygon fill="black" stroke="black" points="614.35,-165.5 604.35,-169 614.35,-172.5 614.35,-165.5"/>
 </g>
 <!-- RmqModule -->
 <g id="node2" class="node">
 <title>RmqModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="110.28,-122 107.28,-126 86.28,-126 83.28,-122 23.72,-122 23.72,-86 110.28,-86 110.28,-122"/>
-<text text-anchor="middle" x="67" y="-99.8" font-family="Times,serif" font-size="14.00">RmqModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="660.28,-122 657.28,-126 636.28,-126 633.28,-122 573.72,-122 573.72,-86 660.28,-86 660.28,-122"/>
+<text text-anchor="middle" x="617" y="-99.8" font-family="Times,serif" font-size="14.00">RmqModule</text>
 </g>
 <!-- RmqModule&#45;&gt;ModuleManagementModule -->
 <g id="edge2" class="edge">
 <title>RmqModule&#45;&gt;ModuleManagementModule</title>
-<path fill="none" stroke="black" d="M67,-122.11C67,-141.34 67,-169 67,-169 67,-169 184.83,-169 184.83,-169"/>
-<polygon fill="black" stroke="black" points="184.83,-172.5 194.83,-169 184.83,-165.5 184.83,-172.5"/>
+<path fill="none" stroke="black" d="M588.85,-122.11C588.85,-122.11 588.85,-140.99 588.85,-140.99"/>
+<polygon fill="black" stroke="black" points="585.35,-140.99 588.85,-150.99 592.35,-140.99 585.35,-140.99"/>
 </g>
 <!-- ModuleManagementRepository -->
 <g id="node4" class="node">
 <title>ModuleManagementRepository</title>
-<ellipse fill="#fdb462" stroke="black" cx="655" cy="-104" rx="133.73" ry="18"/>
-<text text-anchor="middle" x="655" y="-99.8" font-family="Times,serif" font-size="14.00">ModuleManagementRepository</text>
+<ellipse fill="#fdb462" stroke="black" cx="416" cy="-104" rx="133.73" ry="18"/>
+<text text-anchor="middle" x="416" y="-99.8" font-family="Times,serif" font-size="14.00">ModuleManagementRepository</text>
 </g>
 <!-- ModuleManagementRepository&#45;&gt;ModuleManagementModule -->
 <g id="edge3" class="edge">
 <title>ModuleManagementRepository&#45;&gt;ModuleManagementModule</title>
-<path fill="none" stroke="black" d="M655,-122.11C655,-141.34 655,-169 655,-169 655,-169 381.16,-169 381.16,-169"/>
-<polygon fill="black" stroke="black" points="381.16,-165.5 371.16,-169 381.16,-172.5 381.16,-165.5"/>
+<path fill="none" stroke="black" d="M488.89,-119.4C488.89,-119.4 488.89,-140.94 488.89,-140.94"/>
+<polygon fill="black" stroke="black" points="485.39,-140.94 488.89,-150.94 492.39,-140.94 485.39,-140.94"/>
 </g>
 <!-- ModuleManagementService -->
 <g id="node5" class="node">
 <title>ModuleManagementService</title>
-<ellipse fill="#fdb462" stroke="black" cx="383" cy="-104" rx="120.39" ry="18"/>
-<text text-anchor="middle" x="383" y="-99.8" font-family="Times,serif" font-size="14.00">ModuleManagementService</text>
+<ellipse fill="#fdb462" stroke="black" cx="144" cy="-104" rx="120.39" ry="18"/>
+<text text-anchor="middle" x="144" y="-99.8" font-family="Times,serif" font-size="14.00">ModuleManagementService</text>
 </g>
 <!-- ModuleManagementService&#45;&gt;ModuleManagementModule -->
 <g id="edge4" class="edge">
 <title>ModuleManagementService&#45;&gt;ModuleManagementModule</title>
-<path fill="none" stroke="black" d="M316.82,-119.08C316.82,-119.08 316.82,-140.76 316.82,-140.76"/>
-<polygon fill="black" stroke="black" points="313.32,-140.76 316.82,-150.76 320.32,-140.76 313.32,-140.76"/>
+<path fill="none" stroke="black" d="M144,-122.11C144,-141.34 144,-169 144,-169 144,-169 417.84,-169 417.84,-169"/>
+<polygon fill="black" stroke="black" points="417.84,-172.5 427.84,-169 417.84,-165.5 417.84,-172.5"/>
 </g>
 </g>
 </svg>

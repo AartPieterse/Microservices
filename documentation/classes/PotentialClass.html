@@ -72,6 +72,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Schema for representing a potential class.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -154,10 +161,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">apps/class-management/src/schemas/potentialClass.schema.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/class-management/src/schemas/potentialClass.schema.ts:14</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The name of the potential class.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -190,10 +203,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">apps/class-management/src/schemas/potentialClass.schema.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">apps/class-management/src/schemas/potentialClass.schema.ts:20</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The student associated with the potential class.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -256,16 +275,27 @@
 import { AbstractDocument } from &#x27;@app/common&#x27;;
 import { PotentialStudent } from &#x27;apps/student-management/src/schemas/potentialStudent.schema&#x27;;
 
+/**
+ * Schema for representing a potential class.
+ */
 @Schema()
 export class PotentialClass extends AbstractDocument {
+  /**
+   * The name of the potential class.
+   */
   @Prop({ required: true })
   name: string;
 
+  /**
+   * The student associated with the potential class.
+   */
   @Prop({ required: true })
   student: PotentialStudent;
-
 }
 
+/**
+ * Mongoose schema for the PotentialClass class.
+ */
 export const PotentialClassSchema &#x3D; SchemaFactory.createForClass(PotentialClass);
 </code></pre>
     </div>

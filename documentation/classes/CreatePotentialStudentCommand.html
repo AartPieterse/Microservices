@@ -126,7 +126,7 @@ Implements the ICommand interface from the @nestjs/cqrs module.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(createPotentialStudentDto: <a href="../classes/createPotentialStudentDto.html" target="_self">createPotentialStudentDto</a>)</code>
+<code>constructor(createPotentialStudentDto: <a href="../classes/CreatePotentialStudentDto.html" target="_self">CreatePotentialStudentDto</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -155,7 +155,7 @@ Implements the ICommand interface from the @nestjs/cqrs module.</p>
                                                         <td>createPotentialStudentDto</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/createPotentialStudentDto.html" target="_self" >createPotentialStudentDto</a></code>
+                                                                        <code><a href="../classes/CreatePotentialStudentDto.html" target="_self" >CreatePotentialStudentDto</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -198,7 +198,7 @@ Implements the ICommand interface from the @nestjs/cqrs module.</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/createPotentialStudentDto.html" target="_self" >createPotentialStudentDto</a></code>
+                        <i>Type : </i>        <code><a href="../classes/CreatePotentialStudentDto.html" target="_self" >CreatePotentialStudentDto</a></code>
 
                     </td>
                 </tr>
@@ -229,7 +229,7 @@ Implements the ICommand interface from the @nestjs/cqrs module.</p>
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ICommand } from &#x27;@nestjs/cqrs&#x27;;
-import { createPotentialStudentDto } from &#x27;../../dto/create-potentialStudent.dto&#x27;;
+import { CreatePotentialStudentDto } from &#x27;../../potentialStudent/dto/create-potentialStudent.dto&#x27;;
 
 /**
  * Command class for creating a potential student.
@@ -241,7 +241,7 @@ export class CreatePotentialStudentCommand implements ICommand {
    * @param createPotentialStudentDto - The data required to create a potential student.
    */
   constructor(
-    public readonly createPotentialStudentDto: createPotentialStudentDto,
+    public readonly createPotentialStudentDto: CreatePotentialStudentDto,
   ) {}
 }
 </code></pre>

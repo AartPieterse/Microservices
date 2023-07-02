@@ -78,157 +78,15 @@
 
 
 
-            <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#getApplications" >getApplications</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
-
-
-        </tbody>
-    </table>
-</section>
-
-            <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(studentManagementRepository: <a href="../injectables/StudentManagementRepository.html" target="_self">StudentManagementRepository</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">apps/student-management/src/student-management.service.ts:13</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>It injects the StudentManagementRepository using the @InjectModel decorator.</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Description</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>studentManagementRepository</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/StudentManagementRepository.html" target="_self" >StudentManagementRepository</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <ul>
-<li>The repository for student management.</li>
-</ul>
-
-                                                        </td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-            <section data-compodoc="block-methods">
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getApplications"></a>
-                    <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>getApplications</b></span>
-                        <a href="#getApplications"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getApplications()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">apps/student-management/src/student-management.service.ts:31</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>It calls the find method of the StudentManagementRepository to get all application documents.</p>
-</div>
-
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <ul>
-<li>A promise that resolves to an array of application documents.</li>
-</ul>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { PotentialStudent } from &#x27;./schemas/potentialStudent.schema&#x27;;
-import { StudentManagementRepository } from &#x27;./student-management.repository&#x27;;
 
 /**
  * @class StudentManagementService
@@ -237,26 +95,10 @@ import { StudentManagementRepository } from &#x27;./student-management.repositor
  */
 @Injectable()
 export class StudentManagementService {
-  /**
-   * @constructor
-   * @param {StudentManagementRepository} studentManagementRepository - The repository for student management.
-   * @description Constructs an instance of the StudentManagementService.
-   * It injects the StudentManagementRepository using the @InjectModel decorator.
-   */
-  constructor(
-    @InjectModel(PotentialStudent.name)
-    private readonly studentManagementRepository: StudentManagementRepository,
-  ) {}
-
-  /**
-   * @method getApplications
-   * @returns {Promise&lt;any[]&gt;} - A promise that resolves to an array of application documents.
-   * @description Retrieves all applications.
-   * It calls the find method of the StudentManagementRepository to get all application documents.
-   */
-  async getApplications(): Promise&lt;any[]&gt; {
-    return this.studentManagementRepository.find({});
-  }
+  // constructor(
+  //   // @InjectModel(PotentialStudent.name)
+  //   // private readonly studentManagementRepository: AbstractRepository&lt;PotentialStudent&gt;,
+  // ) {}
 }
 </code></pre>
     </div>

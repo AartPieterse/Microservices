@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Patch
 } from '@nestjs/common';
 import { ModuleManagementService } from './module-management.service';
 import { CreatePotentialModuleDto } from './dto/CreatePotentialModuleDto';
@@ -17,6 +18,12 @@ export class ModuleManagementController {
     private readonly potentialModuleService: ModuleManagementService,
   ) {}
 
+  /**
+   * Create a new potential module.
+   *
+   * @param createPotentialModuleDto - The data for creating a potential module.
+   * @returns The created potential module.
+   */
   @Post()
   async create(@Body() createPotentialModuleDto: CreatePotentialModuleDto) {
     try {
@@ -34,6 +41,11 @@ export class ModuleManagementController {
     }
   }
 
+  /**
+   * Get all potential modules.
+   *
+   * @returns All potential modules.
+   */
   @Get()
   async findAll() {
     try {
@@ -45,6 +57,12 @@ export class ModuleManagementController {
     }
   }
 
+  /**
+   * Get a potential module by its ID.
+   *
+   * @param id - The ID of the potential module.
+   * @returns The potential module with the specified ID.
+   */
   @Get(':id')
   async findById(@Param('id') id: string) {
     try {
@@ -56,7 +74,14 @@ export class ModuleManagementController {
     }
   }
 
-  @Put(':id')
+  /**
+   * Update a potential module.
+   *
+   * @param id - The ID of the potential module.
+   * @param updatePotentialModuleDto - The updated data for the potential module.
+   * @returns The updated potential module.
+   */
+  @Patch(':id')
   async update(
     @Param('id') id: string,
     @Body() updatePotentialModuleDto: UpdatePotentialModuleDto,
@@ -66,7 +91,7 @@ export class ModuleManagementController {
         id,
         updatePotentialModuleDto,
       );
-
+  
       return {
         status: 200,
         message: 'Updated Potential Module',
@@ -76,7 +101,14 @@ export class ModuleManagementController {
       return { status: 400, message: err.message };
     }
   }
+  
 
+  /**
+   * Delete a potential module.
+   *
+   * @param id - The ID of the potential module to delete.
+   * @returns The deleted potential module.
+   */
   @Delete(':id')
   async delete(@Param('id') id: string) {
     try {
