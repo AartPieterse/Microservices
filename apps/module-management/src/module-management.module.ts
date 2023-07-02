@@ -20,7 +20,7 @@ import { CreatePotentialModuleCommand } from './commands/create-potentialModule.
     // Import configuration module
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env'
+      envFilePath: './apps/module-management/.env'
     }),
 
     // Import RabbitMQ module

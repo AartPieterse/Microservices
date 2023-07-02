@@ -19,7 +19,7 @@ import { TeacherModule } from 'apps/student-management/src/teacher/teacher.modul
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: './apps/test-program/.env',
     }),
     RmqModule.register({ name: APPLICATION_SERVICE }),
     DatabaseModule,

@@ -29,7 +29,7 @@ import { TeacherModule } from './teacher/teacher.module';
      */
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: './apps/student-management/.env',
     }),
     /**
      * @module RmqModule
