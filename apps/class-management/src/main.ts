@@ -3,6 +3,10 @@ import { ClassManagementModule } from './class-management.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+/**
+ * Configures Swagger documentation for the application.
+ * @param app The NestJS application instance.
+ */
 function configureSwagger(app) {
   const config = new DocumentBuilder()
     .setTitle('Avantys Education example')
@@ -11,10 +15,13 @@ function configureSwagger(app) {
     .addTag('Avantys Education')
     .build();
 
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, document);
-  }
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+}
 
+/**
+ * Bootstrap function to start the application.
+ */
 async function bootstrap() {
   const app = await NestFactory.create(ClassManagementModule);
 
@@ -24,4 +31,5 @@ async function bootstrap() {
 
   await app.listen(configService.get('PORT'));
 }
+
 bootstrap();

@@ -15,7 +15,7 @@ import { PotentialClassRegisteredEvent } from './event/potentialClass-registered
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
-    envFilePath: '.env'
+    envFilePath: './apps/class-management/.env'
   }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialClass.name, schema: PotentialClassSchema}])],
   controllers: [ClassManagementController],
   providers: [ClassManagementService, ClassManagementRepository, PotentialClassRegisteredEvent, CreatePotentialClassCommand],

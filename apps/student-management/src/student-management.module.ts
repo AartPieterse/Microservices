@@ -1,4 +1,5 @@
-import { Module} from '@nestjs/common';
+// Import necessary modules and classes
+import { Module } from '@nestjs/common';
 import { StudentManagementController } from './student-management.controller';
 import { StudentManagementService } from './student-management.service';
 import { DatabaseModule, RmqModule } from '@app/common';
@@ -12,6 +13,11 @@ import { TeacherModule } from './teacher/teacher.module';
 import { MeetingModule } from './meeting/meeting.module';
 import { PotentialStudentModule } from './potentialStudent/potentialStudent.module';
 
+/**
+ * @module StudentManagementModule
+ * @description Module for managing student-related functionality.
+ * It imports necessary dependencies, configures the module, and provides controllers and services.
+ */
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
@@ -20,5 +26,4 @@ import { PotentialStudentModule } from './potentialStudent/potentialStudent.modu
   controllers: [StudentManagementController],
   providers: [StudentManagementService],
 })
-export class StudentManagementModule {
-}
+export class StudentManagementModule {}

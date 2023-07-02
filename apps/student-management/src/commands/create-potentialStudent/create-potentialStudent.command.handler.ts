@@ -5,19 +5,33 @@ import { PotentialStudentService } from "../../potentialStudent/potentialStudent
 import { TeacherService } from "../../teacher/teacher.service";
 import { RabbitmqService } from "@app/common";
 
+/**
+ * Command handler for CreatePotentialStudentCommand.
+ * This class handles the command to create a potential student and publishes the corresponding event.
+ */
 @CommandHandler(CreatePotentialStudentCommand)
 export class CreatePotentialStudentCommandHandler implements ICommandHandler<CreatePotentialStudentCommand> {
 
+    /**
+     * Constructor for the CreatePotentialStudentCommandHandler class.
+     * @param publisher - The EventPublisher instance used to publish events.
+     * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
+     */
     constructor(
         private readonly publisher: EventPublisher, private readonly potentialStudentService: PotentialStudentService, private readonly teacherService: TeacherService, private readonly rabbitmqService: RabbitmqService) {}
 
+    /**
+     * Execute method that handles the CreatePotentialStudentCommand.
+     * It saves the potential student data into the database and publishes the PotentialStudentRegisteredEvent.
+     * @param command - The CreatePotentialStudentCommand to be handled.
+     * @returns A Promise representing the completion of the execution.
+     */
     async execute(command: CreatePotentialStudentCommand): Promise<any> {
         const { createPotentialStudentDto } = command;
 
         // Saving student into database
         const potentialStudent = await this.potentialStudentService.create(createPotentialStudentDto);
         const student = new PotentialStudentRegisteredEvent(potentialStudent);
-
 
         // Publish event
         const event = this.publisher.mergeObjectContext(student);
