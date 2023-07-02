@@ -12,7 +12,9 @@ export class MeetingService {
   constructor(
     @InjectModel(Meeting.name)
     private readonly meetingRepository: AbstractRepository<Meeting>,
+    @InjectModel(PotentialStudent.name)
     private readonly studentRepository: AbstractRepository<PotentialStudent>,
+    @InjectModel(Teacher.name)
     private readonly teacherRepository: AbstractRepository<Teacher>,
     private readonly rabbitmqService: RabbitmqService
   ) {
@@ -28,7 +30,7 @@ export class MeetingService {
     meeting.startTime = createMeetingDto.startTime;
     meeting.endTime = createMeetingDto.endTime;
 
-    const message = `A meeting with ${teacher.name} is scheduled for ${meeting.startTime}.`;
+    const message = `A meeting with ${student.name} is scheduled for ${meeting.startTime}.`;
     await this.rabbitmqService.sendMessage('meeting_notifications', message);
 
     return await this.meetingRepository.create(meeting);
@@ -43,12 +45,6 @@ export class MeetingService {
   }
 
   async update(id: string, updateMeetingDto: UpdateMeetingDto){
-    // const match = updateMeetingDto. ? 'Positive' : 'Negative';
-    const match = "Negative";
-    const message = `Your last meeting resolved into a ${match} match`;
-
-    await this.rabbitmqService.sendMessage('student_notifications', message);
-
     return await this.meetingRepository.update(id, updateMeetingDto);
   }
 

@@ -32,4 +32,8 @@ export class TeacherService {
   async update(id: string, updateTeacherDto: UpdateTeacherDto){
     return await this.teacherRepository.update(id, updateTeacherDto);
   }
+
+  async findByStudy(study: string){
+    return await this.teacherRepository.findOne({study: study});
+  }
 }

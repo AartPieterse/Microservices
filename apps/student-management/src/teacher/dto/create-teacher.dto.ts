@@ -5,4 +5,8 @@ export class CreateTeacherDto extends AbstractDocument{
     @IsString()
     @IsNotEmpty()
     name: string;
+
+    @IsString()
+    @IsNotEmpty()
+    study: string;
 }
