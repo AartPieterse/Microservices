@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { PotentialStudent } from '../schemas/PotentialStudent.schema';
+import { PotentialStudent } from '../schemas/potentialStudent.schema';
 import { AbstractRepository } from '@app/common';
 import { CreatePotentialStudentDto } from './dto/create-potentialStudent.dto';
 import { UpdatePotentialStudentDto } from './dto/update-potentialStudent.dto';

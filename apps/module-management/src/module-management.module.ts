@@ -32,6 +32,7 @@ import { CreatePotentialModuleCommand } from './commands/create-potentialModule.
     // Import CQRS module
     CqrsModule,
 
+
     // Import Mongoose module and register potential module schema
     MongooseModule.forFeature([{ name: PotentialModule.name, schema: PotentialModuleSchema }])
   ],
