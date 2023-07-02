@@ -2,11 +2,16 @@
 import { ICommand } from '@nestjs/cqrs';
 import { createPotentialStudentDto } from '../../dto/create-potentialStudent.dto';
 
-// Define the CreatePotentialStudentCommand class implementing ICommand interface
+/**
+ * Command class for creating a potential student.
+ * Implements the ICommand interface from the @nestjs/cqrs module.
+ */
 export class CreatePotentialStudentCommand implements ICommand {
-  // Constructor for the CreatePotentialStudentCommand class
+  /**
+   * Constructor for the CreatePotentialStudentCommand class.
+   * @param createPotentialStudentDto - The data required to create a potential student.
+   */
   constructor(
-    // The createPotentialStudentDto parameter represents the data required to create a potential student
     public readonly createPotentialStudentDto: createPotentialStudentDto,
   ) {}
 }

@@ -72,6 +72,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Data Transfer Object (DTO) class for creating a teacher.
+Extends the AbstractDocument class from the &quot;@app/common&quot; module.
+This class represents the data required to create a teacher.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -152,10 +161,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/teacher/dto/create-teacher.dto.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">apps/student-management/src/teacher/dto/create-teacher.dto.ts:17</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The name property represents the name of the teacher.
+It must be a non-empty string.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -217,13 +233,21 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AbstractDocument } from &quot;@app/common&quot;;
 import { IsNotEmpty, IsString } from &quot;class-validator&quot;;
 
-// Define the CreateTeacherDto class extending AbstractDocument
+/**
+ * Data Transfer Object (DTO) class for creating a teacher.
+ * Extends the AbstractDocument class from the &quot;@app/common&quot; module.
+ * This class represents the data required to create a teacher.
+ */
 export class CreateTeacherDto extends AbstractDocument {
-  // The name property represents the name of the teacher
+  /**
+   * The name property represents the name of the teacher.
+   * It must be a non-empty string.
+   */
   @IsString()
   @IsNotEmpty()
   name: string;
 }
+
 </code></pre>
     </div>
 </div>

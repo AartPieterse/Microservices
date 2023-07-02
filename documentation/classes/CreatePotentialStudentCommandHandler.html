@@ -72,6 +72,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Command handler for CreatePotentialStudentCommand.
+This class handles the command to create a potential student and publishes the corresponding event.</p>
+
+            </p>
 
 
             <p class="comment">
@@ -122,12 +130,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:12</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for the CreatePotentialStudentCommandHandler class.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -136,6 +146,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -150,6 +161,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The EventPublisher instance used to publish events.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>studentManagementRepository</td>
@@ -162,6 +179,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The StudentManagementRepository instance used to access the database.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -200,14 +223,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.handler.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Execute method that handles the CreatePotentialStudentCommand.
+It saves the potential student data into the database and publishes the PotentialStudentRegisteredEvent.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -218,6 +244,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,6 +259,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>The CreatePotentialStudentCommand to be handled.</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -243,7 +276,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>A Promise representing the completion of the execution.</p>
+
                     </div>
                 </td>
             </tr>
@@ -264,16 +298,29 @@ import { CreatePotentialStudentCommand } from &quot;./create-potentialStudent.co
 import { PotentialStudentRegisteredEvent } from &quot;../../events/potentialStudent-registered.event&quot;;
 import { StudentManagementRepository } from &quot;../../student-management.repository&quot;;
 
-// Define the command handler for the CreatePotentialStudentCommand
+/**
+ * Command handler for CreatePotentialStudentCommand.
+ * This class handles the command to create a potential student and publishes the corresponding event.
+ */
 @CommandHandler(CreatePotentialStudentCommand)
 export class CreatePotentialStudentCommandHandler implements ICommandHandler&lt;CreatePotentialStudentCommand&gt; {
 
-    // Constructor for the CreatePotentialStudentCommandHandler class
-    // It injects the EventPublisher and StudentManagementRepository instances
+    /**
+     * Constructor for the CreatePotentialStudentCommandHandler class.
+     * @param publisher - The EventPublisher instance used to publish events.
+     * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
+     */
     constructor(
-        private readonly publisher: EventPublisher, private studentManagementRepository: StudentManagementRepository) {}
+        private readonly publisher: EventPublisher,
+        private studentManagementRepository: StudentManagementRepository
+    ) {}
 
-    // Execute method that handles the command
+    /**
+     * Execute method that handles the CreatePotentialStudentCommand.
+     * It saves the potential student data into the database and publishes the PotentialStudentRegisteredEvent.
+     * @param command - The CreatePotentialStudentCommand to be handled.
+     * @returns A Promise representing the completion of the execution.
+     */
     async execute(command: CreatePotentialStudentCommand): Promise&lt;any&gt; {
         // Log a message to indicate that the command handler has been triggered
         console.log(&quot;Triggered Command Handler&quot;)

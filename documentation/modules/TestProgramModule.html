@@ -237,7 +237,7 @@ import { TeacherModule } from &#x27;apps/student-management/src/teacher/teacher.
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: &#x27;.env&#x27;,
+      envFilePath: &#x27;./apps/test-program/.env&#x27;,
     }),
     RmqModule.register({ name: APPLICATION_SERVICE }),
     DatabaseModule,

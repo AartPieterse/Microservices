@@ -72,6 +72,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Command class for creating a potential student.
+Implements the ICommand interface from the @nestjs/cqrs module.</p>
+
+            </p>
 
 
             <p class="comment">
@@ -123,12 +131,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.ts:9</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for the CreatePotentialStudentCommand class.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -137,6 +147,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -151,6 +162,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The data required to create a potential student.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -187,10 +204,15 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">apps/student-management/src/commands/create-potentialStudent/create-potentialStudent.command.ts:15</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">- The data required to create a potential student.</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -209,11 +231,16 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ICommand } from &#x27;@nestjs/cqrs&#x27;;
 import { createPotentialStudentDto } from &#x27;../../dto/create-potentialStudent.dto&#x27;;
 
-// Define the CreatePotentialStudentCommand class implementing ICommand interface
+/**
+ * Command class for creating a potential student.
+ * Implements the ICommand interface from the @nestjs/cqrs module.
+ */
 export class CreatePotentialStudentCommand implements ICommand {
-  // Constructor for the CreatePotentialStudentCommand class
+  /**
+   * Constructor for the CreatePotentialStudentCommand class.
+   * @param createPotentialStudentDto - The data required to create a potential student.
+   */
   constructor(
-    // The createPotentialStudentDto parameter represents the data required to create a potential student
     public readonly createPotentialStudentDto: createPotentialStudentDto,
   ) {}
 }

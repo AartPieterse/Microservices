@@ -72,6 +72,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Event handler for the PotentialTestRegisteredEvent.
+Implements the IEventHandler interface from the &quot;@nestjs/cqrs&quot; module.
+This event handler is responsible for handling the PotentialTestRegisteredEvent and sending a notification to students.</p>
+
+            </p>
 
 
             <p class="comment">
@@ -122,12 +131,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/test-program/src/events/potentialTest-registered.event.handler.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/test-program/src/events/potentialTest-registered.event.handler.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for the PotentialTestRegisteredEventHandler class.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -136,6 +147,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -150,6 +162,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The Teacher model from the &quot;teacher&quot; schema used to retrieve teacher information.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>rabbitmqService</td>
@@ -162,6 +180,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>The RabbitmqService instance used to send messages via RabbitMQ.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -200,14 +224,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">apps/test-program/src/events/potentialTest-registered.event.handler.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">apps/test-program/src/events/potentialTest-registered.event.handler.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Handles the PotentialTestRegisteredEvent by sending a notification to students.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -218,6 +244,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -232,6 +259,12 @@
                                     </td>
 
 
+                                    <td>
+                                        <ul>
+<li>The PotentialTestRegisteredEvent to be handled.</li>
+</ul>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -243,7 +276,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>A Promise representing the completion of the handling process.</p>
+
                     </div>
                 </td>
             </tr>
@@ -266,22 +300,41 @@ import { RabbitmqService } from &#x27;@app/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Model } from &#x27;mongoose&#x27;;
 
+/**
+ * Event handler for the PotentialTestRegisteredEvent.
+ * Implements the IEventHandler interface from the &quot;@nestjs/cqrs&quot; module.
+ * This event handler is responsible for handling the PotentialTestRegisteredEvent and sending a notification to students.
+ */
 @EventsHandler(PotentialTestRegisteredEvent)
 export class PotentialTestRegisteredEventHandler implements IEventHandler&lt;PotentialTestRegisteredEvent&gt; {
-  // constructor(@InjectModel(PotentialTest.name) private readonly potentialTest : Model&lt;PotentialTest&gt;,  private readonly rabbitmqService: RabbitmqService) {}
-  constructor(@InjectModel(Teacher.name) private readonly teacher : Model&lt;Teacher&gt;,  private readonly rabbitmqService: RabbitmqService) {}
+  /**
+   * Constructor for the PotentialTestRegisteredEventHandler class.
+   * @param teacher - The Teacher model from the &quot;teacher&quot; schema used to retrieve teacher information.
+   * @param rabbitmqService - The RabbitmqService instance used to send messages via RabbitMQ.
+   */
+  constructor(
+    @InjectModel(Teacher.name) private readonly teacher : Model&lt;Teacher&gt;,
+    private readonly rabbitmqService: RabbitmqService
+  ) {}
 
+  /**
+   * Handles the PotentialTestRegisteredEvent by sending a notification to students.
+   * @param event - The PotentialTestRegisteredEvent to be handled.
+   * @returns A Promise representing the completion of the handling process.
+   */
   async handle(event: PotentialTestRegisteredEvent): Promise&lt;void&gt; {
     console.log(&quot;Triggered event handler&quot;)
     
-    const teacher &#x3D;  (await this.teacher.findOne({}).exec()).toObject();
+    // Retrieve teacher information
+    const teacher &#x3D; (await this.teacher.findOne({}).exec()).toObject();
     const { createPotentialTestDto } &#x3D; event;
 
     // Send a notification to the students using RabbitMQ
-    const message &#x3D; &#x60;Hello everyone, ${teacher.name} has added a new test for ${createPotentialTestDto.module}, it&#x27;s about ${createPotentialTestDto.name}, it will have a duration of ${createPotentialTestDto.duration} minutes, passing this test will give ${createPotentialTestDto.ec} ECs&#x60;
+    const message &#x3D; &#x60;Hello everyone, ${teacher.name} has added a new test for ${createPotentialTestDto.module}, it&#x27;s about ${createPotentialTestDto.name}, it will have a duration of ${createPotentialTestDto.duration} minutes, passing this test will give ${createPotentialTestDto.ec} ECs&#x60;;
     await this.rabbitmqService.sendMessage(&#x27;teacher_notifications&#x27;, message);
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

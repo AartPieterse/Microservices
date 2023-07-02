@@ -4,16 +4,29 @@ import { CreatePotentialStudentCommand } from "./create-potentialStudent.command
 import { PotentialStudentRegisteredEvent } from "../../events/potentialStudent-registered.event";
 import { StudentManagementRepository } from "../../student-management.repository";
 
-// Define the command handler for the CreatePotentialStudentCommand
+/**
+ * Command handler for CreatePotentialStudentCommand.
+ * This class handles the command to create a potential student and publishes the corresponding event.
+ */
 @CommandHandler(CreatePotentialStudentCommand)
 export class CreatePotentialStudentCommandHandler implements ICommandHandler<CreatePotentialStudentCommand> {
 
-    // Constructor for the CreatePotentialStudentCommandHandler class
-    // It injects the EventPublisher and StudentManagementRepository instances
+    /**
+     * Constructor for the CreatePotentialStudentCommandHandler class.
+     * @param publisher - The EventPublisher instance used to publish events.
+     * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
+     */
     constructor(
-        private readonly publisher: EventPublisher, private studentManagementRepository: StudentManagementRepository) {}
+        private readonly publisher: EventPublisher,
+        private studentManagementRepository: StudentManagementRepository
+    ) {}
 
-    // Execute method that handles the command
+    /**
+     * Execute method that handles the CreatePotentialStudentCommand.
+     * It saves the potential student data into the database and publishes the PotentialStudentRegisteredEvent.
+     * @param command - The CreatePotentialStudentCommand to be handled.
+     * @returns A Promise representing the completion of the execution.
+     */
     async execute(command: CreatePotentialStudentCommand): Promise<any> {
         // Log a message to indicate that the command handler has been triggered
         console.log("Triggered Command Handler")
