@@ -5,6 +5,7 @@ import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialClassCommand } from "./create-potentialClass.command";
 import { ClassManagementRepository } from "../class-management.repository";
 import { PotentialClassRegisteredEvent } from "../event/potentialClass-registered.event";
+import { ClassManagementService } from "../class-management.service";
 
 @CommandHandler(CreatePotentialClassCommand)
 export class CreatePotentialClassCommandHandler implements ICommandHandler<CreatePotentialClassCommand> {
@@ -15,7 +16,7 @@ export class CreatePotentialClassCommandHandler implements ICommandHandler<Creat
      */
     constructor(
         private readonly publisher: EventPublisher,
-        private classManagementRepository: ClassManagementRepository
+        private classManagementService: ClassManagementService
     ) {}
 
     /**
@@ -29,7 +30,7 @@ export class CreatePotentialClassCommandHandler implements ICommandHandler<Creat
         const { createPotentialClassDto } = command;
 
         // Saving potential class into the database
-        const potentialClass = await this.classManagementRepository.create(createPotentialClassDto);
+        const potentialClass = await this.classManagementService.create(createPotentialClassDto);
 
         // Creating a PotentialClassRegisteredEvent
         const classManagement = new PotentialClassRegisteredEvent(potentialClass);

@@ -6,7 +6,7 @@ import { IsNotEmpty, IsString } from "class-validator";
 import { AbstractDocument } from "@app/common";
 import { PotentialStudent } from "apps/student-management/src/schemas/potentialStudent.schema";
 
-export class applyClassDto extends AbstractDocument {
+export class CreatePotentialClassDto extends AbstractDocument {
     /**
      * The name of the class to apply for.
      */

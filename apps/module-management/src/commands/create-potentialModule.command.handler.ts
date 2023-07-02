@@ -1,7 +1,7 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialModuleCommand } from "./create-potentialModule.command";
-import { ModuleManagementRepository } from "../module-management.repository";
 import { PotentialModuleRegisteredEvent } from "../events/potentialModule-registered.event"
+import { ModuleManagementService } from "../module-management.service";
 
 /**
  * Command handler for creating potential modules.
@@ -11,7 +11,7 @@ export class CreatePotentialModuleCommandHandler implements ICommandHandler<Crea
 
     constructor(
         private readonly publisher: EventPublisher,
-        private moduleManagementRepository: ModuleManagementRepository
+        private moduleManagementService: ModuleManagementService
     ) {}
 
     /**
@@ -25,7 +25,7 @@ export class CreatePotentialModuleCommandHandler implements ICommandHandler<Crea
         const { createPotentialModuleDto } = command;
 
         // Saving potential module into the database
-        const potentialModule = await this.moduleManagementRepository.create(createPotentialModuleDto);
+        const potentialModule = await this.moduleManagementService.create(createPotentialModuleDto);
         
         // Create a PotentialModuleRegisteredEvent with the saved potential module
         const moduleManagement = new PotentialModuleRegisteredEvent(potentialModule);

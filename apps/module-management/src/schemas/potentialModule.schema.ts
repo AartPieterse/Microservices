@@ -18,13 +18,13 @@ export class PotentialModule extends AbstractDocument {
    * Teacher associated with the potential module.
    */
   @Prop({ required: true })
-  teacher: Teacher;
+  teacher: string;
 
   /**
    * Class associated with the potential module.
    */
   @Prop({ required: true})
-  class: PotentialClass;
+  class: string;
 }
 
 /**

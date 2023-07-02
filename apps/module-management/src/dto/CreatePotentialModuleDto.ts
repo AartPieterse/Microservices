@@ -7,7 +7,7 @@ import { IsNotEmpty, IsString } from "class-validator";
  * DTO (Data Transfer Object) for applying a module.
  * Extends the AbstractDocument class.
  */
-export class applyModuleDto extends AbstractDocument {
+export class CreatePotentialModuleDto extends AbstractDocument {
     /**
      * Name of the module.
      */
@@ -18,10 +18,10 @@ export class applyModuleDto extends AbstractDocument {
     /**
      * Teacher associated with the module.
      */
-    teacher: Teacher;
+    teacher: string;
 
     /**
      * Class associated with the module.
      */
-    class: PotentialClass;
+    class: string;
 }

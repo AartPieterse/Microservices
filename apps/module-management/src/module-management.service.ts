@@ -1,36 +1,40 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PotentialModule } from './schemas/potentialModule.schema';
+import { AbstractRepository } from '@app/common';
 import { ModuleManagementRepository } from './module-management.repository';
+import { CreatePotentialModuleDto } from './dto/CreatePotentialModuleDto';
+import { UpdatePotentialModuleDto } from './dto/UpdatePotentialModuleDto';
 
-/**
- * Service class for handling business logic related to the module management feature.
- */
 @Injectable()
 export class ModuleManagementService {
   constructor(
-    /**
-     * Injects the module management repository.
-     * @param moduleManagementRepository The injected module management repository.
-     */
     @InjectModel(PotentialModule.name)
-    private readonly moduleManagementRepository: ModuleManagementRepository,
+    private readonly ModuleManagementRepository: AbstractRepository<PotentialModule>,
   ) {}
 
-  /**
-   * Retrieves all applications.
-   * @returns A promise that resolves to an array of applications.
-   */
-  async getApplications() {
-    return this.moduleManagementRepository.find({});
+  async create(createPotentialModuleDto: CreatePotentialModuleDto) {
+    return await this.ModuleManagementRepository.create(
+      createPotentialModuleDto,
+    );
   }
 
-  /**
-   * Deletes an application by ID.
-   * @param id The ID of the application to delete.
-   * @returns A promise that resolves when the application is successfully deleted.
-   */
-  async deleteApplicationById(id: string) {
-    return this.moduleManagementRepository.delete(id);
+  async findAll() {
+    return await this.ModuleManagementRepository.find({});
+  }
+
+  async findById(id: string) {
+    return await this.ModuleManagementRepository.findOne({ _id: id });
+  }
+
+  async update(id: string, updatePotentialModuleDto: UpdatePotentialModuleDto) {
+    return await this.ModuleManagementRepository.update(
+      id,
+      updatePotentialModuleDto,
+    );
+  }
+
+  async delete(id: string) {
+    return await this.ModuleManagementRepository.delete(id);
   }
 }

@@ -1,47 +1,94 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CommandBus, EventBus } from '@nestjs/cqrs';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ModuleManagementService } from './module-management.service';
-import { applyModuleDto } from './dto/applyModule.dto';
-import { CreatePotentialModuleCommand } from './commands/create-potentialModule.command';
+import { CreatePotentialModuleDto } from './dto/CreatePotentialModuleDto';
+import { UpdatePotentialModuleDto } from './dto/UpdatePotentialModuleDto';
 
-/**
- * Controller for module management related HTTP endpoints.
- * Responsible for handling module creation, retrieval, and deletion.
- */
 @Controller('module-management')
 export class ModuleManagementController {
   constructor(
-    private readonly moduleManagementService: ModuleManagementService,
-    private readonly commandBus: CommandBus,
-    private readonly eventBus: EventBus
+    private readonly potentialModuleService: ModuleManagementService,
   ) {}
 
-  /**
-   * Handles HTTP POST requests to create a potential module.
-   * @param data The data for creating a potential module.
-   */
   @Post()
-  async createPotentialModuleDto(@Body() data: applyModuleDto) {
-    const command = new CreatePotentialModuleCommand(data);
-    this.commandBus.execute(command);
+  async create(@Body() createPotentialModuleDto: CreatePotentialModuleDto) {
+    try {
+      const potentialModule = await this.potentialModuleService.create(
+        createPotentialModuleDto,
+      );
+
+      return {
+        status: 201,
+        message: 'Created Potential Module',
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
-  /**
-   * Handles HTTP GET requests to retrieve all applications.
-   * @returns A promise that resolves to the applications.
-   */
   @Get()
-  async getApplications() {
-    return this.moduleManagementService.getApplications();
+  async findAll() {
+    try {
+      const modules = await this.potentialModuleService.findAll();
+
+      return { status: 200, data: { modules } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
-  /**
-   * Handles HTTP DELETE requests to delete an application by ID.
-   * @param id The ID of the application to delete.
-   * @returns A promise that resolves when the application is deleted.
-   */
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    try {
+      const module = await this.potentialModuleService.findById(id);
+
+      return { status: 200, data: { module } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updatePotentialModuleDto: UpdatePotentialModuleDto,
+  ) {
+    try {
+      const potentialModule = await this.potentialModuleService.update(
+        id,
+        updatePotentialModuleDto,
+      );
+
+      return {
+        status: 200,
+        message: 'Updated Potential Module',
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+
   @Delete(':id')
-  async deleteApplicationById(@Param('id') id: string) {
-    return this.moduleManagementService.deleteApplicationById(id);
+  async delete(@Param('id') id: string) {
+    try {
+      const potentialModule = await this.potentialModuleService.delete(id);
+
+      return {
+        status: 200,
+        message: 'Deleted Potential module',
+        data: { potentialModule },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 }

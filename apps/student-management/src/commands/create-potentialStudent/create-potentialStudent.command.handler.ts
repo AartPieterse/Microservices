@@ -33,7 +33,7 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
         const { createPotentialStudentDto } = command;
 
         // Saving student into database
-        const potentialStudent = await this.studentManagementRepository.create(createPotentialStudentDto);
+        const potentialStudent = await this.studentManagementService.create(createPotentialStudentDto);
         const student = new PotentialStudentRegisteredEvent(potentialStudent);
 
         // Merge the event with the EventPublisher context to track its operations
