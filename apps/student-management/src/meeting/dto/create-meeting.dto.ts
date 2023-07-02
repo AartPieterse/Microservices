@@ -17,6 +17,4 @@ export class CreateMeetingDto extends AbstractDocument{
   
     @IsDate()
     endTime: Date;
-
-    match: boolean
 }

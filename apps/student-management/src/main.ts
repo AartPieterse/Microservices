@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { APPLICATION_SERVICE } from './constants/services';
+import { Logger } from '@nestjs/common';
 
 function configureSwagger(app) {
   const config = new DocumentBuilder()
@@ -38,6 +39,7 @@ async function bootstrap() {
   app.startAllMicroservices();
 
   await app.listen(configService.get('PORT'));
+  Logger.log(`App is running on http://localhost:${configService.get('PORT')}`);
 }
 
 bootstrap();

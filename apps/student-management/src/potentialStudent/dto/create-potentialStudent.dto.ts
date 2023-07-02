@@ -1,7 +1,7 @@
 import { AbstractDocument } from "@app/common";
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
+import { IsDate, IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from "class-validator";
 
-export class createPotentialStudentDto extends AbstractDocument {
+export class CreatePotentialStudentDto extends AbstractDocument {
     @IsString()
     @IsNotEmpty()
     name: string;
@@ -16,4 +16,6 @@ export class createPotentialStudentDto extends AbstractDocument {
     @IsPhoneNumber()
     phoneNumber: string;
 
+    @IsDate()
+    birthday: Date
 }
