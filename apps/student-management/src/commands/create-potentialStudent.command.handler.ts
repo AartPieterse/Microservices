@@ -1,9 +1,8 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialStudentCommand } from "./create-potentialStudent.command";
-import { PotentialStudentRegisteredEvent } from "../../events/potentialStudent-registered.event";
-import { PotentialStudentService } from "../../potentialStudent/potentialStudent.service";
-import { TeacherService } from "../../teacher/teacher.service";
-import { RabbitmqService } from "@app/common";
+import { AbstractService } from "@app/common";
+import { PotentialStudent } from "../schemas/potentialStudent.schema";
+import { ApplicationSubmittedEvent } from "../events/application-submitted.event";
 
 /**
  * Command handler for CreatePotentialStudentCommand.
@@ -18,7 +17,7 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
      * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
      */
     constructor(
-        private readonly publisher: EventPublisher, private readonly potentialStudentService: PotentialStudentService, private readonly teacherService: TeacherService, private readonly rabbitmqService: RabbitmqService) {}
+        private readonly publisher: EventPublisher, private readonly potentialStudentService: AbstractService<PotentialStudent>) {}
 
     /**
      * Execute method that handles the CreatePotentialStudentCommand.
@@ -31,17 +30,10 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
 
         // Saving student into database
         const potentialStudent = await this.potentialStudentService.create(createPotentialStudentDto);
-        const student = new PotentialStudentRegisteredEvent(potentialStudent);
+        const enrollment = new ApplicationSubmittedEvent(potentialStudent);
 
         // Publish event
-        const event = this.publisher.mergeObjectContext(student);
+        const event = this.publisher.mergeObjectContext(enrollment.potentialStudent);
         event.publish(event);
-
-        const teacher = await this.teacherService.findByStudy(createPotentialStudentDto.study);
-    
-        // Send a notification to the teacher using RabbitMQ
-        const message = `Hello ${teacher.name}, ${createPotentialStudentDto.name} has applied for the study ${createPotentialStudentDto.study}. Contact: ${createPotentialStudentDto.email}, ${createPotentialStudentDto.phoneNumber}`
-    
-        await this.rabbitmqService.sendMessage('teacher_notifications', message);
     }
 }

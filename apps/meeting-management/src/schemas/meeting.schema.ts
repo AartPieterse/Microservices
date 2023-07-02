@@ -1,7 +1,7 @@
 import { AbstractDocument } from '@app/common';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { PotentialStudent } from './potentialStudent.schema';
-import { Teacher } from './teacher.schema';
+import { PotentialStudent } from '../../../student-management/src/schemas/potentialStudent.schema';
+import { Teacher } from '../../../student-management/src/schemas/teacher.schema';
 
 @Schema()
 export class Meeting extends AbstractDocument {

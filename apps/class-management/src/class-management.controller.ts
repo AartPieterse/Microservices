@@ -3,9 +3,10 @@
  */
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CommandBus, EventBus } from '@nestjs/cqrs';
-import { ClassManagementService } from './class-management.service';
 import { applyClassDto } from './dto/applyClass.dto';
 import { CreatePotentialClassCommand } from './commands/create-potentialClass.command';
+import { AbstractService } from '@app/common';
+import { PotentialClass } from './schemas/potentialClass.schema';
 
 @Controller('class-management')
 export class ClassManagementController {
@@ -16,7 +17,7 @@ export class ClassManagementController {
      * @param eventBus The event bus for publishing events.
      */
     constructor(
-        private readonly classManagementService: ClassManagementService,
+        private readonly classManagementService: AbstractService<PotentialClass>,
         private readonly commandBus: CommandBus,
         private readonly eventBus: EventBus
     ) {}
@@ -37,7 +38,7 @@ export class ClassManagementController {
      */
     @Get()
     async getApplications() {
-        return this.classManagementService.getApplications();
+        return this.classManagementService.find({});
     }
 
     /**
@@ -47,6 +48,6 @@ export class ClassManagementController {
      */
     @Delete(':id')
     async deleteApplicationById(@Param('id') id: string) {
-        return this.classManagementService.deleteApplicationById(id);
+        return this.classManagementService.delete(id);
     }
 }

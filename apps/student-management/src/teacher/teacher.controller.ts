@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
-import { MessagePattern, Payload } from '@nestjs/microservices';
 import { UpdateTeacherDto } from './dto/update-teacher.dto';
+import { AbstractService } from '@app/common';
+import { Teacher } from '../schemas/teacher.schema';
 
 /**
  * @description Controller class for handling teacher-related HTTP requests and message patterns.
@@ -10,7 +10,7 @@ import { UpdateTeacherDto } from './dto/update-teacher.dto';
  */
 @Controller('teachers')
 export class TeacherController {
-  constructor(private readonly teacherService: TeacherService) {}
+  constructor(private readonly teacherService: AbstractService<Teacher>) {}
 
   /**
    * @description Handler for the POST /teachers endpoint.
@@ -43,7 +43,7 @@ export class TeacherController {
   @Get()
   async findAll() {
     try {
-      const teachers = await this.teacherService.findAll();
+      const teachers = await this.teacherService.find({});
 
       return { status: 200, data: { teachers } };
     } catch (err) {
@@ -54,7 +54,7 @@ export class TeacherController {
   @Get(":id")
   async findById(@Param("id") id: string) {
     try {
-      const teacher = await this.teacherService.findById(id);
+      const teacher = await this.teacherService.findOne({_id: id});
 
       return { status: 200, data: { teacher } };
     } catch (err) {
@@ -96,20 +96,5 @@ export class TeacherController {
     } catch (err) {
       return { status: 400, message: err.message };
     }
-  }
-
-  /**
-   * @description Message handler for 'teacher_notifications' pattern.
-   * It logs the received message.
-   * @param data The payload data of the received message.
-   */
-  @MessagePattern('teacher_notifications')
-  public async GetNotifications(@Payload() data: any) {
-    console.log('Message: ', data);
-  }
-
-  @MessagePattern('meeting_notifications')
-  public async getMeetings(@Payload() data: any) {
-    console.log('Message: ', data);
   }
 } 

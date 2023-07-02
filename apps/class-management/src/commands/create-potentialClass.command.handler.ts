@@ -1,10 +1,11 @@
 /**
  * Handles the CreatePotentialClassCommand and performs the necessary operations.
  */
-import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { CreatePotentialClassCommand } from "./create-potentialClass.command";
-import { ClassManagementRepository } from "../class-management.repository";
 import { PotentialClassRegisteredEvent } from "../event/potentialClass-registered.event";
+import { AbstractService } from "@app/common";
+import { PotentialClass } from "../schemas/potentialClass.schema";
+import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 
 @CommandHandler(CreatePotentialClassCommand)
 export class CreatePotentialClassCommandHandler implements ICommandHandler<CreatePotentialClassCommand> {
@@ -15,7 +16,7 @@ export class CreatePotentialClassCommandHandler implements ICommandHandler<Creat
      */
     constructor(
         private readonly publisher: EventPublisher,
-        private classManagementRepository: ClassManagementRepository
+        private classManagementRepository: AbstractService<PotentialClass>
     ) {}
 
     /**

@@ -1,5 +1,8 @@
 // Import necessary modules and classes
+import { AbstractRepository, RabbitmqService } from '@app/common';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { PotentialStudent } from './schemas/potentialStudent.schema';
 
 /**
  * @class StudentManagementService
@@ -8,31 +11,16 @@ import { Injectable } from '@nestjs/common';
  */
 @Injectable()
 export class StudentManagementService {
-<<<<<<< HEAD
-  // constructor(
-  //   // @InjectModel(PotentialStudent.name)
-  //   // private readonly studentManagementRepository: AbstractRepository<PotentialStudent>,
-  // ) {}
-=======
-  /**
-   * @constructor
-   * @param {StudentManagementRepository} studentManagementRepository - The repository for student management.
-   * @description Constructs an instance of the StudentManagementService.
-   * It injects the StudentManagementRepository using the @InjectModel decorator.
-   */
-  constructor(
-    @InjectModel(PotentialStudent.name)
-    private readonly studentManagementRepository: StudentManagementRepository,
-  ) {}
-
-  /**
-   * @method getApplications
-   * @returns {Promise<any[]>} - A promise that resolves to an array of application documents.
-   * @description Retrieves all applications.
-   * It calls the find method of the StudentManagementRepository to get all application documents.
-   */
-  async getApplications(): Promise<any[]> {
-    return this.studentManagementRepository.find({});
-  }
->>>>>>> master
+    constructor(
+        @InjectModel(PotentialStudent.name)
+        private readonly PotentialStudentRepository: AbstractRepository<PotentialStudent>,
+        private readonly rabbitmqService: RabbitmqService
+      ) {}
+    
+      async approve(id: string) {
+        const student = await this.PotentialStudentRepository.delete(id);
+        const message = `Your last meeting resolved into a positive match!`;
+        
+        await this.rabbitmqService.sendMessage('student_notifications', message);
+      }
 }

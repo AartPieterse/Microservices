@@ -1,13 +1,14 @@
 import { EventsHandler, IQueryHandler } from '@nestjs/cqrs';
-import { PotentialStudentService } from '../potentialStudent/potentialStudent.service';
 import { GetPotentialStudentQuery } from './potentialStudent.query';
+import { AbstractService } from '@app/common';
+import { PotentialStudent } from '../schemas/potentialStudent.schema';
 
 @EventsHandler(GetPotentialStudentQuery)
 export class GetPotentialStudentQueryHandler implements IQueryHandler<GetPotentialStudentQuery> {
-  constructor(private readonly potentialStudentService: PotentialStudentService) {}
+  constructor(private readonly potentialStudentService: AbstractService<PotentialStudent>) {}
   execute(query: GetPotentialStudentQuery): Promise<any> {
-    const { potentialStudent } = query;
+    const { id } = query;
 
-    return this.potentialStudentService.findById(potentialStudent._id.toString());
+    return this.potentialStudentService.findOne({_id: id});
   }
 }
