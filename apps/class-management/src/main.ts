@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { ClassManagementModule } from './class-management.module';
+import { ClassModule } from './class.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 /**
  * Configures Swagger documentation for the application.
- * @param app The NestJS application instance.
+ * @param app The Nest.js application instance.
  */
 function configureSwagger(app) {
   const config = new DocumentBuilder()
@@ -20,10 +20,10 @@ function configureSwagger(app) {
 }
 
 /**
- * Bootstrap function to start the application.
+ * Bootstrap function to start the Nest.js application.
  */
 async function bootstrap() {
-  const app = await NestFactory.create(ClassManagementModule);
+  const app = await NestFactory.create(ClassModule);
 
   configureSwagger(app);
 

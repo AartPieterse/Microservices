@@ -1,15 +1,15 @@
 import { NestFactory } from '@nestjs/core';
-import { ModuleManagementModule } from './module-management.module';
+import { ModuleModule } from './module.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 /**
- * Configures Swagger for API documentation.
- * @param app The Nest application instance.
+ * Configures Swagger documentation for the application.
+ * @param app The Nest.js application instance.
  */
 function configureSwagger(app) {
   const config = new DocumentBuilder()
-    .setTitle('Avantys Education Example')
+    .setTitle('Avantys Education example')
     .setDescription('The Avantys Education API description')
     .setVersion('1.0')
     .addTag('Avantys Education')
@@ -19,15 +19,16 @@ function configureSwagger(app) {
   SwaggerModule.setup('api', app, document);
 }
 
+/**
+ * Bootstrap function to start the Nest.js application.
+ */
 async function bootstrap() {
-  const app = await NestFactory.create(ModuleManagementModule);
+  const app = await NestFactory.create(ModuleModule);
 
-  // Configure Swagger for API documentation
   configureSwagger(app);
 
   const configService = app.get(ConfigService);
 
-  // Start the application and listen on the configured port
   await app.listen(configService.get('PORT'));
 }
 
