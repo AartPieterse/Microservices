@@ -1,6 +1,6 @@
 import { NotFoundException } from '@nestjs/common';
 import { AggregateRoot } from '@nestjs/cqrs';
-import { FilterQuery, Document, Model } from 'mongoose';
+import { FilterQuery, Document, Model, Connection } from 'mongoose';
 
 import { EntitySchemaFactory } from './entity-schema.factory';
 import { IdentifiableEntitySchema } from './identifiable-entity.schema';
