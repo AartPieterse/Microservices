@@ -54,9 +54,6 @@ async function bootstrap() {
     },
   });
 
-  // Start all microservices
-  app.startAllMicroservices();
-
   // Start listening on the specified port
   await app.listen(3004);
   Logger.log(`App is running on http://localhost:${configService.get('PORT')}`);

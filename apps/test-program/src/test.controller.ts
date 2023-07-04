@@ -42,10 +42,10 @@ export class TestController {
     await this.eventBus.publish(testCreatedEvent);
   }
 
-  @EventPattern('test-notification')
-  public async handleTestNotification(data: any): Promise<void> {
-    console.log('Received test-notification event:', data);
-  }
+  // @EventPattern('test-notification')
+  // public async handleTestNotification(data: any): Promise<void> {
+  //   console.log('Received test-notification event:', data);
+  // }
 
   @Patch(':id/answers')
   async updateTestAnswers(
