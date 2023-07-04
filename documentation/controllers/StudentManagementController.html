@@ -134,7 +134,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>applyForStudy(data: <a href="../classes/createPotentialStudentDto.html" target="_self">createPotentialStudentDto</a>)</code>
+                    <code>applyForStudy(data: <a href="../classes/CreatePotentialStudentDto.html" target="_self">CreatePotentialStudentDto</a>)</code>
                 </td>
             </tr>
 
@@ -148,8 +148,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">apps/student-management/src/student-management.controller.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">apps/student-management/src/student-management.controller.ts:23</a></div>
                 </td>
             </tr>
 
@@ -175,7 +175,7 @@
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../classes/createPotentialStudentDto.html" target="_self" >createPotentialStudentDto</a></code>
+                                                <code><a href="../classes/CreatePotentialStudentDto.html" target="_self" >CreatePotentialStudentDto</a></code>
                                     </td>
 
                                     <td>
@@ -196,7 +196,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
@@ -213,12 +213,10 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">// Import necessary modules and classes
-import { Body, Controller, Post } from &#x27;@nestjs/common&#x27;;
-import { StudentManagementService } from &#x27;./student-management.service&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Post} from &#x27;@nestjs/common&#x27;;
 import { CreatePotentialStudentCommand } from &#x27;./commands/create-potentialStudent/create-potentialStudent.command&#x27;;
 import { CommandBus, EventBus } from &#x27;@nestjs/cqrs&#x27;;
-import { createPotentialStudentDto } from &#x27;./dto/create-potentialStudent.dto&#x27;;
+import { CreatePotentialStudentDto } from &#x27;./potentialStudent/dto/create-potentialStudent.dto&#x27;;
 
 /**
  * @class StudentManagementController
@@ -227,11 +225,7 @@ import { createPotentialStudentDto } from &#x27;./dto/create-potentialStudent.dt
  */
 @Controller(&#x27;student-management&#x27;)
 export class StudentManagementController {
-  constructor(
-    private readonly studentManagementService: StudentManagementService,
-    private readonly commandBus: CommandBus,
-    private readonly eventBus: EventBus,
-  ) {}
+  constructor(private readonly commandBus: CommandBus, private readonly eventBus: EventBus) {}
 
   /**
    * @method applyForStudy
@@ -241,8 +235,7 @@ export class StudentManagementController {
    * It receives a POST request and creates a potential student using the provided data.
    */
   @Post()
-  async applyForStudy(@Body() data: createPotentialStudentDto): Promise&lt;any&gt; {
-    // Create a new CreatePotentialStudentCommand with the provided data
+  async applyForStudy(@Body() data: CreatePotentialStudentDto) {
     const command &#x3D; new CreatePotentialStudentCommand(data);
 
     // Execute the command using the command bus
@@ -251,6 +244,11 @@ export class StudentManagementController {
     // Return the student
     return student;
   }
+
+  // @MessagePattern(&#x27;meeting_notifications&#x27;)
+  // public async getMeetingResults(@Payload() data: any) {
+  //   console.log(&#x27;Message: &#x27;, data);
+  // }
 }
 </code></pre>
     </div>

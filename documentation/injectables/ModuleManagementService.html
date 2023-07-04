@@ -72,7 +72,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Service class for handling business logic related to the module management feature.</p>
+                <p>Service for managing potential modules.</p>
 
             </p>
 
@@ -93,11 +93,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#deleteApplicationById" >deleteApplicationById</a>
+                                <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
-                                <a href="#getApplications" >getApplications</a>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findById" >findById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -117,12 +129,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(moduleManagementRepository: <a href="../injectables/ModuleManagementRepository.html" target="_self">ModuleManagementRepository</a>)</code>
+<code>constructor(ModuleManagementRepository: <a href="../injectables/AbstractRepository.html" target="_self">AbstractRepository&lt;PotentialModule&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/module-management/src/module-management.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">apps/module-management/src/module-management.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -140,10 +152,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>moduleManagementRepository</td>
+                                                        <td>ModuleManagementRepository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/ModuleManagementRepository.html" target="_self" >ModuleManagementRepository</a></code>
+                                                                        <code><a href="../injectables/AbstractRepository.html" target="_self" >AbstractRepository&lt;PotentialModule&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -169,33 +181,114 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="deleteApplicationById"></a>
+                    <a name="create"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>deleteApplicationById</b></span>
-                        <a href="#deleteApplicationById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteApplicationById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>create(createPotentialModuleDto: <a href="../classes/CreatePotentialModuleDto.html" target="_self">CreatePotentialModuleDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">apps/module-management/src/module-management.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">apps/module-management/src/module-management.service.ts:24</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Deletes an application by ID.</p>
+                    <div class="io-description"><p>Create a new potential module.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>createPotentialModuleDto</td>
+                                    <td>
+                                                <code><a href="../classes/CreatePotentialModuleDto.html" target="_self" >CreatePotentialModuleDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The data for creating a potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The created potential module.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">apps/module-management/src/module-management.service.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Delete a potential module.</p>
 </div>
 
                     <div class="io-description">
@@ -223,7 +316,9 @@
 
 
                                     <td>
-                                        <p>The ID of the application to delete.</p>
+                                        <ul>
+<li>The ID of the potential module to delete.</li>
+</ul>
 
                                     </td>
                                 </tr>
@@ -237,7 +332,7 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves when the application is successfully deleted.</p>
+                        <p>The deleted potential module.</p>
 
                     </div>
                 </td>
@@ -248,33 +343,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getApplications"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                         <span class="modifier">Async</span>
-                        <span ><b>getApplications</b></span>
-                        <a href="#getApplications"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getApplications()</code>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">apps/module-management/src/module-management.service.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">apps/module-management/src/module-management.service.ts:35</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Retrieves all applications.</p>
+                    <div class="io-description"><p>Get all potential modules.</p>
 </div>
 
                     <div>
@@ -284,7 +379,187 @@
 
                     </div>
                     <div class="io-description">
-                        <p>A promise that resolves to an array of applications.</p>
+                        <p>All potential modules.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findById"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findById</b></span>
+                        <a href="#findById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">apps/module-management/src/module-management.service.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get a potential module by its ID.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The potential module with the specified ID.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updatePotentialModuleDto: <a href="../classes/UpdatePotentialModuleDto.html" target="_self">UpdatePotentialModuleDto</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">apps/module-management/src/module-management.service.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update a potential module.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The ID of the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>updatePotentialModuleDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdatePotentialModuleDto.html" target="_self" >UpdatePotentialModuleDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>The updated data for the potential module.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The updated potential module.</p>
 
                     </div>
                 </td>
@@ -300,37 +575,73 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { PotentialModule } from &#x27;./schemas/potentialModule.schema&#x27;;
-import { ModuleManagementRepository } from &#x27;./module-management.repository&#x27;;
+import { AbstractRepository } from &#x27;@app/common&#x27;;
+import { CreatePotentialModuleDto } from &#x27;./dto/CreatePotentialModuleDto&#x27;;
+import { UpdatePotentialModuleDto } from &#x27;./dto/UpdatePotentialModuleDto&#x27;;
 
 /**
- * Service class for handling business logic related to the module management feature.
+ * Service for managing potential modules.
  */
 @Injectable()
 export class ModuleManagementService {
   constructor(
-    /**
-     * Injects the module management repository.
-     * @param moduleManagementRepository The injected module management repository.
-     */
     @InjectModel(PotentialModule.name)
-    private readonly moduleManagementRepository: ModuleManagementRepository,
+    private readonly ModuleManagementRepository: AbstractRepository&lt;PotentialModule&gt;,
   ) {}
 
   /**
-   * Retrieves all applications.
-   * @returns A promise that resolves to an array of applications.
+   * Create a new potential module.
+   *
+   * @param createPotentialModuleDto - The data for creating a potential module.
+   * @returns The created potential module.
    */
-  async getApplications() {
-    return this.moduleManagementRepository.find({});
+  async create(createPotentialModuleDto: CreatePotentialModuleDto) {
+    return await this.ModuleManagementRepository.create(
+      createPotentialModuleDto,
+    );
   }
 
   /**
-   * Deletes an application by ID.
-   * @param id The ID of the application to delete.
-   * @returns A promise that resolves when the application is successfully deleted.
+   * Get all potential modules.
+   *
+   * @returns All potential modules.
    */
-  async deleteApplicationById(id: string) {
-    return this.moduleManagementRepository.delete(id);
+  async findAll() {
+    return await this.ModuleManagementRepository.find({});
+  }
+
+  /**
+   * Get a potential module by its ID.
+   *
+   * @param id - The ID of the potential module.
+   * @returns The potential module with the specified ID.
+   */
+  async findById(id: string) {
+    return await this.ModuleManagementRepository.findOne({ _id: id });
+  }
+
+  /**
+   * Update a potential module.
+   *
+   * @param id - The ID of the potential module.
+   * @param updatePotentialModuleDto - The updated data for the potential module.
+   * @returns The updated potential module.
+   */
+  async update(id: string, updatePotentialModuleDto: UpdatePotentialModuleDto) {
+    return await this.ModuleManagementRepository.update(
+      id,
+      updatePotentialModuleDto,
+    );
+  }
+
+  /**
+   * Delete a potential module.
+   *
+   * @param id - The ID of the potential module to delete.
+   * @returns The deleted potential module.
+   */
+  async delete(id: string) {
+    return await this.ModuleManagementRepository.delete(id);
   }
 }
 </code></pre>

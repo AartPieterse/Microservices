@@ -72,6 +72,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Data transfer object for updating a teacher.
+Extends the <code>PartialType</code> class from <code>@nestjs/mapped-types</code>.</p>
+
+            </p>
 
 
 
@@ -92,7 +100,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType } from &#x27;@nestjs/mapped-types&#x27;;
 import { CreateTeacherDto } from &#x27;./create-teacher.dto&#x27;;
 
-// Define the UpdateTeacherDto class extending PartialType(CreateTeacherDto)
+/**
+ * Data transfer object for updating a teacher.
+ * Extends the &#x60;PartialType&#x60; class from &#x60;@nestjs/mapped-types&#x60;.
+ */
 export class UpdateTeacherDto extends PartialType(CreateTeacherDto) {}
 
 </code></pre>

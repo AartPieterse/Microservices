@@ -169,6 +169,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>Module for managing potential classes.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -229,16 +236,46 @@ import { ClassManagementRepository } from &#x27;./class-management.repository&#x
 import { CreatePotentialClassCommand } from &#x27;./commands/create-potentialClass.command&#x27;;
 import { PotentialClassRegisteredEvent } from &#x27;./event/potentialClass-registered.event&#x27;;
 
-
+/**
+ * Module for managing potential classes.
+ */
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    envFilePath: &#x27;./apps/class-management/.env&#x27;
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialClass.name, schema: PotentialClassSchema}])],
+  imports: [
+    // Load configuration from .env file
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: &#x27;./apps/class-management/.env&#x27;
+    }),
+
+    // Register RabbitMQ module with the given service name
+    RmqModule.register({ name: APPLICATION_SERVICE }),
+
+    // Import the DatabaseModule for database connection
+    DatabaseModule,
+
+    // Import the CqrsModule for Command/Event handling
+    CqrsModule,
+
+    // Register the PotentialClass model as a Mongoose feature
+    MongooseModule.forFeature([{ name: PotentialClass.name, schema: PotentialClassSchema }])
+  ],
   controllers: [ClassManagementController],
-  providers: [ClassManagementService, ClassManagementRepository, PotentialClassRegisteredEvent, CreatePotentialClassCommand],
+  providers: [
+    // Provide the ClassManagementService to handle business logic
+    ClassManagementService,
+
+    // Provide the ClassManagementRepository to interact with the database
+    ClassManagementRepository,
+
+    // Provide the PotentialClassRegisteredEvent for event handling
+    PotentialClassRegisteredEvent,
+
+    // Provide the CreatePotentialClassCommand for command handling
+    CreatePotentialClassCommand,
+  ],
 })
-export class ClassManagementModule {}</code></pre>
+export class ClassManagementModule {}
+</code></pre>
     </div>
 </div>
 

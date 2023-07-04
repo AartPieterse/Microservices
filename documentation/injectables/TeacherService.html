@@ -97,7 +97,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findById" >findById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -117,12 +129,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(teacherRepository: <a href="../injectables/TeacherRepository.html" target="_self">TeacherRepository</a>)</code>
+<code>constructor(teacherRepository: <a href="../injectables/AbstractRepository.html" target="_self">AbstractRepository&lt;Teacher&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -146,7 +158,7 @@
                                                         <td>teacherRepository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/TeacherRepository.html" target="_self" >TeacherRepository</a></code>
+                                                                        <code><a href="../injectables/AbstractRepository.html" target="_self" >AbstractRepository&lt;Teacher&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -196,16 +208,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>It calls the create method of the TeacherRepository and passes the createTeacherDto.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -216,7 +226,6 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -231,12 +240,6 @@
                                     </td>
 
 
-                                    <td>
-                                        <ul>
-<li>The DTO object containing teacher data.</li>
-</ul>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -244,14 +247,82 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
-                        <ul>
-<li>A promise that resolves when the teacher is created.</li>
-</ul>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:40</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -279,28 +350,172 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>It calls the find method of the TeacherRepository to get all teacher documents.</p>
-</div>
 
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findById"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>findById</b></span>
+                        <a href="#findById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
+                        <b>Returns : </b>    <code>unknown</code>
 
                     </div>
                     <div class="io-description">
-                        <ul>
-<li>A promise that resolves to an array of teacher documents.</li>
-</ul>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateTeacherDto: <a href="../classes/UpdateTeacherDto.html" target="_self">UpdateTeacherDto</a>)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">apps/student-management/src/teacher/teacher.service.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>updateTeacherDto</td>
+                                    <td>
+                                                <code><a href="../classes/UpdateTeacherDto.html" target="_self" >UpdateTeacherDto</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -315,8 +530,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
 import { Teacher } from &#x27;../schemas/teacher.schema&#x27;;
-import { TeacherRepository } from &#x27;./teacher.repository&#x27;;
 import { CreateTeacherDto } from &#x27;./dto/create-teacher.dto&#x27;;
+import { AbstractRepository } from &#x27;@app/common&#x27;;
+import { UpdateTeacherDto } from &#x27;./dto/update-teacher.dto&#x27;;
 
 /**
  * @class TeacherService
@@ -333,28 +549,28 @@ export class TeacherService {
    */
   constructor(
     @InjectModel(Teacher.name)
-    private readonly teacherRepository: TeacherRepository,
-  ) {}
-
-  /**
-   * @method create
-   * @param {CreateTeacherDto} createTeacherDto - The DTO object containing teacher data.
-   * @returns {Promise&lt;void&gt;} - A promise that resolves when the teacher is created.
-   * @description Creates a new teacher.
-   * It calls the create method of the TeacherRepository and passes the createTeacherDto.
-   */
-  async create(createTeacherDto: CreateTeacherDto): Promise&lt;void&gt; {
-    await this.teacherRepository.create(createTeacherDto);
+    private readonly teacherRepository: AbstractRepository&lt;Teacher&gt;,
+  ) {
   }
 
-  /**
-   * @method findAll
-   * @returns {Promise&lt;any[]&gt;} - A promise that resolves to an array of teacher documents.
-   * @description Retrieves all teachers.
-   * It calls the find method of the TeacherRepository to get all teacher documents.
-   */
-  async findAll(): Promise&lt;any[]&gt; {
-    return this.teacherRepository.find({});
+  async create(createTeacherDto: CreateTeacherDto){
+    return await this.teacherRepository.create(createTeacherDto);
+  }
+
+  async findAll(){
+    return await this.teacherRepository.find({});
+  }
+
+  async findById(id: string){
+    return await this.teacherRepository.findOne({_id: id});
+  }
+
+  async delete(id: string){
+    return await this.teacherRepository.delete(id);
+  }
+
+  async update(id: string, updateTeacherDto: UpdateTeacherDto){
+    return await this.teacherRepository.update(id, updateTeacherDto);
   }
 }
 </code></pre>

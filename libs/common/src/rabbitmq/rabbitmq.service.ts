@@ -31,4 +31,6 @@ export class RabbitmqService {
   sendMessage(queue: string, message: string): Promise<void> {
     return lastValueFrom(this.clientProxy.emit(queue, message));
   }
+
+  
 }

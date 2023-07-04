@@ -12,30 +12,29 @@ services:
       - mongodb-secondary
       - mongodb-arbiter
       - rabbitmq
-      - student-management
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - '3000:3000'
-  student-management:
-    build:
-      context: .
-      dockerfile: ./apps/student-management/Dockerfile
-      target: development
-    command: npm run start:dev student-management
-    env_file:
-      - ./apps/student-management/.env
-    depends_on:
-      - mongodb-primary
-      - mongodb-secondary
-      - mongodb-arbiter
-      - rabbitmq
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - '3003:3003'
+  # student-management:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/student-management/Dockerfile
+  #     target: development
+  #   command: npm run start:dev student-management
+  #   env_file:
+  #     - ./apps/student-management/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3003:3003'
   test-program:
     build:
       context: .

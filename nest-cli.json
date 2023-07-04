@@ -70,6 +70,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
+    },
+    "meeting-management": {
+      "type": "application",
+      "root": "apps/meeting-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/meeting-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/meeting-management/tsconfig.app.json"
+      }
     }
   }
 }
