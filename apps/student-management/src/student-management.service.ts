@@ -1,5 +1,8 @@
 // Import necessary modules and classes
+import { AbstractRepository, RabbitmqService } from '@app/common';
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { PotentialStudent } from './schemas/potentialStudent.schema';
 
 /**
  * @class StudentManagementService
@@ -8,8 +11,16 @@ import { Injectable } from '@nestjs/common';
  */
 @Injectable()
 export class StudentManagementService {
-  // constructor(
-  //   // @InjectModel(PotentialStudent.name)
-  //   // private readonly studentManagementRepository: AbstractRepository<PotentialStudent>,
-  // ) {}
+    constructor(
+        @InjectModel(PotentialStudent.name)
+        private readonly PotentialStudentRepository: AbstractRepository<PotentialStudent>,
+        private readonly rabbitmqService: RabbitmqService
+      ) {}
+    
+      async approve(id: string) {
+        const student = await this.PotentialStudentRepository.delete(id);
+        const message = `Your last meeting resolved into a positive match!`;
+        
+        await this.rabbitmqService.sendMessage('student_notifications', message);
+      }
 }

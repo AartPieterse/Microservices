@@ -53,6 +53,15 @@
         "tsConfigPath": "apps/class-management/tsconfig.app.json"
       }
     },
+    "meeting-management": {
+      "type": "application",
+      "root": "apps/meeting-management",
+      "entryFile": "main",
+      "sourceRoot": "apps/meeting-management/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/meeting-management/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",

@@ -1,8 +1,9 @@
-// Import necessary modules and classes
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { TeacherService } from './teacher.service';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { UpdateTeacherDto } from './dto/update-teacher.dto';
+import { AbstractService } from '@app/common';
+import { Teacher } from '../schemas/teacher.schema';
+import { InjectModel } from '@nestjs/mongoose';
 
 /**
  * @description Controller class for handling teacher-related HTTP requests and message patterns.
@@ -10,7 +11,7 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
  */
 @Controller('teachers')
 export class TeacherController {
-  constructor(private readonly teacherService: TeacherService) {}
+  constructor(@InjectModel(Teacher.name) private readonly teacherService: AbstractService<Teacher>) {}
 
   /**
    * @description Handler for the POST /teachers endpoint.
@@ -20,11 +21,19 @@ export class TeacherController {
    */
   @Post()
   async create(@Body() createTeacherDto: CreateTeacherDto) {
-    // Call the teacherService to create a teacher
-    await this.teacherService.create(createTeacherDto);
+    try {
+      const teacher = await this.teacherService.create(
+        createTeacherDto,
+      );
 
-    // Return a response object with status and message
-    return { status: 201, message: 'Created Teacher' };
+      return {
+        status: 201,
+        message: 'Created Teacher',
+        data: { teacher },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
   /**
@@ -33,23 +42,60 @@ export class TeacherController {
    * @returns An array of teacher objects.
    */
   @Get()
-  findAll() {
-    // Call the teacherService to find all teachers
-    return this.teacherService.findAll();
+  async findAll() {
+    try {
+      const teachers = await this.teacherService.find({});
+
+      return { status: 200, data: { teachers } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
-  /**
-   * @description Message handler for 'teacher_notifications' pattern.
-   * It logs the received message.
-   * @param data The payload data of the received message.
-   */
-  @MessagePattern('teacher_notifications')
-  public async GetNotifications(@Payload() data: any) {
-    console.log('Message: ', data);
+  @Get(":id")
+  async findById(@Param("id") id: string) {
+    try {
+      const teacher = await this.teacherService.findOne({_id: id});
+
+      return { status: 200, data: { teacher } };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
 
-  @MessagePattern('meeting_notifications')
-  public async getMeetings(@Payload() data: any) {
-    console.log('Message: ', data);
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() updateTeacherDto: UpdateTeacherDto,
+  ) {
+    try {
+      const teacher = await this.teacherService.update(
+        id,
+        updateTeacherDto,
+      );
+
+      return {
+        status: 200,
+        message: 'Updated Teacher',
+        data: { teacher },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
   }
-}
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    try {
+      const teacher = await this.teacherService.delete(id);
+
+      return {
+        status: 200,
+        message: 'Deleted Teacher',
+        data: { teacher },
+      };
+    } catch (err) {
+      return { status: 400, message: err.message };
+    }
+  }
+} 

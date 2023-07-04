@@ -14,6 +14,9 @@ export class Teacher extends AbstractDocument {
    */
   @Prop({ required: true })
   name: string;
+
+  @Prop({ required: true })
+  study: string;
 }
 
 /**
