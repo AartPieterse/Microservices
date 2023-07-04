@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { TestFactory } from './test.factory';
@@ -47,4 +47,5 @@ import {
     ...TestQueryHandlers,
   ],
 })
-export class TestModule {}
+export class TestModule{}
+

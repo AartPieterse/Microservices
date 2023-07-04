@@ -47,9 +47,6 @@ export class ModuleController {
   @EventPattern('test-notification')
   public async GetNotifications(@Payload() data: any, @Ctx() context: RmqContext) {
     console.log('Message: ', data )
-    // const channel = context.getChannelRef()
-    // const message = context.getMessage()
-    // channel.ack(message)
   }
 }
 

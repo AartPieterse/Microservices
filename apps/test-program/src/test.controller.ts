@@ -6,9 +6,6 @@ import { UpdateAnswersCommand } from './commands/update-answers/update-answers.c
 import { CreateTestRequest } from './dto/request/create-test-request.dto';
 import { UpdateTestAnswersRequest } from './dto/request/update-test-answers-request.dto';
 import { TestQuery } from './queries/test.query';
-import { TestCreatedEvent } from './events/test-created.event';
-import { RabbitmqService } from '@app/common';
-import { EventPattern } from '@nestjs/microservices';
 
 
 @Controller('test-program')
@@ -17,7 +14,6 @@ export class TestController {
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
     private readonly eventBus: EventBus,
-    private readonly rabbitmqService: RabbitmqService,
   ) {}
 
     @Get(':id')
@@ -36,16 +32,8 @@ export class TestController {
     await this.commandBus.execute<CreateTestCommand, void>(
       new CreateTestCommand(createTestRequest),
     );
-
-    // Publish test created event
-    const testCreatedEvent = new TestCreatedEvent(createTestRequest);
-    await this.eventBus.publish(testCreatedEvent);
   }
 
-  // @EventPattern('test-notification')
-  // public async handleTestNotification(data: any): Promise<void> {
-  //   console.log('Received test-notification event:', data);
-  // }
 
   @Patch(':id/answers')
   async updateTestAnswers(

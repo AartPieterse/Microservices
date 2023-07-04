@@ -49,10 +49,10 @@ async function bootstrap() {
       ),
       queueOptions: {
         durable: true,
-        noAck: false
       },
     },
   });
+
 
   // Start listening on the specified port
   await app.listen(3004);

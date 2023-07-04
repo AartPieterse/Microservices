@@ -10,7 +10,7 @@ export class TestCreatedHandler implements IEventHandler<TestCreatedEvent> {
   constructor(
     @InjectModel(Teacher.name) private readonly teacher: Model<Teacher>,
     private readonly rabbitmqService: RabbitmqService,
-  ) {}
+  ) {}  
 
   async handle(event: TestCreatedEvent): Promise<void> {
     console.log('Triggered event handler');
