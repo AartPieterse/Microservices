@@ -25,7 +25,7 @@ export class TestCreatedHandler implements IEventHandler<TestCreatedEvent> {
 
       // Send a notification to the students using RabbitMQ
       const message = `Hello everyone, ${name} has added a new test for ${createTestDto.module}.`;
-      await this.rabbitmqService.sendMessage('teacher_notifications', message);
+      await this.rabbitmqService.sendMessage('test-notification', message);
     }
   }
 }

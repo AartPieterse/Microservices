@@ -4,7 +4,7 @@ import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { TestFactory } from './test.factory';
 import { TestController } from '../src/test.controller';
 import { DatabaseModule, RmqModule } from '@app/common';
-import { APPLICATION_SERVICE } from './constants/services';
+import { TEST_SERVICE } from './constants/services';
 import { TestCommandHandlers } from '../src/commands/';
 import { TestDtoRepository } from '../src/db/test-dto.repository';
 import { TestEntityRepository } from '../src/db/test-entity.repository';
@@ -24,7 +24,7 @@ import {
       isGlobal: true,
       envFilePath: './apps/test-program/.env',
     }),
-    RmqModule.register({ name: APPLICATION_SERVICE }),
+    RmqModule.register({ name: TEST_SERVICE }),
     DatabaseModule,
     CqrsModule,
     // Import MongooseModule and specify the schemas to be used

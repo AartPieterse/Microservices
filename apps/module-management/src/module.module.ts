@@ -4,7 +4,7 @@ import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { ModuleFactory } from './module.factory';
 import { ModuleController } from './module.controller';
 import { DatabaseModule, RmqModule } from '@app/common';
-import { APPLICATION_SERVICE } from './constants/services';
+import { MODULE_SERVICE } from './constants/services';
 import { ModuleCommandHandlers } from './commands';
 import { ModuleDtoRepository } from './db/module-dto.repository';
 import { ModuleEntityRepository } from './db/module-entity.repository';
@@ -22,7 +22,7 @@ import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schem
       isGlobal: true,
       envFilePath: './apps/module-management/.env',
     }),
-    RmqModule.register({ name: APPLICATION_SERVICE }),
+    RmqModule.register({ name: MODULE_SERVICE }),
     DatabaseModule,
     CqrsModule,
     // Import MongooseModule and specify the schemas to be used
