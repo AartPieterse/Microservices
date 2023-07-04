@@ -1,3 +1,3 @@
-import { CreatePotentialClassCommandHandler } from "apps/class-management/src/commands/create-potentialClass.command.handler";
+import { CreatePotentialStudentCommandHandler } from "./create-potentialStudent.command.handler";
 
-export const CommandHandlers = [CreatePotentialClassCommandHandler]
+export const CommandHandlers = [CreatePotentialStudentCommandHandler]

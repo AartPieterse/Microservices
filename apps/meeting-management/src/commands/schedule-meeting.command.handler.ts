@@ -5,14 +5,18 @@ import { Meeting } from '../schemas/meeting.schema';
 import { Teacher } from 'apps/student-management/src/schemas/teacher.schema';
 import { PotentialStudent } from 'apps/student-management/src/schemas/potentialStudent.schema';
 import { ScheduleMeetingEvent } from '../event/schedule-meeting.event';
+import { InjectModel } from '@nestjs/mongoose';
 
 
 @CommandHandler(ScheduleMeetingCommand)
 export class ScheduleMeetingCommandHandler implements ICommandHandler<ScheduleMeetingCommand> {
   constructor(
     private readonly publisher: EventPublisher,
+    @InjectModel(Meeting.name)
     private readonly meetingService: AbstractService<Meeting>,
+    @InjectModel(Teacher.name)
     private readonly teacherService: AbstractService<Teacher>,
+    @InjectModel(PotentialStudent.name)
     private readonly potentialStudentService: AbstractService<PotentialStudent>,
   ) {}
 
@@ -32,7 +36,7 @@ export class ScheduleMeetingCommandHandler implements ICommandHandler<ScheduleMe
     const createdMeeting = await this.meetingService.create(meeting);
     const scheduledMeeting = new ScheduleMeetingEvent(createdMeeting);
 
-    const event = this.publisher.mergeObjectContext(scheduledMeeting.meeting);
+    const event = this.publisher.mergeObjectContext(scheduledMeeting);
     event.publish(event);
   }
 }

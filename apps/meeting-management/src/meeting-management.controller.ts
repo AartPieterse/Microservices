@@ -14,6 +14,7 @@ import { Meeting } from 'apps/meeting-management/src/schemas/meeting.schema';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GetScheduledMeetingQuery } from './queries/schedule-meeting.query';
+import { ScheduleMeetingCommand } from './commands/schedule-meeting.command';
 
 @Controller('meeting-management')
 export class MeetingManagementController {
@@ -26,14 +27,13 @@ export class MeetingManagementController {
   @Post()
   async create(@Body() createMeetingDto: CreateMeetingDto) {
     try {
-      const command = await this.commandBus.execute(createMeetingDto);
+      const command = new ScheduleMeetingCommand(createMeetingDto);
 
-      const meeting = this.commandBus.execute(command);
+      await this.commandBus.execute(command);
 
       return {
         status: 201,
-        message: 'Created Meeting',
-        data: { meeting },
+        message: 'Created Meeting'
       };
     } catch (err) {
       return { status: 400, message: err.message };
@@ -56,7 +56,7 @@ export class MeetingManagementController {
     try {
       const query = new GetScheduledMeetingQuery(id);
 
-      const meeting = this.queryBus.execute(query);
+      const meeting = await this.queryBus.execute(query);
 
       return { status: 200, data: { meeting } };
     } catch (err) {

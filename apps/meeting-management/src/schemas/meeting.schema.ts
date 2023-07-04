@@ -5,10 +5,10 @@ import { Teacher } from '../../../student-management/src/schemas/teacher.schema'
 
 @Schema()
 export class Meeting extends AbstractDocument {
-  @Prop({ required: true })
+  @Prop({ required: false })
   student: PotentialStudent;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   teacher: Teacher;
 
   @Prop({ required: true })

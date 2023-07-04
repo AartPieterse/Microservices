@@ -10,10 +10,11 @@ import { ConfigModule } from '@nestjs/config';
 import { Teacher, TeacherSchema } from './schemas/teacher.schema';
 import { TeacherModule } from './teacher/teacher.module';
 import { TeacherService } from './teacher/teacher.service';
-import { ApplicationSubmittedEventHanlder } from './events/application-submitted.event.handler';
 import { GetPotentialStudentQueryHandler } from './queries/potentialStudent-registered.query.handler';
-import { CommandHandlers } from 'apps/meeting-management/src/commands';
 import { CqrsModule } from '@nestjs/cqrs/dist/cqrs.module';
+import { CommandHandlers } from './commands';
+import { EventHandlers } from './events';
+import { QueryHandlers } from './queries';
 
 /**
  * @module StudentManagementModule
@@ -24,8 +25,9 @@ import { CqrsModule } from '@nestjs/cqrs/dist/cqrs.module';
   imports: [CqrsModule, ConfigModule.forRoot({
     isGlobal: true,
     envFilePath: '.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule],
+  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: Teacher.name, schema: TeacherSchema}]), TeacherModule],
   controllers: [StudentManagementController],
-  providers: [StudentManagementService, ApplicationSubmittedEventHanlder, AbstractService<PotentialStudent>, { provide: AbstractService, useClass: PotentialStudent}, TeacherService, GetPotentialStudentQueryHandler, ...CommandHandlers],
+  providers: [StudentManagementService, AbstractService<PotentialStudent>, { provide: AbstractService, useClass: PotentialStudent}, TeacherService, ...CommandHandlers, ...EventHandlers, ...QueryHandlers],
 })
-export class StudentManagementModule {}
+export class StudentManagementModule {
+}

@@ -3,11 +3,12 @@ import { CreatePotentialStudentCommand } from "./create-potentialStudent.command
 import { AbstractService } from "@app/common";
 import { PotentialStudent } from "../schemas/potentialStudent.schema";
 import { ApplicationSubmittedEvent } from "../events/application-submitted.event";
-
+import { InjectModel } from "@nestjs/mongoose";
 /**
  * Command handler for CreatePotentialStudentCommand.
  * This class handles the command to create a potential student and publishes the corresponding event.
  */
+
 @CommandHandler(CreatePotentialStudentCommand)
 export class CreatePotentialStudentCommandHandler implements ICommandHandler<CreatePotentialStudentCommand> {
 
@@ -17,7 +18,8 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
      * @param studentManagementRepository - The StudentManagementRepository instance used to access the database.
      */
     constructor(
-        private readonly publisher: EventPublisher, private readonly potentialStudentService: AbstractService<PotentialStudent>) {}
+        private readonly publisher: EventPublisher, @InjectModel(PotentialStudent.name) private readonly potentialStudentService: AbstractService<PotentialStudent>) {
+        }
 
     /**
      * Execute method that handles the CreatePotentialStudentCommand.
@@ -33,7 +35,7 @@ export class CreatePotentialStudentCommandHandler implements ICommandHandler<Cre
         const enrollment = new ApplicationSubmittedEvent(potentialStudent);
 
         // Publish event
-        const event = this.publisher.mergeObjectContext(enrollment.potentialStudent);
+        const event = this.publisher.mergeObjectContext(enrollment);
         event.publish(event);
     }
 }

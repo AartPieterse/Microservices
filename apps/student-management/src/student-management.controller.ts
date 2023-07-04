@@ -7,13 +7,14 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CommandBus, EventBus, QueryBus } from '@nestjs/cqrs';
 import { CreatePotentialStudentDto } from './dto/create-potentialStudent.dto';
 import { AbstractService } from '@app/common';
 import { PotentialStudent } from './schemas/potentialStudent.schema';
 import { UpdatePotentialStudentDto } from './dto/update-potentialStudent.dto';
 import { GetPotentialStudentQuery } from './queries/potentialStudent.query';
 import { CreatePotentialStudentCommand } from './commands/create-potentialStudent.command';
+import { EventPattern } from '@nestjs/microservices';
 
 /**
  * @class StudentManagementController
@@ -26,6 +27,7 @@ export class StudentManagementController {
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
     private readonly potentialStudentService: AbstractService<PotentialStudent>,
+    private readonly eventBus: EventBus
   ) {
   }
 
@@ -42,12 +44,11 @@ export class StudentManagementController {
       const command = new CreatePotentialStudentCommand(data);
 
       // Execute the command using the command bus
-      const potentialStudent = this.commandBus.execute(command);
+      await this.commandBus.execute(command);
 
       return {
         status: 201,
         message: 'Created Potential Student',
-        data: { potentialStudent },
       };
     } catch (err) {
       return { status: 400, message: err.message };
@@ -70,7 +71,7 @@ export class StudentManagementController {
     try {
       const query = new GetPotentialStudentQuery(id);
 
-      const student = this.queryBus.execute(query);
+      const student = await this.queryBus.execute(query);
 
       return { status: 200, data: { student } };
     } catch (err) {
@@ -113,4 +114,5 @@ export class StudentManagementController {
       return { status: 400, message: err.message };
     }
   }
+
 }

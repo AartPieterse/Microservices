@@ -9,7 +9,7 @@ export class ScheduleMeetingEventHandler implements IEventHandler<ScheduleMeetin
     async handle(event: ScheduleMeetingEvent) {
         const { meeting } = event;
 
-        const message = `Meeting scheduled with ${meeting.teacher.name} at ${meeting.startTime}`;
+        const message = `Meeting scheduled with ${meeting.teacher.name} at ${meeting.startTime.toLocaleString()}`;
         await this.rabbitmqService.sendMessage('potentialStudent_notifications', message);
     }
 }

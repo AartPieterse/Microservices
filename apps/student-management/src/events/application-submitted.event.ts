@@ -1,6 +1,5 @@
-import { IEvent } from '@nestjs/cqrs';
-import { PotentialStudent } from '../schemas/potentialStudent.schema';
+import { AggregateRoot, IEvent } from '@nestjs/cqrs';
 
-export class ApplicationSubmittedEvent implements IEvent {
-  constructor(public readonly potentialStudent: PotentialStudent) {}
+export class ApplicationSubmittedEvent extends AggregateRoot implements IEvent{
+  constructor(public readonly applicationSubmitted: any) {super()}
 }

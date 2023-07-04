@@ -6,11 +6,11 @@ import { PotentialStudent, PotentialStudentSchema } from "apps/student-managemen
 import { Teacher, TeacherSchema } from "apps/student-management/src/schemas/teacher.schema";
 import { Meeting, MeetingSchema } from "./schemas/meeting.schema";
 import { MeetingManagementController } from "./meeting-management.controller";
-import { ScheduleMeetingCommandHandler } from "./commands/schedule-meeting.command.handler";
-import { GetScheduledMeetingQueryHandler } from "./queries/schedule-meeting.query.handler";
-import { ScheduleMeetingEventHandler } from "./event/schedule-meeting.event.handler";
 import { ConfigModule } from "@nestjs/config";
 import { CqrsModule } from "@nestjs/cqrs";
+import { CommandHandlers } from "./commands";
+import { QueryHandlers } from "./queries";
+import { EventHandlers } from "./event";
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -18,7 +18,7 @@ import { CqrsModule } from "@nestjs/cqrs";
     envFilePath: '.env'
   }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{ name: Meeting.name, schema: MeetingSchema}, { name: Teacher.name, schema: TeacherSchema}, { name: PotentialStudent.name, schema: PotentialStudentSchema}])],
   controllers: [MeetingManagementController],
-  providers: [ScheduleMeetingCommandHandler, GetScheduledMeetingQueryHandler, ScheduleMeetingEventHandler, { provide: AbstractService, useValue: {
+  providers: [...CommandHandlers, ...QueryHandlers, ...EventHandlers, { provide: AbstractService, useValue: {
     model: Meeting
   }}]
 })

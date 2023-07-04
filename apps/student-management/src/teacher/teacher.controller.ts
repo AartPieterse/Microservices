@@ -3,6 +3,7 @@ import { CreateTeacherDto } from './dto/create-teacher.dto';
 import { UpdateTeacherDto } from './dto/update-teacher.dto';
 import { AbstractService } from '@app/common';
 import { Teacher } from '../schemas/teacher.schema';
+import { InjectModel } from '@nestjs/mongoose';
 
 /**
  * @description Controller class for handling teacher-related HTTP requests and message patterns.
@@ -10,7 +11,7 @@ import { Teacher } from '../schemas/teacher.schema';
  */
 @Controller('teachers')
 export class TeacherController {
-  constructor(private readonly teacherService: AbstractService<Teacher>) {}
+  constructor(@InjectModel(Teacher.name) private readonly teacherService: AbstractService<Teacher>) {}
 
   /**
    * @description Handler for the POST /teachers endpoint.
