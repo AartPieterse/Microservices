@@ -1,22 +1,22 @@
 services:
-  study-program:
-    build:
-      context: .
-      dockerfile: ./apps/study-program/Dockerfile
-      target: development
-    command: npm run start:dev study-program
-    env_file:
-      - ./apps/study-program/.env
-    depends_on:
-      - mongodb-primary
-      - mongodb-secondary
-      - mongodb-arbiter
-      - rabbitmq
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - '3000:3000'
+  # study-program:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/study-program/Dockerfile
+  #     target: development
+  #   command: npm run start:dev study-program
+  #   env_file:
+  #     - ./apps/study-program/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3000:3000'
   # student-management:
   #   build:
   #     context: .
@@ -34,65 +34,90 @@ services:
   #     - .:/usr/src/app
   #     - /usr/src/app/node_modules
   #   ports:
-  #     - '3003:3003'
-  test-program:
-    build:
-      context: .
-      dockerfile: ./apps/test-program/Dockerfile
-      target: development
-    command: npm run start:dev test-program
-    env_file:
-      - ./apps/test-program/.env
-    depends_on:
-      - mongodb-primary
-      - mongodb-secondary
-      - mongodb-arbiter
-      - rabbitmq
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - '3004:3004'
-  class-management:
-    build:
-      context: .
-      dockerfile: ./apps/class-management/Dockerfile
-      target: development
-    command: npm run start:dev class-management
-    env_file:
-      - ./apps/class-management/.env
-    depends_on:
-      - mongodb-primary
-      - mongodb-secondary
-      - mongodb-arbiter
-      - rabbitmq
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - '3001:3001'
-  module-management:
-    build:
-      context: .
-      dockerfile: ./apps/module-management/Dockerfile
-      target: development
-    command: npm run start:dev module-management
-    env_file:
-      - ./apps/module-management/.env
-    depends_on:
-      - mongodb-primary
-      - mongodb-secondary
-      - mongodb-arbiter
-      - rabbitmq
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - '3002:3002'
+  #     - '3005:3005'
+  # test-program:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/test-program/Dockerfile
+  #     target: development
+  #   command: npm run start:dev test-program
+  #   env_file:
+  #     - ./apps/test-program/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3004:3004'
+  # class-management:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/class-management/Dockerfile
+  #     target: development
+  #   command: npm run start:dev class-management
+  #   env_file:
+  #     - ./apps/class-management/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3001:3001'
+  # module-management:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/module-management/Dockerfile
+  #     target: development
+  #   command: npm run start:dev module-management
+  #   env_file:
+  #     - ./apps/module-management/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3002:3002'
+  # meeting:
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/meeting-management/Dockerfile
+  #     target: development
+  #   command: npm run start:dev meeting-management
+  #   env_file:
+  #     - ./apps/meeting-management/.env
+  #   depends_on:
+  #     - mongodb-primary
+  #     - mongodb-secondary
+  #     - mongodb-arbiter
+  #     - rabbitmq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - '3006:3006'
   rabbitmq:
-    image: rabbitmq
-    ports: 
-      - '5672:5672'
+    image: rabbitmq:management
+    restart: always
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - 5672:5672
+      - 15672:15672
   mongodb-primary:
     image: docker.io/bitnami/mongodb:5.0
     environment:

@@ -10,11 +10,12 @@ import {
 import { CommandBus, EventBus, QueryBus } from '@nestjs/cqrs';
 import { CreatePotentialStudentDto } from './dto/create-potentialStudent.dto';
 import { AbstractService } from '@app/common';
-import { PotentialStudent } from './schemas/potentialStudent.schema';
 import { UpdatePotentialStudentDto } from './dto/update-potentialStudent.dto';
 import { GetPotentialStudentQuery } from './queries/potentialStudent.query';
 import { CreatePotentialStudentCommand } from './commands/create-potentialStudent.command';
-import { EventPattern } from '@nestjs/microservices';
+import { EventPattern } from '@nestjs/microservices'
+import { PotentialStudent } from './schemas/potentialStudent.schema';
+import { InjectModel } from '@nestjs/mongoose';
 
 /**
  * @class StudentManagementController
@@ -23,7 +24,7 @@ import { EventPattern } from '@nestjs/microservices';
  */
 @Controller('student-management')
 export class StudentManagementController {
-  constructor(
+  constructor(@InjectModel(PotentialStudent.name)
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
     private readonly potentialStudentService: AbstractService<PotentialStudent>,
