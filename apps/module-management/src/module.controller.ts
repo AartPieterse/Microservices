@@ -6,7 +6,7 @@ import { UpdateClassesCommand } from './commands/update-classes/update-classes.c
 import { CreateModuleRequest } from './dto/request/create-module-request.dto';
 import { UpdateModuleClassesRequest } from './dto/request/update-module-classes-request.dto';
 import { ModuleQuery } from './queries/module.query';
-import { MessagePattern, Payload, RmqContext, Ctx, EventPattern } from '@nestjs/microservices';
+import { Payload, RmqContext, Ctx, EventPattern } from '@nestjs/microservices';
 import { ModuleDtoRepository } from './db/module-dto.repository';
 
 @Controller('module-management')
@@ -18,7 +18,9 @@ export class ModuleController {
   ) {}
 
   @Get(':id')
-  async getModule(@Param('id') moduleId: string): Promise<void> {}
+  async getModule(@Param('id') moduleId: string) {
+    return this.moduleDtoRepository.findAll();
+  }
 
   @Get()
   async getModules(): Promise<ModuleDto[]> {

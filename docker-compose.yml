@@ -17,24 +17,42 @@ services:
       - /usr/src/app/node_modules
     ports:
       - '3000:3000'
-  # student-management:
-  #   build:
-  #     context: .
-  #     dockerfile: ./apps/student-management/Dockerfile
-  #     target: development
-  #   command: npm run start:dev student-management
-  #   env_file:
-  #     - ./apps/student-management/.env
-  #   depends_on:
-  #     - mongodb-primary
-  #     - mongodb-secondary
-  #     - mongodb-arbiter
-  #     - rabbitmq
-  #   volumes:
-  #     - .:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   ports:
-  #     - '3003:3003'
+  student-management:
+    build:
+      context: .
+      dockerfile: ./apps/student-management/Dockerfile
+      target: development
+    command: npm run start:dev student-management
+    env_file:
+      - ./apps/student-management/.env
+    depends_on:
+      - mongodb-primary
+      - mongodb-secondary
+      - mongodb-arbiter
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3003:3003'
+  meeting-management:
+    build:
+      context: .
+      dockerfile: ./apps/meeting-management/Dockerfile
+      target: development
+    command: npm run start:dev meeting-management
+    env_file:
+      - ./apps/meeting-management/.env
+    depends_on:
+      - mongodb-primary
+      - mongodb-secondary
+      - mongodb-arbiter
+      - rabbitmq
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3006:3006'
   test-program:
     build:
       context: .

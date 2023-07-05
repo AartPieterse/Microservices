@@ -15,7 +15,7 @@ import { StudyEventHandlers } from './events';
 import { StudyQueryHandlers } from './queries';
 import { Teacher } from 'apps/student-management/src/schemas/teacher.schema';
 import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schema';
-import { EventSource } from './event.schema';
+import { EventSource, EventSourceSchema } from './event.schema';
 
 @Module({
   imports: [
@@ -33,6 +33,7 @@ import { EventSource } from './event.schema';
         schema: SchemaFactory.createForClass(StudySchema),
       },
       { name: Teacher.name, schema: TeacherSchema },
+      { name: EventSource.name, schema: EventSourceSchema}
     ]),
   ],
   controllers: [StudyController],
