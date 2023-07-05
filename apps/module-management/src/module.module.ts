@@ -3,7 +3,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { ModuleFactory } from './module.factory';
 import { ModuleController } from './module.controller';
-import { DatabaseModule, RmqModule } from '@app/common';
+import { AbstractService, DatabaseModule, RmqModule } from '@app/common';
 import { MODULE_SERVICE } from './constants/services';
 import { ModuleCommandHandlers } from './commands';
 import { ModuleDtoRepository } from './db/module-dto.repository';
@@ -15,6 +15,7 @@ import { ModuleEventHandlers } from './events';
 import { ModuleQueryHandlers } from './queries';
 import { Teacher } from 'apps/student-management/src/schemas/teacher.schema';
 import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schema';
+import { EventSource, EventSourceSchema } from './event.schema';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schem
         schema: SchemaFactory.createForClass(ModuleSchema),
       },
       { name: Teacher.name, schema: TeacherSchema },
+      { name: EventSource.name, schema: EventSourceSchema}
     ]),
   ],
   controllers: [ModuleController],
@@ -40,6 +42,7 @@ import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schem
     ModuleDtoRepository,
     ModuleSchemaFactory,
     ModuleFactory,
+    AbstractService<EventSource>, { provide: AbstractService, useClass: EventSource},
     ...ModuleCommandHandlers,
     ...ModuleEventHandlers,
     ...ModuleQueryHandlers,

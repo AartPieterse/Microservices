@@ -9,16 +9,17 @@ import { MeetingManagementController } from "./meeting-management.controller";
 import { ConfigModule } from "@nestjs/config";
 import { CqrsModule } from "@nestjs/cqrs";
 import { CommandHandlers } from "./commands";
-import { QueryHandlers } from "./queries";
+import { QueryHandlers } from "./queries"; 
 import { EventHandlers } from "./event";
+import { EventSource, EventSourceSchema } from "./schemas/event.schema";
 
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
     envFilePath: '.env'
-  }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{ name: Meeting.name, schema: MeetingSchema}, { name: Teacher.name, schema: TeacherSchema}, { name: PotentialStudent.name, schema: PotentialStudentSchema}])],
+    }), RmqModule.register({name: APPLICATION_SERVICE}), DatabaseModule, CqrsModule, MongooseModule.forFeature([{ name: Meeting.name, schema: MeetingSchema}, { name: Teacher.name, schema: TeacherSchema}, { name: PotentialStudent.name, schema: PotentialStudentSchema}, { name: EventSource.name, schema: EventSourceSchema}])],
   controllers: [MeetingManagementController],
-  providers: [...CommandHandlers, ...QueryHandlers, ...EventHandlers, { provide: AbstractService, useValue: {
+  providers: [...CommandHandlers, ...QueryHandlers, ...EventHandlers, AbstractService<EventSource>, { provide: AbstractService, useClass: EventSource}, { provide: AbstractService, useValue: {
     model: Meeting
   }}]
 })

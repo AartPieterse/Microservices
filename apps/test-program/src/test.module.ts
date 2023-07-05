@@ -3,7 +3,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { TestFactory } from './test.factory';
 import { TestController } from '../src/test.controller';
-import { DatabaseModule, RmqModule } from '@app/common';
+import { AbstractService, DatabaseModule, RmqModule } from '@app/common';
 import { TEST_SERVICE } from './constants/services';
 import { TestCommandHandlers } from '../src/commands/';
 import { TestDtoRepository } from '../src/db/test-dto.repository';
@@ -17,6 +17,7 @@ import {
   Teacher,
   TeacherSchema,
 } from '../../student-management/src/schemas/teacher.schema';
+import { EventSource, EventSourceSchema } from './event.schema';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import {
         schema: SchemaFactory.createForClass(TestSchema),
       },
       { name: Teacher.name, schema: TeacherSchema },
+      { name: EventSource.name, schema: EventSourceSchema}
     ]),
   ],
   controllers: [TestController],
@@ -42,6 +44,7 @@ import {
     TestDtoRepository,
     TestSchemaFactory,
     TestFactory,
+    AbstractService<EventSource>, { provide: AbstractService, useClass: EventSource},
     ...TestCommandHandlers,
     ...TestEventHandlers,
     ...TestQueryHandlers,

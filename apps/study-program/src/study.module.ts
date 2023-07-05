@@ -3,7 +3,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { StudyFactory } from './study.factory';
 import { StudyController } from './study.controller';
-import { DatabaseModule, RmqModule } from '@app/common';
+import { AbstractService, DatabaseModule, RmqModule } from '@app/common';
 import { APPLICATION_SERVICE } from './constants/services';
 import { StudyCommandHandlers } from './commands';
 import { StudyDtoRepository } from './db/study-dto.repository';
@@ -15,6 +15,7 @@ import { StudyEventHandlers } from './events';
 import { StudyQueryHandlers } from './queries';
 import { Teacher } from 'apps/student-management/src/schemas/teacher.schema';
 import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schema';
+import { EventSource } from './event.schema';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { TeacherSchema } from 'apps/student-management/src/schemas/teacher.schem
     StudyDtoRepository,
     StudySchemaFactory,
     StudyFactory,
+    AbstractService<EventSource>, { provide: AbstractService, useClass: EventSource},
     ...StudyCommandHandlers,
     ...StudyEventHandlers,
     ...StudyQueryHandlers,
